@@ -1,8 +1,13 @@
-import React from 'react';
+import { FC } from 'react';
 import './App.css';
+import Hero from './pages/Hero';
+import Navbar from './pages/Navbar';
 
-function App() {
-  return <div className='App'>App</div>;
-}
+const App: FC = () => (
+  <>
+    <Navbar />
+    <Hero />
+  </>
+);
 
 export default App;
