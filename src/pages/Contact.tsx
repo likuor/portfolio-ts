@@ -21,24 +21,14 @@ const SecitonTitle = styled.h1`
   font-size: 3vw;
 `;
 
-const H1 = styled.h1`
-  font-size: 3vw;
-  padding-left: 0.9vw;
-`;
-
-const Hero: FC = () => {
+const Contact: FC = () => {
   return (
     <WrapperSection>
       <Container>
-        <SecitonTitle>Hi there,</SecitonTitle>
-        <H1>I'm Koki</H1>
-        <H1>
-          Web Developer
-          {/* <span>Frontend</span> */}
-        </H1>
+        <SecitonTitle>Get in touch</SecitonTitle>
       </Container>
     </WrapperSection>
   );
 };
 
-export default Hero;
+export default Contact;

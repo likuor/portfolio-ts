@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const WrapperNavbar = styled.nav`
   margin: 0 auto;
   width: 100%;
   padding: 2vw;
-  margin-top: 250px;
+  margin-top: 13.5vw;
   background-color: #0f1626;
   color: #f5f5f5;
   transform: skewY(15deg);
@@ -23,7 +23,7 @@ const FlexChildrenLogo = styled.div`
   display: flex;
 `;
 
-const FlexChildrenList = styled.div`
+const FlexChildrenList = styled.ul`
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -38,7 +38,7 @@ const LiWrapper = styled.li`
 const Navbar: FC = () => {
   return (
     <>
-      <Wrapper>
+      <WrapperNavbar>
         <FlexWrapper>
           <FlexChildrenLogo>
             <h1>Koki Sakai</h1>
@@ -50,7 +50,7 @@ const Navbar: FC = () => {
             <LiWrapper>Contact</LiWrapper>
           </FlexChildrenList>
         </FlexWrapper>
-      </Wrapper>
+      </WrapperNavbar>
     </>
   );
 };
