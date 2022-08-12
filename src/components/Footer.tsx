@@ -45,13 +45,31 @@ const Footer: FC = () => {
       <FlexWrapper>
         <FlexChildrenList>
           <LiWrapper>
-            <FaGithub />
+            <a
+              href='https://github.com/likuor'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaGithub />
+            </a>
           </LiWrapper>
           <LiWrapper>
-            <FaLinkedin />
+            <a
+              href='https://www.linkedin.com/in/kokisakai/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaLinkedin />
+            </a>
           </LiWrapper>
           <LiWrapper>
-            <FaFacebook />
+            <a
+              href='https://www.facebook.com/sakai.kouki.1'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaFacebook />
+            </a>
           </LiWrapper>
         </FlexChildrenList>
       </FlexWrapper>
