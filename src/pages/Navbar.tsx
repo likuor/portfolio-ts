@@ -47,9 +47,6 @@ const Navbar: FC = () => {
             </Link>
           </FlexChildrenLogo>
           <FlexChildrenList>
-            <Link to='/'>
-              <LiWrapper>Home</LiWrapper>
-            </Link>
             <Link to='/about'>
               <LiWrapper>About</LiWrapper>
             </Link>

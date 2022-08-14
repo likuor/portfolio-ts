@@ -5,3 +5,11 @@
   font-family: 'Open Sans', sans-serif;
   /* background-color: #0f1626; */
 }
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}

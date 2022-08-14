@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import WorksData from '../components/WorksData';
 
 const WrapperSection = styled.section`
   margin: 0 auto;
@@ -54,26 +55,21 @@ const Image = styled.img`
 
 const WorksDetail: FC = () => {
   const params: string | undefined = useParams<string>().worksId;
+  const selectedWork = WorksData.find((work) => work.id === Number(params));
 
   return (
     <WrapperSection>
       <Container>
-        <Title>Detail{params}</Title>
+        <Title>{selectedWork?.title}</Title>
         <FlexWrapper>
           <FlexChildren>
-            <Paragraph>
-              ABOUT my self.ABOUT my selfABOUT my self ABOUT my self.ABOUT my
-              self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self.
-              ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT
-              my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my
-              self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self.
-              ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT
-              my self. ABOUT my self. ABOUT my self.ABOUT my self.ABOUT my
-              self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT
-              my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.
-            </Paragraph>
+            <ImageContainer>
+              <Image src={selectedWork?.image} alt={selectedWork?.title} />
+            </ImageContainer>
           </FlexChildren>
-          <FlexChildren></FlexChildren>
+          <FlexChildren>
+            <Paragraph>{selectedWork?.description}</Paragraph>
+          </FlexChildren>
         </FlexWrapper>
       </Container>
     </WrapperSection>

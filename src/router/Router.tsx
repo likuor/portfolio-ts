@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Work from '../pages/Work';
+import WorksIndex from '../pages/WorksIndex';
+import WorksDetail from '../pages/WorksDetail';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
-import WorksDetail from '../pages/WorksDetail';
-import WorksIndex from '../pages/WorksIndex';
 
 const Router: FC = () => {
   return (

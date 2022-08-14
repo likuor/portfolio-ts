@@ -53,8 +53,31 @@ const DescriptionBg = styled.div`
   background-color: #ab987a;
   padding: 1vw;
 
+  > h1 {
+    padding: 0.3vw 0;
+  }
+
   > p {
+    padding: 0.3vw 0;
     word-wrap: break-word;
+  }
+
+  > ul {
+    padding: 0.3vw 0;
+
+    > li {
+      list-style: none;
+      display: inline;
+      padding: 0 6px;
+
+      :first-child {
+        padding-left: 0px;
+      }
+
+      :last-child {
+        padding-right: 0px;
+      }
+    }
   }
 `;
 
@@ -100,11 +123,11 @@ const renderData = () => {
                 <DescriptionBg>
                   <h1>{workData.title}</h1>
                   <p>{workData.description}</p>
-                  <div>
+                  <ul>
                     {workData.technologiesIcons.map((icons, index) => {
-                      return <p key={index}>{icons}</p>;
+                      return <li key={index}>{icons}</li>;
                     })}
-                  </div>
+                  </ul>
                 </DescriptionBg>
               </DescriptionContainer>
             </Link>

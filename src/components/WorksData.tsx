@@ -1,5 +1,3 @@
-import ReactElement from 'react';
-
 import {
   SiReact,
   SiTypescript,
@@ -8,7 +6,7 @@ import {
   SiMaterialui,
   SiAntdesign,
   SiRedux,
-  SiNodedotjs,
+  SiMongodb,
 } from 'react-icons/si';
 
 type Data = {
@@ -28,8 +26,8 @@ const WorksData: Data[] = [
     description:
       'Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer',
     url: 'https://event-bbs.web.app',
-    image: `${process.env.PUBLIC_URL}/image/Vamos.png`,
-    technologiesIcons: [<SiReact />],
+    image: `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+    technologiesIcons: [<SiReact />, <SiMaterialui />, <SiFirebase />],
     jenre: 'studying',
   },
   {
@@ -37,8 +35,8 @@ const WorksData: Data[] = [
     title: 'Katsuraba-Kitchen',
     description: '',
     url: 'https://katsuraba-kitchien.netlify.app',
-    image: `${process.env.PUBLIC_URL}/image/Katsuraba.png`,
-    technologiesIcons: [<SiReact />],
+    image: `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+    technologiesIcons: [<SiReact />, <SiTailwindcss />, <SiFirebase />],
     jenre: 'Client work',
   },
   {
@@ -46,8 +44,8 @@ const WorksData: Data[] = [
     title: 'Doctor Appointment app',
     description: '',
     url: 'https://easydoctorappointment.netlify.app/home',
-    image: `${process.env.PUBLIC_URL}/image/DoctorAppointment.png`,
-    technologiesIcons: [<SiReact />],
+    image: `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    technologiesIcons: [<SiReact />, <SiMongodb />, <SiRedux />],
     jenre: 'studying',
   },
   {
@@ -55,8 +53,8 @@ const WorksData: Data[] = [
     title: 'Ghibli Exhibition',
     description: '',
     url: 'https://ghibli-exhibition.netlify.app/',
-    image: `${process.env.PUBLIC_URL}/image/Ghibli.png`,
-    technologiesIcons: [<SiReact />],
+    image: `${process.env.PUBLIC_URL}/image/works/Ghibli.png`,
+    technologiesIcons: [<SiTypescript />, <SiReact />, <SiAntdesign />],
     jenre: 'studying',
   },
   {
@@ -64,8 +62,8 @@ const WorksData: Data[] = [
     title: 'Portfolio',
     description: 'My portfolio',
     url: '',
-    image: `${process.env.PUBLIC_URL}/image/Hoempage.jpg`,
-    technologiesIcons: [<SiReact />],
+    image: `${process.env.PUBLIC_URL}/image/works/Hoempage.jpg`,
+    technologiesIcons: [<SiTypescript />, <SiReact />],
     jenre: 'studying',
   },
 ];

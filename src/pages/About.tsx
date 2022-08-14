@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import ProfileImage from '../ProfileImage.jpg';
 
 const WrapperSection = styled.section`
   margin: 0 auto;
@@ -73,7 +72,10 @@ const About: FC = () => {
           </FlexChildren>
           <FlexChildren>
             <ImageContainer>
-              <Image src={ProfileImage} alt='ProfileImage' />
+              <Image
+                src={`${process.env.PUBLIC_URL}/image/ProfileImage.jpg`}
+                alt='ProfileImage'
+              />
             </ImageContainer>
           </FlexChildren>
         </FlexWrapper>
