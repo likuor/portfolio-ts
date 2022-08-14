@@ -1,3 +1,5 @@
+import ReactElement from 'react';
+
 import {
   SiReact,
   SiTypescript,
@@ -15,22 +17,23 @@ type Data = {
   description: string;
   url: string;
   image: string;
-  technologiesIcons: any[];
+  technologiesIcons: JSX.Element[];
   jenre: string;
 };
 
 const WorksData: Data[] = [
   {
-    id: 0,
+    id: 1,
     title: 'Vamos',
-    description: 'Playing soccer',
+    description:
+      'Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer',
     url: 'https://event-bbs.web.app',
     image: `${process.env.PUBLIC_URL}/image/Vamos.png`,
     technologiesIcons: [<SiReact />],
     jenre: 'studying',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Katsuraba-Kitchen',
     description: '',
     url: 'https://katsuraba-kitchien.netlify.app',
@@ -39,7 +42,7 @@ const WorksData: Data[] = [
     jenre: 'Client work',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Doctor Appointment app',
     description: '',
     url: 'https://easydoctorappointment.netlify.app/home',
@@ -48,7 +51,7 @@ const WorksData: Data[] = [
     jenre: 'studying',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Ghibli Exhibition',
     description: '',
     url: 'https://ghibli-exhibition.netlify.app/',
@@ -57,7 +60,7 @@ const WorksData: Data[] = [
     jenre: 'studying',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Portfolio',
     description: 'My portfolio',
     url: '',

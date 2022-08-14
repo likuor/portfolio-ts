@@ -1,19 +1,13 @@
 import { FC } from 'react';
 import './App.css';
-import Navbar from './pages/Navbar';
-import Hero from './pages/Hero';
-import Works from './pages/Works';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Footer from './components/Footer';
 
+import Navbar from './pages/Navbar';
+import Footer from './components/Footer';
+import Router from './router/Router';
 const App: FC = () => (
   <>
     <Navbar />
-    <Hero />
-    <Works />
-    <About />
-    <Contact />
+    <Router />
     <Footer />
   </>
 );

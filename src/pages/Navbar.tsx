@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const WrapperNavbar = styled.nav`
@@ -41,13 +42,23 @@ const Navbar: FC = () => {
       <WrapperNavbar>
         <FlexWrapper>
           <FlexChildrenLogo>
-            <h1>Koki Sakai</h1>
+            <Link to='/'>
+              <h1>Koki Sakai</h1>
+            </Link>
           </FlexChildrenLogo>
           <FlexChildrenList>
-            <LiWrapper>Home</LiWrapper>
-            <LiWrapper>About</LiWrapper>
-            <LiWrapper>Work</LiWrapper>
-            <LiWrapper>Contact</LiWrapper>
+            <Link to='/'>
+              <LiWrapper>Home</LiWrapper>
+            </Link>
+            <Link to='/about'>
+              <LiWrapper>About</LiWrapper>
+            </Link>
+            <Link to='/work'>
+              <LiWrapper>Work</LiWrapper>
+            </Link>
+            <Link to='/contact'>
+              <LiWrapper>Contact</LiWrapper>
+            </Link>
           </FlexChildrenList>
         </FlexWrapper>
       </WrapperNavbar>

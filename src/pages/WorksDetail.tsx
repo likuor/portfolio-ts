@@ -1,6 +1,6 @@
 import { FC } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import ProfileImage from '../ProfileImage.jpg';
 
 const WrapperSection = styled.section`
   margin: 0 auto;
@@ -52,11 +52,13 @@ const Image = styled.img`
   width: 80%;
 `;
 
-const About: FC = () => {
+const WorksDetail: FC = () => {
+  const params: string | undefined = useParams<string>().worksId;
+
   return (
     <WrapperSection>
       <Container>
-        <Title>About</Title>
+        <Title>Detail{params}</Title>
         <FlexWrapper>
           <FlexChildren>
             <Paragraph>
@@ -71,15 +73,11 @@ const About: FC = () => {
               my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.
             </Paragraph>
           </FlexChildren>
-          <FlexChildren>
-            <ImageContainer>
-              <Image src={ProfileImage} alt='ProfileImage' />
-            </ImageContainer>
-          </FlexChildren>
+          <FlexChildren></FlexChildren>
         </FlexWrapper>
       </Container>
     </WrapperSection>
   );
 };
 
-export default About;
+export default WorksDetail;

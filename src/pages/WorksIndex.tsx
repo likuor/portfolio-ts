@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
 
@@ -46,6 +47,17 @@ const DescriptionHover = styled.div`
   background-color: rgba(15, 22, 38, 0.7);
 `;
 
+const DescriptionBg = styled.div`
+  width: 90%;
+  height: 80%;
+  background-color: #ab987a;
+  padding: 1vw;
+
+  > p {
+    word-wrap: break-word;
+  }
+`;
+
 const DescriptionContainer = styled.div`
   margin: 0 auto;
   display: flex;
@@ -53,15 +65,6 @@ const DescriptionContainer = styled.div`
   align-items: center;
   height: 100%;
   color: #0f1626;
-
-  div {
-    width: 80%;
-    background-color: #ab987a;
-    padding: 1vw;
-  }
-  p {
-    word-wrap: break-word;
-  }
 `;
 
 const Image = styled.img`
@@ -92,17 +95,19 @@ const renderData = () => {
         <ImageContainer>
           <Image src={workData.image} alt='ProfileImage' />
           <DescriptionHover>
-            <DescriptionContainer>
-              <div>
-                <h1>{workData.title}</h1>
-                <p>{workData.description}</p>
-                <div>
-                  {workData.technologiesIcons.map((icons, index) => {
-                    return <p key={index}>{icons}</p>;
-                  })}
-                </div>
-              </div>
-            </DescriptionContainer>
+            <Link to={`/work/${workData.id}`}>
+              <DescriptionContainer>
+                <DescriptionBg>
+                  <h1>{workData.title}</h1>
+                  <p>{workData.description}</p>
+                  <div>
+                    {workData.technologiesIcons.map((icons, index) => {
+                      return <p key={index}>{icons}</p>;
+                    })}
+                  </div>
+                </DescriptionBg>
+              </DescriptionContainer>
+            </Link>
           </DescriptionHover>
         </ImageContainer>
       </FlexChildren>
@@ -110,15 +115,17 @@ const renderData = () => {
   });
 };
 
-const Works: FC = () => {
+const WorksIndex: FC = () => {
   return (
-    <WrapperSection>
-      <Container>
-        <SecitonTitle>Works</SecitonTitle>
-        <FlexWrapper>{renderData()}</FlexWrapper>
-      </Container>
-    </WrapperSection>
+    <div>
+      <WrapperSection>
+        <Container>
+          <SecitonTitle>Work</SecitonTitle>
+          <FlexWrapper>{renderData()}</FlexWrapper>
+        </Container>
+      </WrapperSection>
+    </div>
   );
 };
 
-export default Works;
+export default WorksIndex;
