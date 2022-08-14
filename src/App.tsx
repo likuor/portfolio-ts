@@ -1,8 +1,15 @@
-import React from 'react';
+import { FC } from 'react';
 import './App.css';
 
-function App() {
-  return <div className='App'>App</div>;
-}
+import Navbar from './pages/Navbar';
+import Footer from './components/Footer';
+import Router from './router/Router';
+const App: FC = () => (
+  <>
+    <Navbar />
+    <Router />
+    <Footer />
+  </>
+);
 
 export default App;
