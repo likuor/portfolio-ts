@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { FaGithub } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const WrapperFooter = styled.nav`
   margin: 0 auto;
