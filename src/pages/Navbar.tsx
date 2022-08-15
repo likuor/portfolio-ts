@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const WrapperNavbar = styled.nav`
   margin: 0 auto;
   width: 100%;
-  padding: 2vw;
   margin-top: 13.5vw;
   background-color: #0f1626;
   color: #f5f5f5;
@@ -14,25 +13,36 @@ const WrapperNavbar = styled.nav`
 
 const FlexWrapper = styled.div`
   transform: skew(-15deg);
+  height: 70px;
   margin: 0 auto;
   width: 90%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FlexChildrenLogo = styled.div`
-  width: 100%;
-  display: flex;
+  width: 150px;
+  font-size: small;
+
+  @media (min-width: 768px) {
+    font-size: medium;
+  }
 `;
 
 const FlexChildrenList = styled.ul`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  font-size: small;
+
+  @media (min-width: 768px) {
+    font-size: medium;
+  }
 `;
 
 const LiWrapper = styled.li`
-  display: flex;
-  align-items: center;
+  list-style: none;
   padding: 0 1vw;
 `;
 

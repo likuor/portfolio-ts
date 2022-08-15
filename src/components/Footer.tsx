@@ -2,10 +2,10 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
-const WrapperFooter = styled.nav`
+const WrapperFooter = styled.div`
   margin: 0 auto;
   width: 100%;
-  padding: 2vw;
+  padding: 20px;
   background-color: #0f1626;
   color: #f5f5f5;
   transform: skewY(15deg);
@@ -15,7 +15,6 @@ const FlexWrapper = styled.div`
   transform: skew(-15deg);
   margin: 0 auto;
   width: 90%;
-  display: flex;
 `;
 
 const FlexChildrenList = styled.ul`
@@ -25,16 +24,20 @@ const FlexChildrenList = styled.ul`
 `;
 
 const LiWrapper = styled.li`
-  display: flex;
-  align-items: center;
+  list-style: none;
   padding: 0 1vw;
+  font-size: small;
+
+  @media (min-width: 768px) {
+    font-size: medium;
+  }
 `;
 
 const FlexChildrenCopyRight = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 0.8vw;
+  font-size: xx-small;
 `;
 
 const Footer: FC = () => {

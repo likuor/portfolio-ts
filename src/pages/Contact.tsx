@@ -2,23 +2,31 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 const WrapperSection = styled.section`
-  margin: 0 auto;
+  transform: skewY(15deg);
   width: 100%;
   padding: 2vw;
   background-color: #f5f5f5;
-  transform: skewY(15deg);
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Container = styled.div`
-  transform: skew(-15deg);
-  padding: 5vw 0;
   margin: 0 auto;
   width: 90%;
-  background-color: #ff533d;
+  height: 90%;
+  border-top: 1px solid rgba(255, 83, 61, 0.3);
+  border-bottom: 1px solid rgba(255, 83, 61, 0.3);
+
+  @media (min-width: 768px) {
+    background-color: #ff533d;
+  }
 `;
 
 const SecitonTitle = styled.h1`
-  font-size: 3vw;
+  font-size: x-large;
+  transform: skew(-15deg);
 `;
 
 const Contact: FC = () => {
