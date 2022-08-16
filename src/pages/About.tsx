@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import SkillsData from '../components/SkillsData';
 
 const WrapperSection = styled.section`
   transform: skewY(15deg);
@@ -22,6 +23,10 @@ const Container = styled.div`
   height: 80vh;
   border-top: 1px solid rgba(255, 83, 61, 0.3);
   border-bottom: 1px solid rgba(255, 83, 61, 0.3);
+
+  ul {
+    list-style: none;
+  }
 `;
 
 const Title = styled.h1`
@@ -62,6 +67,22 @@ const Image = styled.img`
   transform: skew(-15deg);
 `;
 
+const SkillsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  div {
+    ul {
+      display: flex;
+    }
+    flex-direction: row;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
 const About: FC = () => {
   return (
     <WrapperSection>
@@ -90,6 +111,32 @@ const About: FC = () => {
             </ImageContainer>
           </FlexChildren>
         </FlexWrapper>
+        <SkillsWrapper>
+          <div>
+            <h3>Languages</h3>
+            <ul>
+              {SkillsData.languages.map((skill: any, index) => {
+                return <li key={index}>{skill.technologiesIcons}</li>;
+              })}
+            </ul>
+          </div>
+          <div>
+            <h3>Frameworks / Library</h3>
+            <ul>
+              {SkillsData.frameworks.map((skill: any, index) => {
+                return <li key={index}>{skill.technologiesIcons}</li>;
+              })}
+            </ul>
+          </div>
+          <div>
+            <h3>DB</h3>
+            <ul>
+              {SkillsData.db.map((skill: any, index) => {
+                return <li key={index}>{skill.technologiesIcons}</li>;
+              })}
+            </ul>
+          </div>
+        </SkillsWrapper>
       </Container>
     </WrapperSection>
   );
