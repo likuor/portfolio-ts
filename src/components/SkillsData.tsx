@@ -46,6 +46,14 @@ const SkillsData: Alldata = {
       technologiesIcons: <SiTypescript />,
     },
     {
+      technologiesName: 'Node.js',
+      technologiesIcons: <SiNodedotjs />,
+    },
+    {
+      technologiesName: 'PHP',
+      technologiesIcons: <SiPhp />,
+    },
+    {
       technologiesName: 'HTML',
       technologiesIcons: <SiHtml5 />,
     },
@@ -56,14 +64,6 @@ const SkillsData: Alldata = {
     {
       technologiesName: 'SCSS',
       technologiesIcons: <SiSass />,
-    },
-    {
-      technologiesName: 'PHP',
-      technologiesIcons: <SiPhp />,
-    },
-    {
-      technologiesName: 'Node.js',
-      technologiesIcons: <SiNodedotjs />,
     },
   ],
   db: [
@@ -90,6 +90,10 @@ const SkillsData: Alldata = {
       technologiesIcons: <SiNextdotjs />,
     },
     {
+      technologiesName: 'Redux',
+      technologiesIcons: <SiRedux />,
+    },
+    {
       technologiesName: 'Laravel',
       technologiesIcons: <SiLaravel />,
     },
@@ -98,12 +102,20 @@ const SkillsData: Alldata = {
       technologiesIcons: <SiCakephp />,
     },
     {
-      technologiesName: 'jQuery',
-      technologiesIcons: <SiJquery />,
+      technologiesName: 'Material UI',
+      technologiesIcons: <SiMaterialui />,
+    },
+    {
+      technologiesName: 'Ant Design',
+      technologiesIcons: <SiAntdesign />,
     },
     {
       technologiesName: 'Tailwind CSS',
       technologiesIcons: <SiTailwindcss />,
+    },
+    {
+      technologiesName: 'jQuery',
+      technologiesIcons: <SiJquery />,
     },
   ],
 };

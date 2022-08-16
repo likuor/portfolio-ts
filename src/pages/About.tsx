@@ -20,7 +20,7 @@ const WrapperSection = styled.section`
 const Container = styled.div`
   margin: 0 auto;
   width: 90%;
-  height: 80vh;
+  min-height: 80vh;
   border-top: 1px solid rgba(255, 83, 61, 0.3);
   border-bottom: 1px solid rgba(255, 83, 61, 0.3);
 
@@ -72,14 +72,59 @@ const SkillsWrapper = styled.div`
   flex-direction: column;
 
   div {
+    background: rgba(171, 152, 122, 0.2);
+    padding: 1vh;
+    margin: 1vw 0;
+    :first-child {
+      margin-top: 0px;
+    }
+
+    :last-child {
+      margin-bottom: 0px;
+    }
+
+    > h3 {
+      transform: skew(-15deg);
+      padding-bottom: 0.3vh;
+      font-size: medium;
+    }
+
     ul {
       display: flex;
+      padding: 0.3vw 0;
+      font-size: medium;
+
+      li {
+        transform: skew(-15deg);
+        list-style: none;
+        padding: 0 5px;
+
+        :first-child {
+          padding-left: 0px;
+        }
+
+        :last-child {
+          padding-right: 0px;
+        }
+      }
     }
-    flex-direction: row;
   }
 
   @media (min-width: 768px) {
     flex-direction: row;
+
+    div {
+      padding: 1vw;
+      margin: 0 2vw;
+
+      :first-child {
+        margin-left: 0px;
+      }
+
+      :last-child {
+        margin-right: 0px;
+      }
+    }
   }
 `;
 
@@ -121,7 +166,7 @@ const About: FC = () => {
             </ul>
           </div>
           <div>
-            <h3>Frameworks / Library</h3>
+            <h3>Frameworks & Libraries</h3>
             <ul>
               {SkillsData.frameworks.map((skill: any, index) => {
                 return <li key={index}>{skill.technologiesIcons}</li>;
@@ -129,7 +174,7 @@ const About: FC = () => {
             </ul>
           </div>
           <div>
-            <h3>DB</h3>
+            <h3>Database</h3>
             <ul>
               {SkillsData.db.map((skill: any, index) => {
                 return <li key={index}>{skill.technologiesIcons}</li>;
