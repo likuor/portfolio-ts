@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useState, useCallback, useEffect } from 'react';
 
 const WrapperNavbar = styled.nav`
   margin: 0 auto;
@@ -47,6 +48,34 @@ const LiWrapper = styled.li`
 `;
 
 const Navbar: FC = () => {
+  const [isHeaderShown, setIsHeaderShown] = useState(true);
+  const [lastPosition, setLastPosition] = useState(0);
+  const headerHeight = 20;
+
+  const scrollEvent = useCallback(() => {
+    const offset = window.pageYOffset;
+
+    if (offset > headerHeight) {
+      setIsHeaderShown(false);
+    } else {
+      setIsHeaderShown(true);
+    }
+
+    if (offset < lastPosition) {
+      setIsHeaderShown(true);
+    }
+
+    setLastPosition(offset);
+  }, [lastPosition]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEvent);
+
+    return () => {
+      window.removeEventListener('scroll', scrollEvent);
+    };
+  }, [scrollEvent]);
+
   return (
     <>
       <WrapperNavbar>
