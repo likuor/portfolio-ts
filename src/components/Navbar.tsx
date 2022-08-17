@@ -5,6 +5,7 @@ import { useState, useCallback, useEffect } from 'react';
 
 type Props = {
   isToggle: boolean;
+  isHeaderShown?: boolean;
 };
 
 const WrapperNavbar = styled.nav<Props>`
@@ -14,6 +15,18 @@ const WrapperNavbar = styled.nav<Props>`
   background-color: #0f1626;
   color: #f5f5f5;
   transform: skewY(15deg);
+  z-index: 10;
+
+  /* position: ${(props) => (props.isHeaderShown ? '' : 'relative')};
+  background: ${(props) => (props.isHeaderShown ? '' : 'red')};
+  content: ${(props) => (props.isHeaderShown ? '' : '')};
+  :after {
+    display: ${(props) => (props.isHeaderShown ? '' : 'block')};
+    width: ${(props) => (props.isHeaderShown ? '' : '100%')};
+    padding: ${(props) => (props.isHeaderShown ? '' : '5%')};
+    position: ${(props) => (props.isHeaderShown ? '' : 'absoulte')};
+    background: ${(props) => (props.isHeaderShown ? '' : 'red%')};
+  } */
 `;
 
 const Ul = styled.ul<Props>`
@@ -25,7 +38,7 @@ const Ul = styled.ul<Props>`
   padding: 3vw;
   margin: 0 auto;
   transition: transform 0.4s ease-in-out;
-  transform: ${(props) => (props.isToggle ? '' : 'translate(0px, 1px)')};
+  transform: ${(props) => (props.isToggle ? 'translate(0px, 1px)' : '')};
 
   h1 {
     transform: skew(-15deg);
@@ -51,7 +64,7 @@ const LiWrapper = styled.li<Props>`
   width: 100%;
   text-align: center;
   padding: 0 1vw;
-  display: ${(props) => (props.isToggle ? 'none' : 'block')};
+  display: ${(props) => (props.isToggle ? 'block' : 'none')};
   border-bottom: 1px solid rgba(255, 83, 61, 0.3);
   :last-child {
     border-bottom: none;
@@ -96,18 +109,18 @@ const Toggle = styled.li<Props>`
     :nth-of-type(1) {
       transform-origin: 0% 0%;
       transition: transform 0.4s ease-in-out;
-      transform: ${(props) => (props.isToggle ? '' : 'skew(135deg,45deg)')};
+      transform: ${(props) => (props.isToggle ? 'skew(135deg,45deg)' : '')};
     }
 
     :nth-of-type(2) {
       transition: transform 0.2s ease-in-out;
-      transform: ${(props) => (props.isToggle ? '' : 'scaleY(0)')};
+      transform: ${(props) => (props.isToggle ? 'scaleY(0)' : '')};
     }
 
     :nth-of-type(3) {
       transform-origin: 0% 100%;
       transition: transform 0.4s ease-in-out;
-      transform: ${(props) => (props.isToggle ? '' : 'skew(-135deg,-45deg)')};
+      transform: ${(props) => (props.isToggle ? 'skew(-135deg,-45deg)' : '')};
     }
   }
 
@@ -117,44 +130,45 @@ const Toggle = styled.li<Props>`
 `;
 
 const Navbar: FC = () => {
-  const [isToggleShown, setIsToggleShown] = useState(true);
+  const [isToggleShown, setIsToggleShown] = useState(false);
+  const [isHeaderShown, setIsHeaderShown] = useState(true);
+  const [lastPosition, setLastPosition] = useState(0);
+  const headerHeight = 30;
+  console.log(lastPosition);
 
-  // const [isHeaderShown, setIsHeaderShown] = useState(true);
-  // const [lastPosition, setLastPosition] = useState(0);
-  // const headerHeight = 20;
+  const scrollEvent = useCallback(() => {
+    const offset = window.pageYOffset;
 
-  // const scrollEvent = useCallback(() => {
-  //   const offset = window.pageYOffset;
+    if (offset > headerHeight) {
+      setIsHeaderShown(false);
+    } else {
+      setIsHeaderShown(true);
+    }
 
-  //   if (offset > headerHeight) {
-  //     setIsHeaderShown(false);
-  //   } else {
-  //     setIsHeaderShown(true);
-  //   }
+    if (offset < lastPosition) {
+      setIsHeaderShown(true);
+    }
 
-  //   if (offset < lastPosition) {
-  //     setIsHeaderShown(true);
-  //   }
+    setLastPosition(offset);
+  }, [lastPosition]);
 
-  //   setLastPosition(offset);
-  // }, [lastPosition]);
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEvent);
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', scrollEvent);
+    return () => {
+      window.removeEventListener('scroll', scrollEvent);
+    };
+  }, [scrollEvent]);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', scrollEvent);
-  //   };
-  // }, [scrollEvent]);
+  console.log(isHeaderShown);
 
   const handle = () => {
-    console.log(isToggleShown);
     return setIsToggleShown(!isToggleShown);
   };
 
   return (
     <>
-      <WrapperNavbar isToggle={isToggleShown}>
+      <WrapperNavbar isToggle={isToggleShown} isHeaderShown={isHeaderShown}>
         <Ul isToggle={isToggleShown}>
           <li>
             <h1>

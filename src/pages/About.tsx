@@ -86,13 +86,12 @@ const SkillsWrapper = styled.div`
     > h3 {
       transform: skew(-15deg);
       padding-bottom: 0.3vh;
-      font-size: medium;
     }
 
     ul {
       display: flex;
       padding: 0.3vw 0;
-      font-size: medium;
+      font-size: large;
 
       li {
         transform: skew(-15deg);
@@ -123,6 +122,10 @@ const SkillsWrapper = styled.div`
 
       :last-child {
         margin-right: 0px;
+      }
+
+      ul {
+        font-size: x-large;
       }
     }
   }
