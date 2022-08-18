@@ -6,56 +6,44 @@ import { useState, useCallback, useEffect } from 'react';
 type Props = {
   isToggle: boolean;
   isHeaderShown?: boolean;
+  isScroll?: boolean;
 };
 
-const WrapperNavbar = styled.nav<Props>`
-  margin: 0 auto;
+const NavWrapper = styled.nav<Props>`
   width: 100%;
   margin-top: 13.5vw;
-  background-color: #0f1626;
-  color: #f5f5f5;
-  transform: skewY(15deg);
+  position: relative;
+  color: #fff;
   z-index: 10;
 
-  /* position: ${(props) => (props.isHeaderShown ? '' : 'relative')};
-  background: ${(props) => (props.isHeaderShown ? '' : 'red')};
-  content: ${(props) => (props.isHeaderShown ? '' : '')};
-  :after {
-    display: ${(props) => (props.isHeaderShown ? '' : 'block')};
-    width: ${(props) => (props.isHeaderShown ? '' : '100%')};
-    padding: ${(props) => (props.isHeaderShown ? '' : '5%')};
-    position: ${(props) => (props.isHeaderShown ? '' : 'absoulte')};
-    background: ${(props) => (props.isHeaderShown ? '' : 'red%')};
-  } */
-`;
+  ul {
+    transform: skewY(15deg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    background: #0f1626;
 
-const Ul = styled.ul<Props>`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  padding: 3vw;
-  margin: 0 auto;
-  transition: transform 0.4s ease-in-out;
-  transform: ${(props) => (props.isToggle ? 'translate(0px, 1px)' : '')};
+    h1 {
+      transform: skew(-15deg);
+      font-size: large;
+      align-items: center;
+    }
 
-  h1 {
-    transform: skew(-15deg);
-    font-size: large;
-  }
+    @media (min-width: 768px) {
+      align-items: flex-start;
+      flex-wrap: nowrap;
 
-  @media (min-width: 768px) {
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    background: none;
-    padding: 1vw;
-
-    li:first-child {
-      > h1 {
-        padding: 15px 5px;
+      li:first-child {
+        > h1 {
+          padding: 15px 5px;
+        }
+        flex-grow: 1;
       }
-      flex-grow: 1;
     }
   }
 `;
@@ -63,9 +51,10 @@ const Ul = styled.ul<Props>`
 const LiWrapper = styled.li<Props>`
   width: 100%;
   text-align: center;
-  padding: 0 1vw;
-  display: ${(props) => (props.isToggle ? 'block' : 'none')};
   border-bottom: 1px solid rgba(255, 83, 61, 0.3);
+  display: ${(props) => (props.isToggle ? 'block' : 'none')};
+  position: relative;
+
   :last-child {
     border-bottom: none;
   }
@@ -88,13 +77,14 @@ const LiWrapper = styled.li<Props>`
     position: relative;
     display: block;
     width: auto;
+    padding: 0 1vw;
   }
 `;
 
 const Toggle = styled.li<Props>`
   height: 20px;
   width: 26px;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -129,38 +119,97 @@ const Toggle = styled.li<Props>`
   }
 `;
 
+const ToggleSmall = styled.nav<Props>`
+  position: fixed;
+  background-color: red;
+  top: 5%;
+  right: 10%;
+  height: 60px;
+  width: 60px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    border-radius: 10px;
+    background: #fff;
+    background: ${(props) => (props.isScroll ? '#0f1626' : '#fff')};
+
+    :nth-of-type(1) {
+      transform-origin: 0% 0%;
+      transition: transform 0.4s ease-in-out;
+      transform: ${(props) => (props.isToggle ? 'skew(135deg,45deg)' : '')};
+    }
+
+    :nth-of-type(2) {
+      transition: transform 0.2s ease-in-out;
+      transform: ${(props) => (props.isToggle ? 'scaleY(0)' : '')};
+    }
+
+    :nth-of-type(3) {
+      transform-origin: 0% 100%;
+      transition: transform 0.4s ease-in-out;
+      transform: ${(props) => (props.isToggle ? 'skew(-135deg,-45deg)' : '')};
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 const Navbar: FC = () => {
-  const [isToggleShown, setIsToggleShown] = useState(false);
-  const [isHeaderShown, setIsHeaderShown] = useState(true);
-  const [lastPosition, setLastPosition] = useState(0);
-  const headerHeight = 30;
-  console.log(lastPosition);
+  const [isScroll, setIsScroll] = useState(false);
+  window.onscroll = scroll;
 
-  const scrollEvent = useCallback(() => {
-    const offset = window.pageYOffset;
-
-    if (offset > headerHeight) {
-      setIsHeaderShown(false);
+  function scroll() {
+    const scroll_position = window.pageYOffset;
+    if (scroll_position < 40) {
+      setIsScroll(false);
     } else {
-      setIsHeaderShown(true);
+      setIsScroll(true);
     }
+  }
+  console.log(isScroll);
 
-    if (offset < lastPosition) {
-      setIsHeaderShown(true);
-    }
+  // if (window.scrollY < 140) {
+  //   setIsScroll(true);
+  // }
 
-    setLastPosition(offset);
-  }, [lastPosition]);
+  const [isToggleShown, setIsToggleShown] = useState(false);
+  // const [isHeaderShown, setIsHeaderShown] = useState(true);
+  // const [lastPosition, setLastPosition] = useState(0);
+  // const headerHeight = 30;
 
-  useEffect(() => {
-    window.addEventListener('scroll', scrollEvent);
+  // const scrollEvent = useCallback(() => {
+  //   const offset = window.pageYOffset;
 
-    return () => {
-      window.removeEventListener('scroll', scrollEvent);
-    };
-  }, [scrollEvent]);
+  //   if (offset > headerHeight) {
+  //     setIsHeaderShown(false);
+  //   } else {
+  //     setIsHeaderShown(true);
+  //   }
 
-  console.log(isHeaderShown);
+  //   if (offset < lastPosition) {
+  //     setIsHeaderShown(true);
+  //   }
+
+  //   setLastPosition(offset);
+  // }, [lastPosition]);
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrollEvent);
+
+  //   return () => {
+  //     window.removeEventListener('scroll', scrollEvent);
+  //   };
+  // }, [scrollEvent]);
+
+  // console.log(isHeaderShown);
 
   const handle = () => {
     return setIsToggleShown(!isToggleShown);
@@ -168,8 +217,8 @@ const Navbar: FC = () => {
 
   return (
     <>
-      <WrapperNavbar isToggle={isToggleShown} isHeaderShown={isHeaderShown}>
-        <Ul isToggle={isToggleShown}>
+      <NavWrapper style={{}} isToggle={isToggleShown}>
+        <ul>
           <li>
             <h1>
               <Link to='/'>Koki Sakai</Link>
@@ -198,8 +247,8 @@ const Navbar: FC = () => {
               Contact
             </Link>
           </LiWrapper>
-        </Ul>
-      </WrapperNavbar>
+        </ul>
+      </NavWrapper>
     </>
   );
 };
