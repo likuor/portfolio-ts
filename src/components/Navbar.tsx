@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   isHeaderShown: boolean;
-  isToggleShown?: boolean;
+  isHumbergerMenuShown: boolean;
 };
 
 const TriangleWrapper = styled.div<Props>`
@@ -17,7 +17,8 @@ const TriangleWrapper = styled.div<Props>`
   z-index: 10;
   top: 0;
   right: 0;
-  display: ${(props) => (props.isHeaderShown ? 'flex' : 'none')};
+  display: ${(props) =>
+    props.isHeaderShown || props.isHumbergerMenuShown ? 'flex' : 'none'};
 `;
 
 const Toggle = styled.div<Props>`
@@ -31,7 +32,8 @@ const Toggle = styled.div<Props>`
   flex-direction: column;
   justify-content: space-between;
   transform: skewY(15deg);
-  display: ${(props) => (props.isHeaderShown ? 'flex' : 'none')};
+  display: ${(props) =>
+    props.isHeaderShown || props.isHumbergerMenuShown ? 'flex' : 'none'};
 
   span {
     display: block;
@@ -44,19 +46,19 @@ const Toggle = styled.div<Props>`
       transform-origin: 0% 0%;
       transition: transform 0.4s ease-in-out;
       transform: ${(props) =>
-        props.isToggleShown ? 'skew(135deg,45deg)' : ''};
+        props.isHumbergerMenuShown ? 'skew(135deg,45deg)' : ''};
     }
 
     :nth-of-type(2) {
       transition: transform 0.2s ease-in-out;
-      transform: ${(props) => (props.isToggleShown ? 'scaleY(0)' : '')};
+      transform: ${(props) => (props.isHumbergerMenuShown ? 'scaleY(0)' : '')};
     }
 
     :nth-of-type(3) {
       transform-origin: 0% 100%;
       transition: transform 0.4s ease-in-out;
       transform: ${(props) =>
-        props.isToggleShown ? 'skew(-135deg,-45deg)' : ''};
+        props.isHumbergerMenuShown ? 'skew(-135deg,-45deg)' : ''};
     }
   }
 
@@ -66,7 +68,7 @@ const Toggle = styled.div<Props>`
 `;
 
 const UlWrapper = styled.ul<Props>`
-  display: ${(props) => (props.isToggleShown ? 'flex' : 'none')};
+  display: ${(props) => (props.isHumbergerMenuShown ? 'flex' : 'none')};
   flex-direction: column;
   transform: skewY(15deg);
   justify-content: center;
@@ -111,7 +113,7 @@ const UlWrapper = styled.ul<Props>`
   }
 `;
 const Nav = () => {
-  const [isToggleShown, setIsToggleShown] = useState(false);
+  const [isHumbergerMenuShown, setIsHumbergerMenuShown] = useState(false);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const [lastPosition, setLastPosition] = useState(0);
   const headerHeight = 40;
@@ -140,22 +142,23 @@ const Nav = () => {
     };
   }, [scrollEvent]);
 
-  const handle = () => {
-    // setIsHeaderShown(true);
-    return setIsToggleShown(!isToggleShown);
+  const handleHumbergerMenu = (boolVal: boolean) => {
+    if (boolVal) {
+      return setIsHumbergerMenuShown(!isHumbergerMenuShown);
+    }
+    return setIsHumbergerMenuShown(false);
   };
-  console.log(isToggleShown);
 
   return (
     <>
       <TriangleWrapper
         isHeaderShown={isHeaderShown}
-        isToggleShown={isToggleShown}
+        isHumbergerMenuShown={isHumbergerMenuShown}
       >
         <Toggle
-          isToggleShown={isToggleShown}
+          isHumbergerMenuShown={isHumbergerMenuShown}
           isHeaderShown={isHeaderShown}
-          onClick={handle}
+          onClick={() => handleHumbergerMenu(true)}
         >
           <span></span>
           <span></span>
@@ -163,9 +166,12 @@ const Nav = () => {
         </Toggle>
       </TriangleWrapper>
       <nav>
-        <UlWrapper isHeaderShown={isHeaderShown} isToggleShown={isToggleShown}>
+        <UlWrapper
+          isHeaderShown={isHeaderShown}
+          isHumbergerMenuShown={isHumbergerMenuShown}
+        >
           <li>
-            <Link to='/' onClick={handle}>
+            <Link to='/' onClick={() => handleHumbergerMenu(false)}>
               Koki Sakai
             </Link>
           </li>
@@ -176,17 +182,17 @@ const Nav = () => {
             <button>Theme</button>
           </li>
           <li>
-            <Link to='/about' onClick={handle}>
+            <Link to='/about' onClick={() => handleHumbergerMenu(false)}>
               About
             </Link>
           </li>
           <li>
-            <Link to='/work' onClick={handle}>
+            <Link to='/work' onClick={() => handleHumbergerMenu(false)}>
               Work
             </Link>
           </li>
           <li>
-            <Link to='/contact' onClick={handle}>
+            <Link to='/contact' onClick={() => handleHumbergerMenu(false)}>
               Contact
             </Link>
           </li>
