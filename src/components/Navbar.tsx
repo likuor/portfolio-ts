@@ -1,24 +1,41 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext';
 
 type Props = {
   isHeaderShown: boolean;
   isHumbergerMenuShown: boolean;
+  isDarkMode: boolean;
+  isSkew?: boolean;
 };
 
 const TriangleWrapper = styled.div<Props>`
-  width: 0;
+  width: ${(props) => (props.isSkew ? 0 : '100%')};
   height: 0;
-  border-left: 52.5vw solid transparent;
-  border-top: 14vw solid #0f1626;
+  border-left: ${(props) =>
+    props.isSkew ? '52.5vw solid transparent' : 'none'};
+  border-top: 14vw solid;
+  border-top-color: ${(props) =>
+    props.isDarkMode
+      ? `${props.theme.dark.colors.black}`
+      : `${props.theme.light.colors.green}`};
   border-bottom: 4vw solid transparent;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   top: 0;
   right: 0;
   display: ${(props) =>
     props.isHeaderShown || props.isHumbergerMenuShown ? 'flex' : 'none'};
+
+  @media (min-width: 768px) {
+    z-index: 10;
+    border-top: ${(props) => (props.isSkew ? `14vw solid` : `none`)};
+    border-top-color: ${(props) =>
+      props.isDarkMode
+        ? `${props.theme.dark.colors.black}`
+        : `${props.theme.light.colors.green}`};
+  }
 `;
 
 const Toggle = styled.div<Props>`
@@ -31,7 +48,8 @@ const Toggle = styled.div<Props>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transform: skewY(15deg);
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+
   display: ${(props) =>
     props.isHeaderShown || props.isHumbergerMenuShown ? 'flex' : 'none'};
 
@@ -40,7 +58,10 @@ const Toggle = styled.div<Props>`
     height: 2px;
     width: 100%;
     border-radius: 10px;
-    background: #fff;
+    background: ${(props) =>
+      props.isDarkMode
+        ? props.theme.dark.colors.green
+        : props.theme.light.colors.white};
 
     :nth-of-type(1) {
       transform-origin: 0% 0%;
@@ -70,26 +91,42 @@ const Toggle = styled.div<Props>`
 const UlWrapper = styled.ul<Props>`
   display: ${(props) => (props.isHumbergerMenuShown ? 'flex' : 'none')};
   flex-direction: column;
-  transform: skewY(15deg);
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   position: fixed;
-  background: #0f1626;
+
+  background: ${(props) =>
+    props.isDarkMode
+      ? props.theme.dark.colors.black
+      : props.theme.light.colors.green};
   z-index: 10;
   list-style: none;
-  color: #fff;
+  color: ${(props) =>
+    props.isDarkMode
+      ? props.theme.dark.colors.green
+      : props.theme.light.colors.white};
 
   li {
     padding: 10px;
     width: 70%;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 83, 61, 0.3);
+    border-bottom: ${(props) =>
+      props.isDarkMode
+        ? `1px solid ${props.theme.dark.colors.green}`
+        : `1px solid ${props.theme.light.colors.white}`};
+    :first-child {
+      border-top: ${(props) =>
+        props.isDarkMode
+          ? `1px solid ${props.theme.dark.colors.green}`
+          : `1px solid ${props.theme.light.colors.white}`};
+    }
 
     a {
       display: block;
-      transform: skew(-15deg);
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       padding: 15px 5px;
 
       :hover {
@@ -109,14 +146,21 @@ const UlWrapper = styled.ul<Props>`
     li {
       width: auto;
       border-bottom: none;
+
+      :first-child {
+        border-top: none;
+      }
     }
   }
 `;
+
 const Nav = () => {
   const [isHumbergerMenuShown, setIsHumbergerMenuShown] = useState(false);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const [lastPosition, setLastPosition] = useState(0);
   const headerHeight = 40;
+  const { isDarkMode, setIsDarkMode, isSkew, setIsSkew } =
+    useContext(GlobalContext);
 
   const scrollEvent = useCallback(() => {
     const offset = window.pageYOffset;
@@ -149,15 +193,23 @@ const Nav = () => {
     return setIsHumbergerMenuShown(false);
   };
 
+  const handleState = (stateVal: boolean, setState: Function) => {
+    return setState(!stateVal);
+  };
+
   return (
     <>
       <TriangleWrapper
         isHeaderShown={isHeaderShown}
         isHumbergerMenuShown={isHumbergerMenuShown}
+        isDarkMode={isDarkMode}
+        isSkew={isSkew}
       >
         <Toggle
           isHumbergerMenuShown={isHumbergerMenuShown}
           isHeaderShown={isHeaderShown}
+          isDarkMode={isDarkMode}
+          isSkew={isSkew}
           onClick={() => handleHumbergerMenu(true)}
         >
           <span></span>
@@ -169,6 +221,8 @@ const Nav = () => {
         <UlWrapper
           isHeaderShown={isHeaderShown}
           isHumbergerMenuShown={isHumbergerMenuShown}
+          isDarkMode={isDarkMode}
+          isSkew={isSkew}
         >
           <li>
             <Link to='/' onClick={() => handleHumbergerMenu(false)}>
@@ -176,10 +230,22 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <button>Vertical</button>
+            <button
+              onClick={() => {
+                handleState(isSkew, setIsSkew);
+              }}
+            >
+              Vertical
+            </button>
           </li>
           <li>
-            <button>Theme</button>
+            <button
+              onClick={() => {
+                handleState(isDarkMode, setIsDarkMode);
+              }}
+            >
+              Theme
+            </button>
           </li>
           <li>
             <Link to='/about' onClick={() => handleHumbergerMenu(false)}>
