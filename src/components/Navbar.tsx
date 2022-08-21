@@ -2,12 +2,14 @@ import { useState, useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
+import { BsListNested, BsList } from 'react-icons/bs';
+import { WiMoonAltThirdQuarter } from 'react-icons/wi';
 
 type Props = {
   isHeaderShown: boolean;
   isHumbergerMenuShown: boolean;
   isDarkMode: boolean;
-  isSkew?: boolean;
+  isSkew: boolean;
 };
 
 const TriangleWrapper = styled.div<Props>`
@@ -40,7 +42,7 @@ const TriangleWrapper = styled.div<Props>`
 
 const Toggle = styled.div<Props>`
   position: fixed;
-  top: 3vw;
+  top: 4vw;
   right: 30px;
   height: 4vw;
   width: 6vw;
@@ -126,8 +128,18 @@ const UlWrapper = styled.ul<Props>`
 
     a {
       display: block;
-      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       padding: 15px 5px;
+    }
+
+    svg {
+      font-size: x-large;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    a,
+    svg {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
 
       :hover {
         transition: transform 0.4s ease-in-out;
@@ -154,7 +166,7 @@ const UlWrapper = styled.ul<Props>`
   }
 `;
 
-const Nav = () => {
+const Navbar = () => {
   const [isHumbergerMenuShown, setIsHumbergerMenuShown] = useState(false);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const [lastPosition, setLastPosition] = useState(0);
@@ -230,22 +242,26 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <button
-              onClick={() => {
-                handleState(isSkew, setIsSkew);
-              }}
-            >
-              Vertical
-            </button>
+            {isSkew ? (
+              <BsList
+                onClick={() => {
+                  handleState(isSkew, setIsSkew);
+                }}
+              />
+            ) : (
+              <BsListNested
+                onClick={() => {
+                  handleState(isSkew, setIsSkew);
+                }}
+              />
+            )}
           </li>
           <li>
-            <button
+            <WiMoonAltThirdQuarter
               onClick={() => {
                 handleState(isDarkMode, setIsDarkMode);
               }}
-            >
-              Theme
-            </button>
+            />
           </li>
           <li>
             <Link to='/about' onClick={() => handleHumbergerMenu(false)}>
@@ -268,4 +284,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Navbar;
