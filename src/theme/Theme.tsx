@@ -21,6 +21,7 @@ const theme = {
     colors: {
       white: '#f5f5f5',
       black: '#0f1626',
+      secondaryBlack: '#2C394B',
       orange: '#ff533d',
       lightOrange: 'rgba(255, 83, 61, 0.3)',
       brown: '#ab987a',

@@ -1,48 +1,75 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
+import { GlobalContext } from '../context/GlobalContext';
 
-const WrapperSection = styled.section`
-  transform: skewY(15deg);
+type Props = {
+  isDarkMode: boolean;
+  isSkew: boolean;
+};
+
+const WrapperSection = styled.section<Props>`
   width: 100%;
-  min-height: 80vh;
-  padding: 2vw;
-  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4vw 0;
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.white};
+      color: ${lightTheme.black};
+      `;
+  }};
+
+  > div {
+    margin: 0 auto;
+    padding: 2vw 0;
+    width: 80%;
+
+    > h1 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+      padding: 1vw 0;
+
+      @media (min-width: 768px) {
+        font-size: x-large;
+      }
+    }
+
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 1px solid ${darkTheme.lightGreen};
+      border-bottom: 1px solid ${darkTheme.lightGreen};;
+      `
+        : `
+      border-top: 1px solid ${lightTheme.orange};
+      border-bottom: 1px solid ${lightTheme.orange};
+      `;
+    }}
+  }
 
   @media (min-width: 768px) {
     height: auto;
   }
 `;
 
-const Container = styled.div`
-  margin: 0 auto;
-  width: 90%;
-  border-top: 1px solid rgba(255, 83, 61, 0.3);
-  border-bottom: 1px solid rgba(255, 83, 61, 0.3);
-
-  @media (min-width: 768px) {
-    background-color: #ff533d;
-  }
-`;
-
-const SecitonTitle = styled.h2`
-  transform: skew(-15deg);
-  font-size: x-large;
-  padding-bottom: 1vw;
-`;
-
 const FlexWrapper = styled.div`
   display: flex;
   margin: 0 auto;
   flex-wrap: wrap;
-
-  @media (min-width: 768px) {
-    height: 90%;
-  }
+  padding: 2vw 0;
 `;
 
 const FlexChildren = styled.div`
@@ -176,13 +203,15 @@ const renderData = () => {
 };
 
 const WorksIndex: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
+
   return (
     <div>
-      <WrapperSection>
-        <Container>
-          <SecitonTitle>Work</SecitonTitle>
+      <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+        <div>
+          <h1>Work</h1>
           <FlexWrapper>{renderData()}</FlexWrapper>
-        </Container>
+        </div>
       </WrapperSection>
     </div>
   );

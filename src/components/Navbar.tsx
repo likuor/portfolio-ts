@@ -92,39 +92,20 @@ const Toggle = styled.div<Props>`
 
 const UlWrapper = styled.ul<Props>`
   display: ${(props) => (props.isHumbergerMenuShown ? 'flex' : 'none')};
-  flex-direction: column;
   transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   position: fixed;
-
-  background: ${(props) =>
-    props.isDarkMode
-      ? props.theme.dark.colors.black
-      : props.theme.light.colors.green};
   z-index: 10;
   list-style: none;
-  color: ${(props) =>
-    props.isDarkMode
-      ? props.theme.dark.colors.green
-      : props.theme.light.colors.white};
 
   li {
     padding: 10px;
     width: 70%;
     text-align: center;
-    border-bottom: ${(props) =>
-      props.isDarkMode
-        ? `1px solid ${props.theme.dark.colors.green}`
-        : `1px solid ${props.theme.light.colors.white}`};
-    :first-child {
-      border-top: ${(props) =>
-        props.isDarkMode
-          ? `1px solid ${props.theme.dark.colors.green}`
-          : `1px solid ${props.theme.light.colors.white}`};
-    }
 
     a {
       display: block;
@@ -147,6 +128,36 @@ const UlWrapper = styled.ul<Props>`
       }
     }
   }
+
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+
+      li{
+        border-bottom:1px solid ${darkTheme.green};
+
+        :first-child {
+          border-top:1px solid ${darkTheme.green};
+        }
+      }
+      `
+      : `
+      background: ${lightTheme.green};
+      color: ${lightTheme.white};
+
+      li{
+        border-bottom:1px solid ${lightTheme.white};
+
+        :first-child {
+          border-top:1px solid ${darkTheme.white};
+        }
+      }
+      `;
+  }};
 
   @media (min-width: 768px) {
     padding: 0 1vw;
