@@ -206,14 +206,12 @@ const WorksIndex: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
 
   return (
-    <div>
-      <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
-        <div>
-          <h1>Work</h1>
-          <FlexWrapper>{renderData()}</FlexWrapper>
-        </div>
-      </WrapperSection>
-    </div>
+    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <h1>Work</h1>
+        <FlexWrapper>{renderData()}</FlexWrapper>
+      </div>
+    </WrapperSection>
   );
 };
 

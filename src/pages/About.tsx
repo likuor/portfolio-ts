@@ -1,38 +1,68 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import SkillsData from '../components/SkillsData';
+import { GlobalContext } from '../context/GlobalContext';
 
-const WrapperSection = styled.section`
-  transform: skewY(15deg);
+type Props = {
+  isDarkMode?: boolean;
+  isSkew: boolean;
+};
+
+const WrapperSection = styled.section<Props>`
   width: 100%;
-  min-height: 80vh;
-  padding: 2vw;
-  background-color: #f5f5f5;
   display: flex;
+  min-height: 80vh;
   justify-content: center;
   align-items: center;
+  padding: 4vw 0;
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.white};
+      color: ${lightTheme.black};
+      `;
+  }};
+
+  > div {
+    margin: 0 auto;
+    padding: 2vw 0;
+    width: 80%;
+
+    > h1 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+      padding: 1vw 0;
+
+      @media (min-width: 768px) {
+        font-size: x-large;
+      }
+    }
+
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 1px solid ${darkTheme.lightGreen};
+      border-bottom: 1px solid ${darkTheme.lightGreen};;
+      `
+        : `
+      border-top: 1px solid ${lightTheme.orange};
+      border-bottom: 1px solid ${lightTheme.orange};
+      `;
+    }}
+  }
 
   @media (min-width: 768px) {
     height: auto;
   }
-`;
-
-const Container = styled.div`
-  margin: 0 auto;
-  width: 90%;
-  min-height: 80vh;
-  border-top: 1px solid rgba(255, 83, 61, 0.3);
-  border-bottom: 1px solid rgba(255, 83, 61, 0.3);
-
-  ul {
-    list-style: none;
-  }
-`;
-
-const Title = styled.h1`
-  transform: skew(-15deg);
-  font-size: x-large;
-  padding-bottom: 1vw;
 `;
 
 const FlexWrapper = styled.div`
@@ -41,38 +71,37 @@ const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  > div {
+    width: 100%;
+    display: flex;
+
+    > p {
+      font-size: medium;
+    }
+  }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
   }
 `;
 
-const FlexChildren = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
-const Paragraph = styled.p`
-  font-size: medium;
-`;
-
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<Props>`
   display: flex;
   justify-content: center;
+
+  > img {
+    width: 80%;
+    object-fit: cover;
+    transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+  }
 `;
 
-const Image = styled.img`
-  width: 80%;
-  object-fit: cover;
-  transform: skew(-15deg);
-`;
-
-const SkillsWrapper = styled.div`
+const SkillsWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
-  div {
-    background: rgba(171, 152, 122, 0.2);
+  > div {
     padding: 1vh;
     margin: 1vw 0;
     :first-child {
@@ -83,18 +112,34 @@ const SkillsWrapper = styled.div`
       margin-bottom: 0px;
     }
 
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      background: ${darkTheme.secondaryBlack};
+      color: ${darkTheme.green};
+      `
+        : `
+      background: ${lightTheme.brown};
+      color: ${lightTheme.black};
+      `;
+    }};
+
     > h3 {
-      transform: skew(-15deg);
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       padding-bottom: 0.3vh;
     }
 
-    ul {
+    > ul {
       display: flex;
       padding: 0.3vw 0;
       font-size: large;
+      list-style: none;
 
-      li {
-        transform: skew(-15deg);
+      > li {
+        transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+
         list-style: none;
         padding: 0 5px;
 
@@ -132,13 +177,15 @@ const SkillsWrapper = styled.div`
 `;
 
 const About: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
+
   return (
-    <WrapperSection>
-      <Container>
-        <Title>About</Title>
+    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <h1>About</h1>
         <FlexWrapper>
-          <FlexChildren>
-            <Paragraph>
+          <div>
+            <p>
               ABOUT my self.ABOUT my selfABOUT my self ABOUT my self.ABOUT my
               self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self.
               ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT
@@ -148,18 +195,18 @@ const About: FC = () => {
               my self. ABOUT my self. ABOUT my self.ABOUT my self.ABOUT my
               self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT
               my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.
-            </Paragraph>
-          </FlexChildren>
-          <FlexChildren>
-            <ImageContainer>
-              <Image
+            </p>
+          </div>
+          <div>
+            <ImageContainer isSkew={isSkew}>
+              <img
                 src={`${process.env.PUBLIC_URL}/image/ProfileImage.jpg`}
                 alt='ProfileImage'
               />
             </ImageContainer>
-          </FlexChildren>
+          </div>
         </FlexWrapper>
-        <SkillsWrapper>
+        <SkillsWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
           <div>
             <h3>Languages</h3>
             <ul>
@@ -185,7 +232,7 @@ const About: FC = () => {
             </ul>
           </div>
         </SkillsWrapper>
-      </Container>
+      </div>
     </WrapperSection>
   );
 };
