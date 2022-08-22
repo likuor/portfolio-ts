@@ -1,5 +1,6 @@
 import {
   SiReact,
+  SiJavascript,
   SiTypescript,
   SiFirebase,
   SiTailwindcss,
@@ -27,7 +28,12 @@ const WorksData: Data[] = [
       'Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer.Playing soccer',
     url: 'https://event-bbs.web.app',
     image: `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
-    technologiesIcons: [<SiReact />, <SiMaterialui />, <SiFirebase />],
+    technologiesIcons: [
+      <SiJavascript />,
+      <SiReact />,
+      <SiMaterialui />,
+      <SiFirebase />,
+    ],
     jenre: 'studying',
   },
   {
@@ -36,7 +42,12 @@ const WorksData: Data[] = [
     description: '',
     url: 'https://katsuraba-kitchien.netlify.app',
     image: `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
-    technologiesIcons: [<SiReact />, <SiTailwindcss />, <SiFirebase />],
+    technologiesIcons: [
+      <SiJavascript />,
+      <SiReact />,
+      <SiTailwindcss />,
+      <SiFirebase />,
+    ],
     jenre: 'Client work',
   },
   {
@@ -45,7 +56,13 @@ const WorksData: Data[] = [
     description: '',
     url: 'https://easydoctorappointment.netlify.app/home',
     image: `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
-    technologiesIcons: [<SiReact />, <SiMongodb />, <SiRedux />],
+    technologiesIcons: [
+      <SiJavascript />,
+      <SiReact />,
+      <SiMongodb />,
+      <SiFirebase />,
+      <SiRedux />,
+    ],
     jenre: 'studying',
   },
   {
@@ -54,7 +71,12 @@ const WorksData: Data[] = [
     description: '',
     url: 'https://ghibli-exhibition.netlify.app/',
     image: `${process.env.PUBLIC_URL}/image/works/Ghibli.png`,
-    technologiesIcons: [<SiTypescript />, <SiReact />, <SiAntdesign />],
+    technologiesIcons: [
+      <SiTypescript />,
+      <SiReact />,
+      <SiAntdesign />,
+      <SiRedux />,
+    ],
     jenre: 'studying',
   },
   {

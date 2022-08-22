@@ -1,42 +1,74 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalContext } from '../context/GlobalContext';
 
-const WrapperSection = styled.section`
-  margin: 0 auto;
+type Props = {
+  isDarkMode: boolean;
+  isSkew: boolean;
+};
+
+const WrapperSection = styled.section<Props>`
   width: 100%;
-  padding: 2vw;
-  background-color: #f5f5f5;
-  transform: skewY(15deg);
-`;
+  height: 80vh;
+  padding: 2vw 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.white};
+      color: ${lightTheme.black};
+      `;
+  }};
 
-const Container = styled.div`
-  transform: skew(-15deg);
-  padding: 5vw 0;
-  margin: 0 auto;
-  width: 90%;
-  background-color: #ff533d;
-`;
+  > div {
+    margin: 0 auto;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-const SecitonTitle = styled.h1`
-  font-size: 3vw;
-`;
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 1px solid ${darkTheme.lightGreen};
+      border-bottom: 1px solid ${darkTheme.lightGreen};;
+      `
+        : `
+      border-top: 1px solid ${lightTheme.orange};
+      border-bottom: 1px solid ${lightTheme.orange};
+      `;
+    }}
 
-const H1 = styled.h1`
-  font-size: 3vw;
-  padding-left: 0.9vw;
+    > h1 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: x-large;
+    }
+  }
 `;
 
 const Hero: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
+
   return (
-    <WrapperSection>
-      <Container>
-        <SecitonTitle>Hi there,</SecitonTitle>
-        <H1>I'm Koki</H1>
-        <H1>
-          Web Developer
-          {/* <span>Frontend</span> */}
-        </H1>
-      </Container>
+    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <h1>Hi there</h1>
+        <h1>I'm Koki,</h1>
+        <h1>Web Developer</h1>
+      </div>
     </WrapperSection>
   );
 };

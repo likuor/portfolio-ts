@@ -1,41 +1,87 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
+import { GlobalContext } from '../context/GlobalContext';
 
-const WrapperSection = styled.section`
-  margin: 0 auto;
+type Props = {
+  isDarkMode: boolean;
+  isSkew: boolean;
+};
+
+const WrapperSection = styled.section<Props>`
   width: 100%;
-  padding: 2vw;
-  background-color: #f5f5f5;
-  transform: skewY(15deg);
-`;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vw 0;
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.white};
+      color: ${lightTheme.black};
+      `;
+  }};
 
-const Container = styled.div`
-  transform: skew(-15deg);
-  padding: 5vw 0;
-  margin: 0 auto;
-  width: 90%;
-  background-color: #ff533d;
-`;
+  > div {
+    margin: 0 auto;
+    padding: 2vw 0;
+    width: 80%;
 
-const SecitonTitle = styled.h1`
-  font-size: 3vw;
-  padding-bottom: 1vw;
+    > h1 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+      padding: 1vw 0;
+
+      @media (min-width: 768px) {
+        font-size: x-large;
+      }
+    }
+
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 1px solid ${darkTheme.lightGreen};
+      border-bottom: 1px solid ${darkTheme.lightGreen};;
+      `
+        : `
+      border-top: 1px solid ${lightTheme.orange};
+      border-bottom: 1px solid ${lightTheme.orange};
+      `;
+    }}
+  }
+
+  @media (min-width: 768px) {
+    height: auto;
+  }
 `;
 
 const FlexWrapper = styled.div`
   display: flex;
   margin: 0 auto;
-  width: 90%;
   flex-wrap: wrap;
+  padding: 2vw 0;
 `;
 
 const FlexChildren = styled.div`
-  width: 30%;
-  max-height: 15vw;
+  width: 50%;
+  height: 50vw;
   display: flex;
-  border: yellow 1px solid;
+
+  @media (min-width: 768px) {
+    width: 33.3%;
+    height: 15vw;
+    background-color: #0f1626;
+  }
 `;
 
 const DescriptionHover = styled.div`
@@ -50,25 +96,28 @@ const DescriptionHover = styled.div`
 const DescriptionBg = styled.div`
   width: 90%;
   height: 80%;
-  background-color: #ab987a;
+  background-color: #078080;
   padding: 1vw;
 
-  > h1 {
+  > h2 {
+    transform: skew(-15deg);
+    font-size: small;
     padding: 0.3vw 0;
   }
 
   > p {
+    font-size: small;
     padding: 0.3vw 0;
     word-wrap: break-word;
   }
 
   > ul {
+    font-size: xx-small;
     padding: 0.3vw 0;
-
     > li {
       list-style: none;
       display: inline;
-      padding: 0 6px;
+      padding: 0 5px;
 
       :first-child {
         padding-left: 0px;
@@ -79,6 +128,20 @@ const DescriptionBg = styled.div`
       }
     }
   }
+
+  @media (min-width: 768px) {
+    > h2 {
+      font-size: medium;
+    }
+
+    > p {
+      font-size: medium;
+    }
+
+    > ul {
+      font-size: small;
+    }
+  }
 `;
 
 const DescriptionContainer = styled.div`
@@ -87,7 +150,7 @@ const DescriptionContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: #0f1626;
+  color: #f5f5f5;
 `;
 
 const Image = styled.img`
@@ -97,9 +160,10 @@ const Image = styled.img`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
-  transform: skew(15deg);
   overflow: hidden;
 
   :hover > ${DescriptionHover} {
@@ -121,7 +185,7 @@ const renderData = () => {
             <Link to={`/work/${workData.id}`}>
               <DescriptionContainer>
                 <DescriptionBg>
-                  <h1>{workData.title}</h1>
+                  <h2>{workData.title}</h2>
                   <p>{workData.description}</p>
                   <ul>
                     {workData.technologiesIcons.map((icons, index) => {
@@ -139,15 +203,15 @@ const renderData = () => {
 };
 
 const WorksIndex: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
+
   return (
-    <div>
-      <WrapperSection>
-        <Container>
-          <SecitonTitle>Work</SecitonTitle>
-          <FlexWrapper>{renderData()}</FlexWrapper>
-        </Container>
-      </WrapperSection>
-    </div>
+    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <h1>Work</h1>
+        <FlexWrapper>{renderData()}</FlexWrapper>
+      </div>
+    </WrapperSection>
   );
 };
 

@@ -1,15 +1,28 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './App.css';
-
-import Navbar from './pages/Navbar';
 import Footer from './components/Footer';
 import Router from './router/Router';
-const App: FC = () => (
-  <>
-    <Navbar />
-    <Router />
-    <Footer />
-  </>
-);
+import Navbar from './components/Navbar';
+import { GlobalContext } from './context/GlobalContext';
+import Theme from './theme/Theme';
+
+const App: FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [isSkew, setIsSkew] = useState<boolean>(true);
+
+  return (
+    <>
+      <GlobalContext.Provider
+        value={{ isDarkMode, setIsDarkMode, isSkew, setIsSkew }}
+      >
+        <Theme>
+          <Navbar />
+          <Router />
+          <Footer />
+        </Theme>
+      </GlobalContext.Provider>
+    </>
+  );
+};
 
 export default App;
