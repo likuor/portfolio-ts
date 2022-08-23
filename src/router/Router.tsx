@@ -9,7 +9,11 @@ import Contact from '../pages/Contact';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 8vw 0;
+  padding: 0.15rem 0 0;
+
+  @media (min-width: 768px) {
+    padding: 5rem 0 0;
+  }
 `;
 
 const Router: FC = () => {

@@ -20,7 +20,7 @@ const TriangleWrapper = styled.div<Props>`
   border-top: 14vw solid;
   border-top-color: ${(props) =>
     props.isDarkMode
-      ? `${props.theme.dark.colors.black}`
+      ? `${props.theme.dark.colors.secondaryBlack}`
       : `${props.theme.light.colors.green}`};
   border-bottom: 4vw solid transparent;
   position: fixed;
@@ -35,7 +35,7 @@ const TriangleWrapper = styled.div<Props>`
     border-top: ${(props) => (props.isSkew ? `14vw solid` : `none`)};
     border-top-color: ${(props) =>
       props.isDarkMode
-        ? `${props.theme.dark.colors.black}`
+        ? `${props.theme.dark.colors.secondaryBlack}`
         : `${props.theme.light.colors.green}`};
   }
 `;
@@ -44,8 +44,8 @@ const Toggle = styled.div<Props>`
   position: fixed;
   top: 4vw;
   right: 30px;
-  height: 4vw;
-  width: 6vw;
+  height: 4.5vw;
+  width: 6.5vw;
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -134,7 +134,7 @@ const UlWrapper = styled.ul<Props>`
     const lightTheme = props.theme.light.colors;
     return props.isDarkMode
       ? `
-      background: ${darkTheme.black};
+      background: ${darkTheme.secondaryBlack};
       color: ${darkTheme.green};
 
       li{

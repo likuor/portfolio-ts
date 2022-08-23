@@ -19,7 +19,7 @@ const WrapperFooter = styled.div<Props>`
     const lightTheme = props.theme.light.colors;
     return props.isDarkMode
       ? `
-      background: ${darkTheme.black};
+      background: ${darkTheme.secondaryBlack};
       color: ${darkTheme.green};
       `
       : `
