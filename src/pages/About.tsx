@@ -39,10 +39,6 @@ const WrapperSection = styled.section<Props>`
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       font-size: large;
       padding: 1vw 0;
-
-      @media (min-width: 768px) {
-        font-size: x-large;
-      }
     }
 
     ${(props) => {
@@ -62,10 +58,14 @@ const WrapperSection = styled.section<Props>`
 
   @media (min-width: 768px) {
     height: auto;
+
+    > div > h1 {
+      font-size: x-large;
+    }
   }
 `;
 
-const FlexWrapper = styled.div`
+const FlexWrapper = styled.div<Props>`
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -74,6 +74,7 @@ const FlexWrapper = styled.div`
   > div {
     width: 100%;
     display: flex;
+    padding: 2vw 0;
 
     > p {
       font-size: medium;
@@ -98,8 +99,12 @@ const ImageContainer = styled.div<Props>`
 `;
 
 const SkillsWrapper = styled.div<Props>`
+  margin: 0 auto;
+  width: 100%;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
+  margin-top: 2vw;
 
   > div {
     padding: 1vh;
@@ -136,12 +141,12 @@ const SkillsWrapper = styled.div<Props>`
       padding: 0.3vw 0;
       font-size: large;
       list-style: none;
+      flex-wrap: wrap;
 
       > li {
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-
         list-style: none;
-        padding: 0 5px;
+        padding: 0 0.5rem;
 
         :first-child {
           padding-left: 0px;
@@ -168,13 +173,20 @@ const SkillsWrapper = styled.div<Props>`
       :last-child {
         margin-right: 0px;
       }
-
-      ul {
-        font-size: x-large;
-      }
     }
   }
 `;
+
+type SkillsDataType = {
+  technologiesName: string;
+  technologiesIcons: JSX.Element;
+};
+
+const renderSkillsData = (skillTitle: SkillsDataType[]) => {
+  return skillTitle.map((skill, index) => {
+    return <li key={index}>{skill.technologiesIcons}</li>;
+  });
+};
 
 const About: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
@@ -183,7 +195,7 @@ const About: FC = () => {
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
       <div>
         <h1>About</h1>
-        <FlexWrapper>
+        <FlexWrapper isSkew={isSkew}>
           <div>
             <p>
               ABOUT my self.ABOUT my selfABOUT my self ABOUT my self.ABOUT my
@@ -209,27 +221,15 @@ const About: FC = () => {
         <SkillsWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
           <div>
             <h3>Languages</h3>
-            <ul>
-              {SkillsData.languages.map((skill: any, index) => {
-                return <li key={index}>{skill.technologiesIcons}</li>;
-              })}
-            </ul>
+            <ul>{renderSkillsData(SkillsData.languages)}</ul>
           </div>
           <div>
             <h3>Frameworks & Libraries</h3>
-            <ul>
-              {SkillsData.frameworks.map((skill: any, index) => {
-                return <li key={index}>{skill.technologiesIcons}</li>;
-              })}
-            </ul>
+            <ul>{renderSkillsData(SkillsData.frameworks)}</ul>
           </div>
           <div>
             <h3>Database</h3>
-            <ul>
-              {SkillsData.db.map((skill: any, index) => {
-                return <li key={index}>{skill.technologiesIcons}</li>;
-              })}
-            </ul>
+            <ul>{renderSkillsData(SkillsData.db)}</ul>
           </div>
         </SkillsWrapper>
       </div>
