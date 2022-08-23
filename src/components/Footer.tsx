@@ -1,84 +1,91 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { GlobalContext } from '../context/GlobalContext';
+import SocialMediaData from './SocialMediaData';
 
-const WrapperFooter = styled.div`
-  margin: 0 auto;
+type Props = {
+  isDarkMode: boolean;
+  isSkew: boolean;
+};
+
+const WrapperFooter = styled.div<Props>`
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
   width: 100%;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #0f1626;
-  color: #f5f5f5;
-  transform: skewY(15deg);
-`;
 
-const FlexWrapper = styled.div`
-  transform: skew(-15deg);
-  margin: 0 auto;
-  width: 90%;
-`;
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.green};
+      color: ${lightTheme.white};
+      `;
+  }};
 
-const FlexChildrenList = styled.ul`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
+  > div {
+    transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+    margin: 0 auto;
+    width: 80%;
 
-const LiWrapper = styled.li`
-  list-style: none;
-  padding: 0 1vw;
-  font-size: small;
+    > ul {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+
+      > li {
+        list-style: none;
+        padding: 0 1rem;
+        font-size: medium;
+      }
+    }
+
+    p {
+      display: flex;
+      justify-content: center;
+      font-size: xx-small;
+      padding-top: 0.5rem;
+    }
+  }
 
   @media (min-width: 768px) {
-    font-size: medium;
+    div > ul > li {
+      font-size: large;
+    }
+
+    div > p {
+      font-size: x-small;
+    }
   }
 `;
 
-const FlexChildrenCopyRight = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: xx-small;
-`;
+const renderSocialMediaData = () => {
+  return SocialMediaData.map((socialMediaData) => {
+    return (
+      <li key={socialMediaData.id}>
+        <a href={socialMediaData.url} target='_blank' rel='noopener noreferrer'>
+          {socialMediaData.icon}
+        </a>
+      </li>
+    );
+  });
+};
 
 const Footer: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
+
   return (
-    <WrapperFooter>
-      <FlexWrapper>
-        <FlexChildrenList>
-          <LiWrapper>
-            <a
-              href='https://github.com/likuor'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaGithub />
-            </a>
-          </LiWrapper>
-          <LiWrapper>
-            <a
-              href='https://www.linkedin.com/in/kokisakai/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaLinkedin />
-            </a>
-          </LiWrapper>
-          <LiWrapper>
-            <a
-              href='https://www.facebook.com/sakai.kouki.1'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaFacebook />
-            </a>
-          </LiWrapper>
-        </FlexChildrenList>
-      </FlexWrapper>
-      <FlexWrapper>
-        <FlexChildrenCopyRight>
-          <p>© 2022 Koki Sakai, All Rights Reserved.</p>
-        </FlexChildrenCopyRight>
-      </FlexWrapper>
+    <WrapperFooter isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <ul>{renderSocialMediaData()}</ul>
+        <p>© 2022 Koki Sakai, All Rights Reserved.</p>
+      </div>
     </WrapperFooter>
   );
 };
