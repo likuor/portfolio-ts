@@ -143,6 +143,10 @@ const ImageContainer = styled.div<Props>`
     width: 80%;
     object-fit: cover;
     transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+    box-shadow: ${(props) =>
+      props.isDarkMode
+        ? `0 0 ${props.theme.dark.colors.orange}, 12px 12px 0 0 ${props.theme.dark.colors.black}, 12px 12px 0 2px ${props.theme.dark.colors.orange}`
+        : `0 0 ${props.theme.light.colors.orange}, 12px 12px 0 0 ${props.theme.light.colors.white}, 12px 12px 0 2px ${props.theme.light.colors.green}`};
   }
 
   @media (min-width: 768px) {
@@ -253,8 +257,9 @@ const About: FC = () => {
               incredibly helpful power and made us connect with each other
               easily to make us happy, make our dreams come true. That was the
               first step to make me big fun of the amazing IT world. After the
-              survival traveling, I am always pleased that I would like to learn
-              technologies to help people in the world efficiently!
+              survival traveling, I am always pleased that I would like to
+              efficiently learn technologies to help people in the world with my
+              huge passion!
             </p>
           </div>
           <div>
@@ -282,12 +287,12 @@ const About: FC = () => {
                 <br />
                 Cornerstone International Community College of Canada
                 <br />
-                <span>2022 - present, Vancouver, Canada</span>
+                <span>2022 - Present, Vancouver, Canada</span>
               </p>
             </div>
           </div>
           <div>
-            <ImageContainer isSkew={isSkew}>
+            <ImageContainer isSkew={isSkew} isDarkMode={isDarkMode}>
               <img
                 src={`${process.env.PUBLIC_URL}/image/ProfileImage.jpg`}
                 alt='ProfileImage'

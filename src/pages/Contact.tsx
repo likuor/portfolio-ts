@@ -39,10 +39,6 @@ const WrapperSection = styled.section<Props>`
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       font-size: large;
       padding: 1vw 0;
-
-      @media (min-width: 768px) {
-        font-size: x-large;
-      }
     }
 
     ${(props) => {
@@ -58,6 +54,14 @@ const WrapperSection = styled.section<Props>`
       border-bottom: 1px solid ${lightTheme.orange};
       `;
     }}
+  }
+
+  @media (min-width: 768px) {
+    height: auto;
+
+    > div > h1 {
+      font-size: x-large;
+    }
   }
 `;
 
