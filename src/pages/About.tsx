@@ -74,27 +74,79 @@ const FlexWrapper = styled.div<Props>`
   > div {
     width: 100%;
     display: flex;
+    flex-direction: column;
     padding: 2vw 0;
 
-    > p {
+    h2 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+    }
+
+    p {
       font-size: medium;
+      line-height: 1.5;
+
+      > span {
+        font-size: 0.8rem;
+      }
+    }
+
+    > div {
+      padding: 2rem 0 0;
+
+      :first-child {
+        padding-top: 0vw;
+      }
+
+      :last-child {
+        padding-bottom: 0px;
+      }
     }
   }
 
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
+
+    > div {
+      width: 100%;
+      display: flex;
+      padding: 2vw 0;
+      flex-direction: column;
+
+      > div {
+        padding: 2vw 0 0 2vw;
+
+        :first-child {
+          padding-top: 0vw;
+        }
+
+        :last-child {
+          padding-bottom: 0px;
+        }
+      }
+
+      > p {
+        font-size: medium;
+        line-height: 1.5;
+      }
+    }
   }
 `;
 
 const ImageContainer = styled.div<Props>`
   display: flex;
   justify-content: center;
+  margin: 1rem 0;
 
   > img {
     width: 80%;
     object-fit: cover;
     transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+  }
+
+  @media (min-width: 768px) {
+    margin: 0;
   }
 `;
 
@@ -107,14 +159,10 @@ const SkillsWrapper = styled.div<Props>`
   margin-top: 2vw;
 
   > div {
-    padding: 1vh;
-    margin: 1vw 0;
+    padding: 1.5vh;
+    margin: 2vw 0;
     :first-child {
       margin-top: 0px;
-    }
-
-    :last-child {
-      margin-bottom: 0px;
     }
 
     ${(props) => {
@@ -133,7 +181,7 @@ const SkillsWrapper = styled.div<Props>`
 
     > h3 {
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-      padding-bottom: 0.3vh;
+      padding-bottom: 0.4rem;
     }
 
     > ul {
@@ -197,17 +245,46 @@ const About: FC = () => {
         <h1>About</h1>
         <FlexWrapper isSkew={isSkew}>
           <div>
+            <h2>Story</h2>
             <p>
-              ABOUT my self.ABOUT my selfABOUT my self ABOUT my self.ABOUT my
-              self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self.
-              ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT
-              my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my
-              self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self.
-              ABOUT my self. ABOUT my self. ABOUT my self. ABOUT my self. ABOUT
-              my self. ABOUT my self. ABOUT my self.ABOUT my self.ABOUT my
-              self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT
-              my self.ABOUT my self.ABOUT my self.ABOUT my self.ABOUT my self.
+              When I was a university student , I backpacked to cross the States
+              from NewYork to Seattle by hitchhiking and using sharerides by my
+              self for 3 months. At the time, I experienced that apps have an
+              incredibly helpful power and made us connect with each other
+              easily to make us happy, make our dreams come true. That was the
+              first step to make me big fun of the amazing IT world. After the
+              survival traveling, I am always pleased that I would like to learn
+              technologies to help people in the world efficiently!
             </p>
+          </div>
+          <div>
+            <div>
+              <h2>Work Experience</h2>
+              <p>
+                - Web Application Developer & Customer Solution Leader
+                <br />
+                anyCarry Inc.
+                <br />
+                <span>2019 - 2021, Tokyo, Japan</span>
+              </p>
+              <p>
+                - Programming Teaching Assistant
+                <br />
+                TECH I.S.
+                <br />
+                <span>2020 - 2021, Tokyo, Japan</span>
+              </p>
+            </div>
+            <div>
+              <h2>Education</h2>
+              <p>
+                - Web & Mobile Application Development Diploma
+                <br />
+                Cornerstone International Community College of Canada
+                <br />
+                <span>2022 - present, Vancouver, Canada</span>
+              </p>
+            </div>
           </div>
           <div>
             <ImageContainer isSkew={isSkew}>

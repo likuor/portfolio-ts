@@ -123,7 +123,7 @@ const DescriptionContainer = styled.div<Props>`
 
     > p {
       font-size: 0.7rem;
-      padding: 0.1rem 0;
+      line-height: 1.4;
       word-wrap: break-word;
     }
 
