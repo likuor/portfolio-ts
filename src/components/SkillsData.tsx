@@ -21,106 +21,145 @@ import {
   SiRedux,
 } from 'react-icons/si';
 
+import {
+  GiHiking,
+  GiSoccerBall,
+  GiGuitar,
+  GiCampingTent,
+  GiPhotoCamera,
+  GiBookshelf,
+} from 'react-icons/gi';
+
 type Alldata = {
   languages: {
-    technologiesName: string;
-    technologiesIcons: JSX.Element;
+    name: string;
+    icons: JSX.Element;
   }[];
   db: {
-    technologiesName: string;
-    technologiesIcons: JSX.Element;
+    name: string;
+    icons: JSX.Element;
   }[];
   frameworks: {
-    technologiesName: string;
-    technologiesIcons: JSX.Element;
+    name: string;
+    icons: JSX.Element;
+  }[];
+  hobby: {
+    name: string;
+    icons: JSX.Element;
   }[];
 };
 
 const SkillsData: Alldata = {
   languages: [
     {
-      technologiesName: 'Javascript',
-      technologiesIcons: <SiJavascript />,
+      name: 'Javascript',
+      icons: <SiJavascript />,
     },
     {
-      technologiesName: 'Typescript',
-      technologiesIcons: <SiTypescript />,
+      name: 'Typescript',
+      icons: <SiTypescript />,
     },
     {
-      technologiesName: 'Node.js',
-      technologiesIcons: <SiNodedotjs />,
+      name: 'Node.js',
+      icons: <SiNodedotjs />,
     },
     {
-      technologiesName: 'PHP',
-      technologiesIcons: <SiPhp />,
+      name: 'PHP',
+      icons: <SiPhp />,
     },
     {
-      technologiesName: 'HTML',
-      technologiesIcons: <SiHtml5 />,
+      name: 'HTML',
+      icons: <SiHtml5 />,
     },
     {
-      technologiesName: 'CSS',
-      technologiesIcons: <SiCss3 />,
+      name: 'CSS',
+      icons: <SiCss3 />,
     },
     {
-      technologiesName: 'SCSS',
-      technologiesIcons: <SiSass />,
+      name: 'SCSS',
+      icons: <SiSass />,
     },
   ],
   db: [
     {
-      technologiesName: 'Firebase',
-      technologiesIcons: <SiFirebase />,
+      name: 'Firebase',
+      icons: <SiFirebase />,
     },
     {
-      technologiesName: 'MongoDB',
-      technologiesIcons: <SiMongodb />,
+      name: 'MongoDB',
+      icons: <SiMongodb />,
     },
     {
-      technologiesName: 'MySQL',
-      technologiesIcons: <SiMysql />,
+      name: 'MySQL',
+      icons: <SiMysql />,
     },
   ],
   frameworks: [
     {
-      technologiesName: 'React',
-      technologiesIcons: <SiReact />,
+      name: 'React',
+      icons: <SiReact />,
     },
     {
-      technologiesName: 'Next.js',
-      technologiesIcons: <SiNextdotjs />,
+      name: 'Next.js',
+      icons: <SiNextdotjs />,
     },
     {
-      technologiesName: 'Redux',
-      technologiesIcons: <SiRedux />,
+      name: 'Redux',
+      icons: <SiRedux />,
     },
     {
-      technologiesName: 'Laravel',
-      technologiesIcons: <SiLaravel />,
+      name: 'Laravel',
+      icons: <SiLaravel />,
     },
     {
-      technologiesName: 'CakePHP',
-      technologiesIcons: <SiCakephp />,
+      name: 'CakePHP',
+      icons: <SiCakephp />,
     },
     {
-      technologiesName: 'Material UI',
-      technologiesIcons: <SiMaterialui />,
+      name: 'Material UI',
+      icons: <SiMaterialui />,
     },
     {
-      technologiesName: 'Ant Design',
-      technologiesIcons: <SiAntdesign />,
+      name: 'Ant Design',
+      icons: <SiAntdesign />,
     },
     {
-      technologiesName: 'Styledcomponents',
-      technologiesIcons: <SiStyledcomponents />,
+      name: 'Styledcomponents',
+      icons: <SiStyledcomponents />,
     },
     {
-      technologiesName: 'Tailwind CSS',
-      technologiesIcons: <SiTailwindcss />,
+      name: 'Tailwind CSS',
+      icons: <SiTailwindcss />,
     },
     {
-      technologiesName: 'jQuery',
-      technologiesIcons: <SiJquery />,
+      name: 'jQuery',
+      icons: <SiJquery />,
+    },
+  ],
+  hobby: [
+    {
+      name: 'Soccer',
+      icons: <GiSoccerBall />,
+    },
+    {
+      name: 'Hiking',
+      icons: <GiHiking />,
+    },
+    {
+      name: 'Camping',
+      icons: <GiCampingTent />,
+    },
+    {
+      name: 'Ukulele',
+      icons: <GiGuitar />,
+    },
+    {
+      name: 'Reading',
+      icons: <GiBookshelf />,
+    },
+    {
+      name: 'Shooting',
+      icons: <GiPhotoCamera />,
     },
   ],
 };

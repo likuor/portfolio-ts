@@ -230,13 +230,13 @@ const SkillsWrapper = styled.div<Props>`
 `;
 
 type SkillsDataType = {
-  technologiesName: string;
-  technologiesIcons: JSX.Element;
+  name: string;
+  icons: JSX.Element;
 };
 
 const renderSkillsData = (skillTitle: SkillsDataType[]) => {
   return skillTitle.map((skill, index) => {
-    return <li key={index}>{skill.technologiesIcons}</li>;
+    return <li key={index}>{skill.icons}</li>;
   });
 };
 
@@ -312,6 +312,10 @@ const About: FC = () => {
           <div>
             <h3>Database</h3>
             <ul>{renderSkillsData(SkillsData.db)}</ul>
+          </div>
+          <div>
+            <h3>Things I like</h3>
+            <ul>{renderSkillsData(SkillsData.hobby)}</ul>
           </div>
         </SkillsWrapper>
       </div>

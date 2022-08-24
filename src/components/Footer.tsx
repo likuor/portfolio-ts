@@ -43,6 +43,13 @@ const WrapperFooter = styled.div<Props>`
         list-style: none;
         padding: 0 1rem;
         font-size: medium;
+
+        :hover {
+          transition: transform 0.4s ease-in-out;
+          transform: skew(190deg);
+          color: ${(props) => props.theme.light.colors.orange};
+          transition: 0.4s ease-in-out;
+        }
       }
     }
 

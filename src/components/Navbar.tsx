@@ -125,6 +125,8 @@ const UlWrapper = styled.ul<Props>`
       :hover {
         transition: transform 0.4s ease-in-out;
         transform: skew(190deg);
+        color: ${(props) => props.theme.light.colors.orange};
+        transition: 0.4s ease-in-out;
       }
     }
   }
