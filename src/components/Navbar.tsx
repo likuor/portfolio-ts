@@ -153,7 +153,7 @@ const UlWrapper = styled.ul<Props>`
         border-bottom:1px solid ${lightTheme.white};
 
         :first-child {
-          border-top:1px solid ${darkTheme.white};
+          border-top:1px solid ${lightTheme.white};
         }
       }
       `;

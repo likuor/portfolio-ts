@@ -3,6 +3,7 @@ import {
   SiCss3,
   SiSass,
   SiTailwindcss,
+  SiStyledcomponents,
   SiJavascript,
   SiTypescript,
   SiPhp,
@@ -108,6 +109,10 @@ const SkillsData: Alldata = {
     {
       technologiesName: 'Ant Design',
       technologiesIcons: <SiAntdesign />,
+    },
+    {
+      technologiesName: 'Styledcomponents',
+      technologiesIcons: <SiStyledcomponents />,
     },
     {
       technologiesName: 'Tailwind CSS',

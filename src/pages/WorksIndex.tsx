@@ -80,77 +80,85 @@ const FlexChildren = styled.div`
   @media (min-width: 768px) {
     width: 33.3%;
     height: 15vw;
-    background-color: #0f1626;
   }
 `;
 
-const DescriptionHover = styled.div`
+const DescriptionHover = styled.div<Props>`
   position: absolute;
   opacity: 0;
   width: 100%;
   height: 100%;
   transition: 0.3s ease-in-out;
-  background-color: rgba(15, 22, 38, 0.7);
+  background-color: ${(props) =>
+    props.isDarkMode
+      ? props.theme.dark.colors.ligthSecondaryBlack
+      : props.theme.light.colors.lightBrown};
 `;
 
-const DescriptionBg = styled.div`
-  width: 90%;
-  height: 80%;
-  background-color: #078080;
-  padding: 1vw;
-
-  > h2 {
-    transform: skew(-15deg);
-    font-size: small;
-    padding: 0.3vw 0;
-  }
-
-  > p {
-    font-size: small;
-    padding: 0.3vw 0;
-    word-wrap: break-word;
-  }
-
-  > ul {
-    font-size: xx-small;
-    padding: 0.3vw 0;
-    > li {
-      list-style: none;
-      display: inline;
-      padding: 0 5px;
-
-      :first-child {
-        padding-left: 0px;
-      }
-
-      :last-child {
-        padding-right: 0px;
-      }
-    }
-  }
-
-  @media (min-width: 768px) {
-    > h2 {
-      font-size: medium;
-    }
-
-    > p {
-      font-size: medium;
-    }
-
-    > ul {
-      font-size: small;
-    }
-  }
-`;
-
-const DescriptionContainer = styled.div`
+const DescriptionContainer = styled.div<Props>`
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: #f5f5f5;
+  color: ${(props) =>
+    props.isDarkMode
+      ? props.theme.dark.colors.black
+      : props.theme.light.colors.white};
+
+  div {
+    width: 90%;
+    height: 80%;
+    padding: 0.8rem;
+    background-color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.dark.colors.green
+        : props.theme.light.colors.green};
+
+    > h2 {
+      transform: skew(-15deg);
+      font-size: 3vw;
+      padding: 0.3vw 0;
+    }
+
+    > p {
+      font-size: 0.7rem;
+      padding: 0.1rem 0;
+      word-wrap: break-word;
+    }
+
+    > ul {
+      font-size: xx-small;
+      padding: 0.3vw 0;
+      > li {
+        list-style: none;
+        display: inline;
+        padding: 0 5px;
+
+        :first-child {
+          padding-left: 0px;
+        }
+
+        :last-child {
+          padding-right: 0px;
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      > h2 {
+        font-size: 1.2vw;
+      }
+
+      > p {
+        font-size: 1vw;
+      }
+
+      > ul {
+        font-size: small;
+      }
+    }
+  }
 `;
 
 const Image = styled.img`
@@ -175,35 +183,35 @@ const ImageContainer = styled.div`
   }
 `;
 
-const renderData = () => {
-  return WorksData.map((workData) => {
-    return (
-      <FlexChildren key={workData.id}>
-        <ImageContainer>
-          <Image src={workData.image} alt='ProfileImage' />
-          <DescriptionHover>
-            <Link to={`/work/${workData.id}`}>
-              <DescriptionContainer>
-                <DescriptionBg>
-                  <h2>{workData.title}</h2>
-                  <p>{workData.description}</p>
-                  <ul>
-                    {workData.technologiesIcons.map((icons, index) => {
-                      return <li key={index}>{icons}</li>;
-                    })}
-                  </ul>
-                </DescriptionBg>
-              </DescriptionContainer>
-            </Link>
-          </DescriptionHover>
-        </ImageContainer>
-      </FlexChildren>
-    );
-  });
-};
-
 const WorksIndex: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
+
+  const renderData = () => {
+    return WorksData.map((workData) => {
+      return (
+        <FlexChildren key={workData.id}>
+          <ImageContainer>
+            <Image src={workData.image} alt='ProfileImage' />
+            <DescriptionHover isDarkMode={isDarkMode} isSkew={isSkew}>
+              <Link to={`/work/${workData.id}`}>
+                <DescriptionContainer isDarkMode={isDarkMode} isSkew={isSkew}>
+                  <div>
+                    <h2>{workData.title}</h2>
+                    <p>{workData.description}</p>
+                    <ul>
+                      {workData.technologiesIcons.map((icons, index) => {
+                        return <li key={index}>{icons}</li>;
+                      })}
+                    </ul>
+                  </div>
+                </DescriptionContainer>
+              </Link>
+            </DescriptionHover>
+          </ImageContainer>
+        </FlexChildren>
+      );
+    });
+  };
 
   return (
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
