@@ -1,59 +1,136 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
+import { GlobalContext } from '../context/GlobalContext';
 
-const WrapperSection = styled.section`
-  transform: skewY(15deg);
+type Props = {
+  isDarkMode?: boolean;
+  isSkew: boolean;
+};
+
+const WrapperSection = styled.section<Props>`
   width: 100%;
-  padding: 2vw;
-  background-color: #f5f5f5;
   display: flex;
+  min-height: 80vh;
   justify-content: center;
   align-items: center;
+  padding: 4vw 0;
+  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      background: ${darkTheme.black};
+      color: ${darkTheme.green};
+      `
+      : `
+      background: ${lightTheme.white};
+      color: ${lightTheme.black};
+      `;
+  }};
+
+  > div {
+    margin: 0 auto;
+    padding: 2vw 0;
+    width: 80%;
+
+    > h1 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+      padding: 1vw 0;
+    }
+
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 1px solid ${darkTheme.lightGreen};
+      border-bottom: 1px solid ${darkTheme.lightGreen};;
+      `
+        : `
+      border-top: 1px solid ${lightTheme.orange};
+      border-bottom: 1px solid ${lightTheme.orange};
+      `;
+    }}
+  }
 
   @media (min-width: 768px) {
-    background-color: #0f1626;
+    height: auto;
+
+    > div > h1 {
+      font-size: x-large;
+    }
   }
 `;
 
-const Container = styled.div`
-  margin: 0 auto;
-  width: 90%;
-  height: 90%;
-  background-color: #ff533d;
-
-  @media (min-width: 768px) {
-    background-color: #0f1626;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: x-large;
-  transform: skew(-15deg);
-`;
-
-const FlexWrapper = styled.div`
+const FlexWrapper = styled.div<Props>`
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
+  > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+      font-size: large;
+    }
+
+    p {
+      font-size: medium;
+      line-height: 1.5;
+
+      > span {
+        font-size: 0.8rem;
+      }
+    }
+
+    > div {
+      padding: 2rem 0 0;
+
+      :first-child {
+        padding-top: 0vw;
+      }
+
+      :last-child {
+        padding-bottom: 0px;
+      }
+    }
   }
-`;
-
-const FlexChildren = styled.div`
-  width: 100%;
-  border: yellow 1px solid;
-`;
-
-const Paragraph = styled.p`
-  font-size: medium;
 
   @media (min-width: 768px) {
-    font-size: large;
+    display: flex;
+    flex-direction: row;
+
+    > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px yellow solid;
+
+      > div {
+        /* padding: 2vw 0 0 2vw; */
+
+        :first-child {
+          padding-top: 0vw;
+        }
+
+        :last-child {
+          padding-bottom: 0px;
+        }
+      }
+
+      > p {
+        font-size: medium;
+        line-height: 1.5;
+      }
+    }
   }
 `;
 
@@ -62,31 +139,32 @@ const ImageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-`;
 
-const Image = styled.img`
-  width: 100%;
+  img {
+    width: 100%;
+  }
 `;
 
 const WorksDetail: FC = () => {
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
   const params: string | undefined = useParams<string>().worksId;
   const selectedWork = WorksData.find((work) => work.id === Number(params));
 
   return (
-    <WrapperSection>
-      <Container>
-        <Title>{selectedWork?.title}</Title>
-        <FlexWrapper>
-          <FlexChildren>
-            <ImageContainer>
-              <Image src={selectedWork?.image} alt={selectedWork?.title} />
-            </ImageContainer>
-          </FlexChildren>
-          <FlexChildren>
-            <Paragraph>{selectedWork?.description}</Paragraph>
-          </FlexChildren>
+    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
+      <div>
+        <h1>{selectedWork?.title}</h1>
+        <FlexWrapper isSkew={isSkew}>
+          <div>
+            {/* <ImageContainer>
+              <img src={selectedWork?.image} alt={selectedWork?.title} />
+            </ImageContainer> */}
+          </div>
+          <div>
+            <p>{selectedWork?.description}</p>
+          </div>
         </FlexWrapper>
-      </Container>
+      </div>
     </WrapperSection>
   );
 };
