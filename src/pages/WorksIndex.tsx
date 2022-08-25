@@ -191,7 +191,7 @@ const WorksIndex: FC = () => {
       return (
         <FlexChildren key={workData.id}>
           <ImageContainer>
-            <Image src={workData.image} alt='ProfileImage' />
+            <Image src={workData.imageThumbnail} alt='ProfileImage' />
             <DescriptionHover isDarkMode={isDarkMode} isSkew={isSkew}>
               <Link to={`/work/${workData.id}`}>
                 <DescriptionContainer isDarkMode={isDarkMode} isSkew={isSkew}>

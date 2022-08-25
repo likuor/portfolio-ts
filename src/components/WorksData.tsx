@@ -16,7 +16,8 @@ type Data = {
   title: string;
   description: string;
   url: string;
-  image: string;
+  imageThumbnail: string;
+  images: string[];
   technologiesIcons: JSX.Element[];
   jenre: string;
 };
@@ -28,7 +29,12 @@ const WorksData: Data[] = [
     description:
       'Share places you are supposed to be in a minute to play any sports',
     url: 'https://event-bbs.web.app',
-    image: `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+      `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+      `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    ],
     technologiesIcons: [
       <SiJavascript />,
       <SiReact />,
@@ -43,7 +49,12 @@ const WorksData: Data[] = [
     description:
       'Made this website for an owner who runs restaurants to inform what kind of food they have',
     url: 'https://katsuraba-kitchien.netlify.app',
-    image: `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+      `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+      `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    ],
     technologiesIcons: [
       <SiJavascript />,
       <SiReact />,
@@ -58,7 +69,12 @@ const WorksData: Data[] = [
     description:
       'We can see schedules of appointments by doctors side and users side',
     url: 'https://easydoctorappointment.netlify.app/home',
-    image: `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+      `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+      `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    ],
     technologiesIcons: [
       <SiJavascript />,
       <SiReact />,
@@ -73,7 +89,12 @@ const WorksData: Data[] = [
     title: 'Ghibli Exhibition',
     description: 'Managing Japanese popular Ghibli movies that you love',
     url: 'https://ghibli-exhibition.netlify.app/',
-    image: `${process.env.PUBLIC_URL}/image/works/Ghibli.png`,
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Ghibli.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+      `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+      `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    ],
     technologiesIcons: [
       <SiTypescript />,
       <SiReact />,
@@ -88,7 +109,12 @@ const WorksData: Data[] = [
     description:
       'Strongly recommend you browse this website without tilting your head so long time',
     url: '',
-    image: `${process.env.PUBLIC_URL}/image/works/Hoempage.jpg`,
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Hoempage.jpg`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Vamos.png`,
+      `${process.env.PUBLIC_URL}/image/works/Katsuraba.png`,
+      `${process.env.PUBLIC_URL}/image/works/DoctorAppointment.png`,
+    ],
     technologiesIcons: [<SiTypescript />, <SiReact />, <SiStyledcomponents />],
     jenre: 'studying',
   },
