@@ -33,8 +33,8 @@ const theme = {
   },
 };
 
-const Theme = ({ children }: ThemeType) => (
+const ThemesProvider = ({ children }: ThemeType) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
-export default Theme;
+export { ThemesProvider, theme };
