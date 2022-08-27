@@ -10,13 +10,14 @@ import {
   SiMongodb,
   SiStyledcomponents,
 } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 type Data = {
   id: number;
   title: string;
   caption: string;
   description: { story: string; features: string[] };
-  url: string;
+  links: { url: string; icon: JSX.Element }[];
   imageThumbnail: string;
   images: string[];
   technologiesIcons: JSX.Element[];
@@ -38,7 +39,10 @@ const WorksData: Data[] = [
         'We will see how many people are joining the sports now so there is no more hesitation to go there before going out from anywhere.',
       ],
     },
-    url: 'https://event-bbs.web.app',
+    links: [
+      { url: 'https://event-bbs.web.app', icon: <FaExternalLinkAlt /> },
+      { url: 'https://github.com/rei-kaji/event-bbs', icon: <FaGithub /> },
+    ],
     imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Vamos/Vamos.png`,
     images: [
       `${process.env.PUBLIC_URL}/image/works/Vamos/Vamos.png`,
@@ -59,7 +63,13 @@ const WorksData: Data[] = [
     title: 'Katsuraba-Kitchen',
     caption:
       'Made this website for an owner who runs restaurants to inform what kind of food they have',
-    url: 'https://katsuraba-kitchien.netlify.app',
+    links: [
+      {
+        url: 'https://katsuraba-kitchien.netlify.app',
+        icon: <FaExternalLinkAlt />,
+      },
+      { url: 'https://github.com/likuor/katsuraba', icon: <FaGithub /> },
+    ],
     description: {
       story:
         'Achieved a client work from Japan as a freelance. I decided to use a straightforward design with Tailwind CSS so that they needed a website to spread the restaurant inoformation in public.',
@@ -88,7 +98,16 @@ const WorksData: Data[] = [
     title: 'Appointment app',
     caption:
       'We can see schedules of appointments by doctors side and users side',
-    url: 'https://easydoctorappointment.netlify.app/home',
+    links: [
+      {
+        url: 'https://easydoctorappointment.netlify.app/home',
+        icon: <FaExternalLinkAlt />,
+      },
+      {
+        url: 'https://github.com/kubilaycakmak/doctor-appointment',
+        icon: <FaGithub />,
+      },
+    ],
     description: {
       story:
         'Have you ever thought why we can make an appointment with only a few doctors, clinics and hospitals through app? We solved the problem. We can easily make an appointment and we can register as doctors as well.',
@@ -117,7 +136,13 @@ const WorksData: Data[] = [
     id: 4,
     title: 'Ghibli Exhibition',
     caption: 'Managing Japanese popular Ghibli movies that you love',
-    url: 'https://ghibli-exhibition.netlify.app/',
+    links: [
+      {
+        url: 'https://ghibli-exhibition.netlify.app/',
+        icon: <FaExternalLinkAlt />,
+      },
+      { url: 'https://github.com/likuor/ghibli', icon: <FaGithub /> },
+    ],
     description: {
       story:
         'I have a huge confidence of having a good memory except for movie titles. We can find our favorite masterpieces and they will probably make you nostalgic.',
@@ -146,7 +171,13 @@ const WorksData: Data[] = [
     title: 'Portfolio',
     caption:
       'Strongly recommend you browse this website without tilting your head so long time',
-    url: '',
+    links: [
+      {
+        url: 'https://kokisakai-portfolio.netlify.app',
+        icon: <FaExternalLinkAlt />,
+      },
+      { url: 'https://github.com/likuor/portfolio-ts', icon: <FaGithub /> },
+    ],
     description: {
       story:
         'I would love to make something simple and unique. Personally, I have never seen any website tilted before so I made it done. I can see you tilt your head right now!',

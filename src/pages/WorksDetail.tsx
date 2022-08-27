@@ -100,7 +100,37 @@ const FlexWrapper = styled.div<Props>`
         flex-wrap: wrap;
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
 
+        :first-child {
+          justify-content: space-evenly;
+
+          > a {
+            font-size: large;
+
+            ${(props) => {
+              const darkTheme = props.theme.dark.colors;
+              const lightTheme = props.theme.light.colors;
+              return props.isDarkMode
+                ? `
+              background: ${darkTheme.black};
+              color: ${darkTheme.green};
+              `
+                : `
+              background: ${lightTheme.white};
+              color: ${lightTheme.black};
+              `;
+            }};
+            transition: transform 0.4s ease-in-out;
+
+            :hover {
+              transition: transform 0.4s ease-in-out;
+              transform: skew(180deg);
+              color: ${(props) => props.theme.light.colors.orange};
+            }
+          }
+        }
+
         > li {
+          margin: 0.3rem 0;
           padding: 0.5rem;
           margin-left: 1em;
           :first-child {
@@ -145,6 +175,12 @@ const FlexWrapper = styled.div<Props>`
         > ul {
           > li {
             font-size: large;
+          }
+
+          :first-child {
+            a {
+              font-size: x-large;
+            }
           }
         }
       }
@@ -196,6 +232,21 @@ const WorksDetail: FC = () => {
             <div>
               <h2>Story</h2>
               <p>{selectedWork?.description.story}</p>
+            </div>
+            <div>
+              <ul>
+                {selectedWork?.links.map((link, index) => {
+                  return (
+                    <a
+                      href={link.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <li key={index}>{link.icon}</li>
+                    </a>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </FlexWrapper>
