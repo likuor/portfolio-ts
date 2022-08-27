@@ -2,6 +2,7 @@ import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import SkillsData from '../components/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
+import Button from '../components/Button';
 
 type Props = {
   isDarkMode?: boolean;
@@ -143,10 +144,11 @@ const ImageContainer = styled.div<Props>`
     width: 80%;
     object-fit: cover;
     transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+
     box-shadow: ${(props) =>
       props.isDarkMode
-        ? `0 0 ${props.theme.dark.colors.orange}, 12px 12px 0 0 ${props.theme.dark.colors.black}, 12px 12px 0 2px ${props.theme.dark.colors.orange}`
-        : `0 0 ${props.theme.light.colors.orange}, 12px 12px 0 0 ${props.theme.light.colors.white}, 12px 12px 0 2px ${props.theme.light.colors.green}`};
+        ? `0 0 ${props.theme.dark.colors.orange}, 1rem 1rem 0 0 ${props.theme.dark.colors.black}, 1rem 1rem 0 2px ${props.theme.dark.colors.orange}`
+        : `0 0 ${props.theme.light.colors.orange}, 1rem 1rem 0 0 ${props.theme.light.colors.white}, 1rem 1rem 0 2px ${props.theme.light.colors.orange}`};
   }
 
   @media (min-width: 768px) {
@@ -279,6 +281,13 @@ const About: FC = () => {
                 <br />
                 <span>2020 - 2021, Tokyo, Japan</span>
               </p>
+              <a
+                href='https://drive.google.com/file/d/1xoy35zCP6fVfVwsUAzQrL3SGAiXtQ2LS/view'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <Button text='Resume' width='100' />
+              </a>
             </div>
             <div>
               <h2>Education</h2>

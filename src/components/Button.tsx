@@ -4,13 +4,14 @@ import { GlobalContext } from '../context/GlobalContext';
 
 type ButtonProps = {
   isDarkMode: boolean;
+  width: string;
 };
 
 const WrapperButton = styled.button<ButtonProps>`
   all: unset;
   cursor: pointer;
   text-align: center;
-  width: 40%;
+  width: ${(props) => props.width}%;
   height: 3rem;
   margin: 2rem 0;
   transition: box-shadow 0.4s ease-in-out;
@@ -51,13 +52,18 @@ const WrapperButton = styled.button<ButtonProps>`
 
 type Props = {
   text: string;
+  width: string;
 };
 
 const Button: FC<Props> = (props) => {
   const { isDarkMode } = useContext(GlobalContext);
-  const { text } = props;
+  const { text, width } = props;
 
-  return <WrapperButton isDarkMode={isDarkMode}>{text}</WrapperButton>;
+  return (
+    <WrapperButton isDarkMode={isDarkMode} width={width}>
+      {text}
+    </WrapperButton>
+  );
 };
 
 export default Button;

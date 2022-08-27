@@ -86,7 +86,7 @@ const Contact: FC = () => {
           you later!
         </p>
         <a href='mailto:soloexkokisakai@gmail.com'>
-          <Button text='Contact' />
+          <Button text='Contact' width='40' />
         </a>
       </div>
     </WrapperSection>
