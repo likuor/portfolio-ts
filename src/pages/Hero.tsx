@@ -65,7 +65,7 @@ const Hero: FC = () => {
   return (
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
       <div>
-        <h1>Hi there</h1>
+        <h1>Hi there!</h1>
         <h1>I'm Koki,</h1>
         <h1>Web Developer</h1>
       </div>

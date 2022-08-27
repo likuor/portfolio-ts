@@ -4,7 +4,23 @@ import Footer from './components/Footer';
 import Router from './router/Router';
 import Navbar from './components/Navbar';
 import { GlobalContext } from './context/GlobalContext';
-import Theme from './theme/Theme';
+import { ThemesProvider } from './theme/Theme';
+import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme/Theme';
+
+type Props = {
+  isDarkMode?: boolean;
+  theme: typeof theme;
+};
+
+const GlobalStyle = createGlobalStyle<Props>`
+    body {
+      background: ${(props) =>
+        props.isDarkMode
+          ? props.theme.dark.colors.secondaryBlack
+          : props.theme.light.colors.green};
+    }
+  `;
 
 const App: FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
@@ -15,11 +31,12 @@ const App: FC = () => {
       <GlobalContext.Provider
         value={{ isDarkMode, setIsDarkMode, isSkew, setIsSkew }}
       >
-        <Theme>
+        <ThemesProvider>
+          <GlobalStyle isDarkMode={isDarkMode} />
           <Navbar />
           <Router />
           <Footer />
-        </Theme>
+        </ThemesProvider>
       </GlobalContext.Provider>
     </>
   );
