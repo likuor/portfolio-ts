@@ -106,6 +106,10 @@ const UlWrapper = styled.ul<Props>`
     padding: 10px;
     width: 70%;
     text-align: center;
+    color: ${(props) =>
+      props.isDarkMode
+        ? props.theme.dark.colors.green
+        : props.theme.dark.colors.white};
 
     :nth-child(2) {
       transition: box-shadow 0.4s ease-in-out;
@@ -120,7 +124,7 @@ const UlWrapper = styled.ul<Props>`
 
         return props.isDarkMode
           ? `
-          box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.orange};
+          box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.green};
           :hover{
             background: ${darkTheme.secondaryBlack};
           }
