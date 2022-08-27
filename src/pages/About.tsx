@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SkillsData from '../components/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/Button';
+import { TypeAnimation } from 'react-type-animation';
 
 type Props = {
   isDarkMode?: boolean;
@@ -307,6 +308,24 @@ const About: FC = () => {
                 alt='ProfileImage'
               />
             </ImageContainer>
+            <div>
+              <h2>I am</h2>
+              <TypeAnimation
+                sequence={[
+                  'keen on creating things & art',
+                  2000,
+                  'into playing any sports',
+                  2000,
+                  'huge fun of feeling nature',
+                  2000,
+                  'relaxed with playing ukulele',
+                  2000,
+                ]}
+                wrapper='h2'
+                cursor={true}
+                repeat={Infinity}
+              />
+            </div>
           </div>
         </FlexWrapper>
         <SkillsWrapper isSkew={isSkew} isDarkMode={isDarkMode}>

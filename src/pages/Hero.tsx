@@ -56,6 +56,12 @@ const WrapperSection = styled.section<Props>`
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       font-size: x-large;
     }
+
+    @media (min-width: 768px) {
+      > h1 {
+        font-size: xx-large;
+      }
+    }
   }
 `;
 

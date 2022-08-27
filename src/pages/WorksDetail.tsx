@@ -238,11 +238,12 @@ const WorksDetail: FC = () => {
                 {selectedWork?.links.map((link, index) => {
                   return (
                     <a
+                      key={index}
                       href={link.url}
                       target='_blank'
                       rel='noopener noreferrer'
                     >
-                      <li key={index}>{link.icon}</li>
+                      <li>{link.icon}</li>
                     </a>
                   );
                 })}
