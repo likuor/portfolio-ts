@@ -197,7 +197,7 @@ const WorksIndex: FC = () => {
                 <DescriptionContainer isDarkMode={isDarkMode} isSkew={isSkew}>
                   <div>
                     <h2>{workData.title}</h2>
-                    <p>{workData.description}</p>
+                    <p>{workData.caption}</p>
                     <ul>
                       {workData.technologiesIcons.map((icons, index) => {
                         return <li key={index}>{icons}</li>;

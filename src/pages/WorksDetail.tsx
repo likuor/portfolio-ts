@@ -12,7 +12,7 @@ type Props = {
 const WrapperSection = styled.section<Props>`
   width: 100%;
   display: flex;
-  min-height: 80vh;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 4vw 0;
@@ -67,80 +67,101 @@ const WrapperSection = styled.section<Props>`
 `;
 
 const FlexWrapper = styled.div<Props>`
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
   > div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    margin: 0 3vw;
+    ${(props) => {
+      const darkTheme = props.theme.dark.colors;
+      const lightTheme = props.theme.light.colors;
+      return props.isDarkMode
+        ? `
+      border-top: 0.3px solid ${darkTheme.lightGreen};
+      border-bottom: 0.3px solid ${darkTheme.lightGreen};;
 
-    h2 {
-      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-      font-size: large;
-    }
-
-    p {
-      font-size: medium;
-      line-height: 1.5;
-
-      > span {
-        font-size: 0.8rem;
-      }
-    }
+      `
+        : `
+      border-top: 0.3px solid ${lightTheme.orange};
+      border-bottom: 0.3px solid ${lightTheme.orange};
+      `;
+    }}
 
     > div {
-      padding: 2rem 0 0;
+      padding: 3vw 0;
 
-      :first-child {
-        padding-top: 0vw;
+      h2 {
+        transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+        font-size: medium;
+        padding-bottom: 0.5rem;
       }
 
-      :last-child {
-        padding-bottom: 0px;
+      > ul {
+        font-size: small;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+
+        > li {
+          padding: 0.5rem;
+          margin-left: 1em;
+          :first-child {
+            margin-left: 0;
+          }
+
+          ${(props) => {
+            const darkTheme = props.theme.dark.colors;
+            const lightTheme = props.theme.light.colors;
+            return props.isDarkMode
+              ? `
+              background: ${darkTheme.secondaryBlack};
+              color: ${darkTheme.green};
+              `
+              : `
+              background: ${lightTheme.brown};
+              color: ${lightTheme.black};
+              `;
+          }};
+        }
       }
+    }
+    p {
+      font-size: small;
+      line-height: 1.5;
     }
   }
 
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
+    margin: 2vw 0;
 
     > div {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      border: 1px yellow solid;
 
       > div {
-        /* padding: 2vw 0 0 2vw; */
-
-        :first-child {
-          padding-top: 0vw;
+        h2 {
+          font-size: x-large;
         }
 
-        :last-child {
-          padding-bottom: 0px;
+        > ul {
+          > li {
+            font-size: large;
+          }
         }
       }
-
-      > p {
-        font-size: medium;
-        line-height: 1.5;
+      p {
+        font-size: large;
       }
     }
   }
 `;
 
 const ImageContainer = styled.div`
-  /* width: 100%; */
+  max-width: 80%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
 
   img {
+    object-fit: contain;
     width: 100%;
   }
 `;
@@ -154,14 +175,54 @@ const WorksDetail: FC = () => {
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
       <div>
         <h1>{selectedWork?.title}</h1>
-        <FlexWrapper isSkew={isSkew}>
+        <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
           <div>
-            {/* <ImageContainer>
-              <img src={selectedWork?.image} alt={selectedWork?.title} />
-            </ImageContainer> */}
+            <ImageContainer>
+              <img
+                src={selectedWork?.imageThumbnail}
+                alt={selectedWork?.title}
+              />
+            </ImageContainer>
           </div>
           <div>
-            <p>{selectedWork?.description}</p>
+            <div>
+              <h2>Techs</h2>
+              <ul>
+                {selectedWork?.technologiesNames.map((techName, index) => {
+                  return <li key={index}>{techName}</li>;
+                })}
+              </ul>
+            </div>
+            <div>
+              <h2>Story</h2>
+              <p>{selectedWork?.description.story}</p>
+            </div>
+          </div>
+        </FlexWrapper>
+        <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
+          <div>
+            <ImageContainer>
+              <img src={selectedWork?.images[1]} alt={selectedWork?.title} />
+            </ImageContainer>
+          </div>
+          <div>
+            <div>
+              <h2>Features</h2>
+              <p>{selectedWork?.description.features[0]}</p>
+            </div>
+          </div>
+        </FlexWrapper>
+        <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
+          <div>
+            <ImageContainer>
+              <img src={selectedWork?.images[2]} alt={selectedWork?.title} />
+            </ImageContainer>
+          </div>
+          <div>
+            <div>
+              <h2>Features</h2>
+              <p>{selectedWork?.description.features[1]}</p>
+            </div>
           </div>
         </FlexWrapper>
       </div>
