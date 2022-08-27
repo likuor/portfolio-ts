@@ -107,6 +107,35 @@ const UlWrapper = styled.ul<Props>`
     width: 70%;
     text-align: center;
 
+    :nth-child(2) {
+      transition: box-shadow 0.4s ease-in-out;
+      :hover {
+        transition: box-shadow 0.4s ease-in-out;
+        box-shadow: 0 0 0;
+      }
+
+      ${(props) => {
+        const darkTheme = props.theme.dark.colors;
+        const lightTheme = props.theme.light.colors;
+
+        return props.isDarkMode
+          ? `
+          box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.orange};
+          :hover{
+            background: ${darkTheme.secondaryBlack};
+          }
+          `
+          : `
+          color: ${lightTheme.white};
+          box-shadow: 0 0 ${lightTheme.white}, 0.1rem 0.1rem 0 0 ${lightTheme.green}, 0.1rem 0.1rem 0 2px ${lightTheme.white};
+
+          :hover{
+            background: ${lightTheme.green};
+          }
+        `;
+      }};
+    }
+
     a {
       display: block;
       padding: 15px 5px;
@@ -120,13 +149,13 @@ const UlWrapper = styled.ul<Props>`
 
     a,
     svg {
+      transition: transform 0.4s ease-in-out;
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
 
       :hover {
         transition: transform 0.4s ease-in-out;
-        transform: skew(190deg);
+        transform: skew(180deg);
         color: ${(props) => props.theme.light.colors.orange};
-        transition: 0.4s ease-in-out;
       }
     }
   }
