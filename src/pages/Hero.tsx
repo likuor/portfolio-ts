@@ -1,6 +1,7 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalContext';
+import { motion } from 'framer-motion';
 
 type Props = {
   isDarkMode: boolean;
@@ -36,7 +37,6 @@ const WrapperSection = styled.section<Props>`
     flex-direction: column;
 
     > div {
-      /* border: 1px solid yellow; */
       margin: 0 auto;
       width: 80%;
       height: 100%;
@@ -50,13 +50,13 @@ const WrapperSection = styled.section<Props>`
         const lightTheme = props.theme.light.colors;
         return props.isDarkMode
           ? `
-      border-top: 1px solid ${darkTheme.lightGreen};
-      border-bottom: 1px solid ${darkTheme.lightGreen};;
-      `
+          border-top: 1px solid ${darkTheme.lightGreen};
+          border-bottom: 1px solid ${darkTheme.lightGreen};;
+          `
           : `
-      border-top: 1px solid ${lightTheme.orange};
-      border-bottom: 1px solid ${lightTheme.orange};
-      `;
+          border-top: 1px solid ${lightTheme.orange};
+          border-bottom: 1px solid ${lightTheme.orange};
+          `;
       }}
 
       > h1 {
@@ -78,27 +78,119 @@ const WrapperSection = styled.section<Props>`
 
         h1 {
           font-size: 4vw;
+          transition: transform 2s;
+          text-indent: 0.3rem;
+
+          span {
+            display: inline-block;
+            transition: transform 1s ease-in-out;
+
+            ${(props) => {
+              const darkTheme = props.theme.dark.colors;
+              const lightTheme = props.theme.light.colors;
+              return props.isDarkMode
+                ? `
+                  color: ${darkTheme.green};
+                  text-shadow: 0.5rem 0.5rem 1rem ${darkTheme.green};
+                  `
+                : `
+                  color: ${lightTheme.black};
+                  text-shadow: 0.5rem 0.5rem 1rem ${lightTheme.orange};
+                  `;
+            }}
+
+            :hover {
+              transition: transform 0.1s ease-in-out;
+              transform: rotate(360deg);
+
+              ${(props) => {
+                const darkTheme = props.theme.dark.colors;
+                const lightTheme = props.theme.light.colors;
+                return props.isDarkMode
+                  ? `
+                  color: ${darkTheme.orange};
+                  text-shadow: 0 0 20px ${darkTheme.orange};
+                  `
+                  : `
+                  color: ${lightTheme.green};
+                  text-shadow: 0 0 20px ${lightTheme.green};
+                  `;
+              }}
+            }
+          }
         }
       }
     }
   }
 `;
 
+const MotionWrapper = styled(motion.div)``;
+
 const Hero: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
 
   return (
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
-      <div>
+      <MotionWrapper
+        variants={{
+          offscreen: {
+            y: 100,
+            opacity: 0,
+          },
+          onscreen: {
+            y: 0,
+            opacity: 1,
+            transition: {
+              duration: 3,
+            },
+          },
+        }}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ once: true, amount: 0 }}
+      >
         <div>
-          <h1>Hi there!</h1>
-          <h1>I'm Koki,</h1>
-          <h1>Web Developer</h1>
+          <h1>
+            <span>H</span>
+            <span>i</span>
+            <span>,</span>
+            <span>t</span>
+            <span>h</span>
+            <span>e</span>
+            <span>r</span>
+            <span>e</span>
+            <span>!</span>
+          </h1>
+          <h1>
+            <span>I</span>
+            <span>'</span>
+            <span>m</span>
+            <span>&nbsp;</span>
+            <span>K</span>
+            <span>o</span>
+            <span>k</span>
+            <span>i</span>
+          </h1>
+          <h1>
+            <span>W</span>
+            <span>e</span>
+            <span>b</span>
+            <span>&nbsp;</span>
+            <span>d</span>
+            <span>e</span>
+            <span>v</span>
+            <span>e</span>
+            <span>l</span>
+            <span>o</span>
+            <span>p</span>
+            <span>e</span>
+            <span>r</span>
+          </h1>
         </div>
         <div>
           <p>Hello</p>
         </div>
-      </div>
+      </MotionWrapper>
     </WrapperSection>
   );
 };
