@@ -4,6 +4,7 @@ import SkillsData from '../components/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/Button';
 import { TypeAnimation } from 'react-type-animation';
+import { motion } from 'framer-motion';
 
 type Props = {
   isDarkMode?: boolean;
@@ -73,39 +74,6 @@ const FlexWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
-  > div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 2vw 0;
-
-    h2 {
-      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-      font-size: large;
-    }
-
-    p {
-      font-size: medium;
-      line-height: 1.5;
-
-      > span {
-        font-size: 0.8rem;
-      }
-    }
-
-    > div {
-      padding: 2rem 0 0;
-
-      :first-child {
-        padding-top: 0vw;
-      }
-
-      :last-child {
-        padding-bottom: 0px;
-      }
-    }
-  }
-
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
@@ -135,6 +103,8 @@ const FlexWrapper = styled.div<Props>`
     }
   }
 `;
+
+const MotionWrapper = styled(motion.div)``;
 
 const ImageContainer = styled.div<Props>`
   display: flex;
@@ -251,7 +221,24 @@ const About: FC = () => {
       <div>
         <h1>About</h1>
         <FlexWrapper isSkew={isSkew}>
-          <div>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <h2>Story</h2>
             <p>
               When I was a university student , I backpacked to cross the States
@@ -264,8 +251,25 @@ const About: FC = () => {
               efficiently learn technologies to help people in the world with my
               huge passion!
             </p>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <div>
               <h2>Work Experience</h2>
               <p>
@@ -300,8 +304,25 @@ const About: FC = () => {
                 <span>2022 - Present, Vancouver, Canada</span>
               </p>
             </div>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <ImageContainer isSkew={isSkew} isDarkMode={isDarkMode}>
               <img
                 src={`${process.env.PUBLIC_URL}/image/ProfileImage.jpg`}
@@ -326,25 +347,93 @@ const About: FC = () => {
                 repeat={Infinity}
               />
             </div>
-          </div>
+          </MotionWrapper>
         </FlexWrapper>
         <SkillsWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
-          <div>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <h3>Languages</h3>
             <ul>{renderSkillsData(SkillsData.languages)}</ul>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <h3>Frameworks & Libraries</h3>
             <ul>{renderSkillsData(SkillsData.frameworks)}</ul>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <h3>Database</h3>
             <ul>{renderSkillsData(SkillsData.db)}</ul>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <h3>Things I like</h3>
             <ul>{renderSkillsData(SkillsData.hobby)}</ul>
-          </div>
+          </MotionWrapper>
         </SkillsWrapper>
       </div>
     </WrapperSection>

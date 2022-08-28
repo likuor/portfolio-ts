@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
 import { GlobalContext } from '../context/GlobalContext';
+import { motion } from 'framer-motion';
 
 type Props = {
   isDarkMode: boolean;
@@ -72,7 +73,7 @@ const FlexWrapper = styled.div`
   padding: 2vw 0;
 `;
 
-const FlexChildren = styled.div`
+const FlexChildren = styled(motion.div)`
   width: 50%;
   height: 50vw;
   display: flex;
@@ -189,7 +190,25 @@ const WorksIndex: FC = () => {
   const renderData = () => {
     return WorksData.map((workData) => {
       return (
-        <FlexChildren key={workData.id}>
+        <FlexChildren
+          key={workData.id}
+          variants={{
+            offscreen: {
+              y: 100,
+              opacity: 0,
+            },
+            onscreen: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.5,
+              },
+            },
+          }}
+          initial='offscreen'
+          whileInView='onscreen'
+          viewport={{ once: true, amount: 0 }}
+        >
           <ImageContainer>
             <Image src={workData.imageThumbnail} alt='ProfileImage' />
             <DescriptionHover isDarkMode={isDarkMode} isSkew={isSkew}>
