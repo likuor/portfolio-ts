@@ -30,36 +30,55 @@ const WrapperSection = styled.section<Props>`
   }};
 
   > div {
-    margin: 0 auto;
-    width: 80%;
-    height: 90%;
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    ${(props) => {
-      const darkTheme = props.theme.dark.colors;
-      const lightTheme = props.theme.light.colors;
-      return props.isDarkMode
-        ? `
+    > div {
+      /* border: 1px solid yellow; */
+      margin: 0 auto;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      ${(props) => {
+        const darkTheme = props.theme.dark.colors;
+        const lightTheme = props.theme.light.colors;
+        return props.isDarkMode
+          ? `
       border-top: 1px solid ${darkTheme.lightGreen};
       border-bottom: 1px solid ${darkTheme.lightGreen};;
       `
-        : `
+          : `
       border-top: 1px solid ${lightTheme.orange};
       border-bottom: 1px solid ${lightTheme.orange};
       `;
-    }}
+      }}
 
-    > h1 {
-      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-      font-size: x-large;
-    }
-
-    @media (min-width: 768px) {
       > h1 {
-        font-size: 4em;
+        transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+        font-size: x-large;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    > div {
+      display: flex;
+      width: 80%;
+      height: 90%;
+      flex-direction: row;
+
+      > div {
+        width: 50%;
+
+        h1 {
+          font-size: 4vw;
+        }
       }
     }
   }
@@ -71,9 +90,14 @@ const Hero: FC = () => {
   return (
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
       <div>
-        <h1>Hi there!</h1>
-        <h1>I'm Koki,</h1>
-        <h1>Web Developer</h1>
+        <div>
+          <h1>Hi there!</h1>
+          <h1>I'm Koki,</h1>
+          <h1>Web Developer</h1>
+        </div>
+        <div>
+          <p>Hello</p>
+        </div>
       </div>
     </WrapperSection>
   );
