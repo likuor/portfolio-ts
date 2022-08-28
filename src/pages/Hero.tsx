@@ -59,7 +59,7 @@ const WrapperSection = styled.section<Props>`
 
     @media (min-width: 768px) {
       > h1 {
-        font-size: xx-large;
+        font-size: 4em;
       }
     }
   }
