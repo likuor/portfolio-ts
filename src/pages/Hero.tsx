@@ -141,7 +141,7 @@ const Hero: FC = () => {
             y: 0,
             opacity: 1,
             transition: {
-              duration: 3,
+              duration: 0.5,
             },
           },
         }}
