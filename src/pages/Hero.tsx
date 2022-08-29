@@ -2,6 +2,7 @@ import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalContext';
 import { motion } from 'framer-motion';
+import Hero3D from '../components/Hero3D';
 
 type Props = {
   isDarkMode: boolean;
@@ -188,7 +189,7 @@ const Hero: FC = () => {
           </h1>
         </div>
         <div>
-          <p>Hello</p>
+          <Hero3D />
         </div>
       </MotionWrapper>
     </WrapperSection>
