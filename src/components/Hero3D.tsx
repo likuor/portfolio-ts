@@ -1,47 +1,72 @@
-import { useState, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stats, Text } from '@react-three/drei';
+import { Canvas, useThree, useFrame } from '@react-three/fiber';
+import { OrbitControls, Text } from '@react-three/drei';
+import { useRef, FC } from 'react';
 
-// type Props = {
-//   isDarkMode: boolean;
-// };
-
-const Hero3D = () => {
-  // const Box = () => {
-  //   const ref = useRef<any>(null);
-  //   const [isHovered, setIsHovered] = useState(false);
-
-  //   useFrame(() => {
-  //     ref.current.rotation.x += 0.01;
-  //     ref.current.rotation.y += 0.01;
-  //   });
-
-  //   return (
-  //     <mesh
-  //       ref={ref}
-  //       onPointerOver={() => setIsHovered(true)}
-  //       onPointerOut={() => setIsHovered(false)}
-  //     >
-  //       <boxGeometry args={isHovered ? [1.2, 1.2, 1.2] : [2, 2, 2]} />
-  //       <meshLambertMaterial color={isHovered ? 0x44c2b5 : 0x9178e6} />
-  //     </mesh>
-  //   );
-  // };
+const RenderWelcome = () => {
+  const { viewport } = useThree();
+  const ref = useRef<any>();
+  useFrame(({ mouse }) => {
+    const x = (mouse.x * viewport.width) / 2;
+    const y = (mouse.y * viewport.height) / 2;
+    ref.current.position.set(x, y, 0);
+    ref.current.rotation.set(-y, x, 0);
+  });
 
   return (
+    <mesh ref={ref} castShadow>
+      <Text
+        scale={[10, 10, 10]}
+        color='#0cc7ab'
+        anchorX='center'
+        anchorY='middle'
+      >
+        Welcome!
+      </Text>
+    </mesh>
+  );
+};
+
+const RenderHello = () => {
+  const ref = useRef<any>();
+  useFrame(
+    (state, delta) => (ref.current.rotation.x = ref.current.rotation.y += 0.01)
+  );
+
+  return (
+    <mesh ref={ref} castShadow>
+      <Text
+        scale={[15, 15, 10]}
+        color='#0cc7ab'
+        anchorX='center'
+        anchorY='middle'
+      >
+        Hellooo!
+      </Text>
+    </mesh>
+  );
+};
+
+const RenderDragMe = () => {
+  return (
+    <Text
+      scale={[10, 10, 10]}
+      color='#ff533d'
+      anchorX='center'
+      anchorY='top-baseline'
+    >
+      Drag me
+    </Text>
+  );
+};
+
+const Hero3D: FC = () => {
+  return (
     <>
-      <Canvas dpr={2}>
-        <pointLight position={[15, 15, 15]} />
-        <Text
-          scale={[10, 10, 10]}
-          color='white'
-          anchorX='center'
-          anchorY='middle'
-        >
-          HELLOOO!
-        </Text>
+      <Canvas camera={{ position: [0, 0, 5] }}>
         <OrbitControls />
-        <Stats />
+        <RenderDragMe />
+        <RenderWelcome />
+        <RenderHello />
       </Canvas>
     </>
   );
