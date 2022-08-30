@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import WorksData from '../components/WorksData';
 import { GlobalContext } from '../context/GlobalContext';
+import { motion } from 'framer-motion';
 
 type Props = {
   isDarkMode?: boolean;
@@ -202,6 +203,8 @@ const ImageContainer = styled.div`
   }
 `;
 
+const MotionWrapper = styled(motion.div)``;
+
 const WorksDetail: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
   const params: string | undefined = useParams<string>().worksId;
@@ -212,15 +215,49 @@ const WorksDetail: FC = () => {
       <div>
         <h1>{selectedWork?.title}</h1>
         <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
-          <div>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <ImageContainer>
               <img
                 src={selectedWork?.imageThumbnail}
                 alt={selectedWork?.title}
               />
             </ImageContainer>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <div>
               <h2>Techs</h2>
               <ul>
@@ -238,43 +275,112 @@ const WorksDetail: FC = () => {
                 {selectedWork?.links.map((link, index) => {
                   return (
                     <a
+                      key={index}
                       href={link.url}
                       target='_blank'
                       rel='noopener noreferrer'
                     >
-                      <li key={index}>{link.icon}</li>
+                      <li>{link.icon}</li>
                     </a>
                   );
                 })}
               </ul>
             </div>
-          </div>
+          </MotionWrapper>
         </FlexWrapper>
         <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
-          <div>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <ImageContainer>
               <img src={selectedWork?.images[1]} alt={selectedWork?.title} />
             </ImageContainer>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <div>
               <h2>Features</h2>
               <p>{selectedWork?.description.features[0]}</p>
             </div>
-          </div>
+          </MotionWrapper>
         </FlexWrapper>
         <FlexWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
-          <div>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <ImageContainer>
               <img src={selectedWork?.images[2]} alt={selectedWork?.title} />
             </ImageContainer>
-          </div>
-          <div>
+          </MotionWrapper>
+          <MotionWrapper
+            variants={{
+              offscreen: {
+                y: 100,
+                opacity: 0,
+              },
+              onscreen: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              },
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0 }}
+          >
             <div>
               <h2>Features</h2>
               <p>{selectedWork?.description.features[1]}</p>
             </div>
-          </div>
+          </MotionWrapper>
         </FlexWrapper>
       </div>
     </WrapperSection>

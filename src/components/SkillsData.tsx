@@ -6,6 +6,7 @@ import {
   SiStyledcomponents,
   SiJavascript,
   SiTypescript,
+  SiThreedotjs,
   SiPhp,
   SiReact,
   SiJquery,
@@ -62,6 +63,10 @@ const SkillsData: Alldata = {
     {
       name: 'Node.js',
       icons: <SiNodedotjs />,
+    },
+    {
+      name: 'Three.js',
+      icons: <SiThreedotjs />,
     },
     {
       name: 'PHP',

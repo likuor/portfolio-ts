@@ -1,6 +1,7 @@
 import {
   SiReact,
   SiJavascript,
+  SiThreedotjs,
   SiTypescript,
   SiFirebase,
   SiTailwindcss,
@@ -192,8 +193,19 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/Portfolio/Portfolio_about.png`,
       `${process.env.PUBLIC_URL}/image/works/Portfolio/Portfolio_work.png`,
     ],
-    technologiesIcons: [<SiTypescript />, <SiReact />, <SiStyledcomponents />],
-    technologiesNames: ['Typescript', 'React', 'Styled Components'],
+    technologiesIcons: [
+      <SiTypescript />,
+      <SiReact />,
+      <SiThreedotjs />,
+      <SiStyledcomponents />,
+    ],
+    technologiesNames: [
+      'Typescript',
+      'React',
+      'Three.js',
+      'Styled Components',
+      'Framer Motion',
+    ],
     jenre: 'studying',
   },
 ];
