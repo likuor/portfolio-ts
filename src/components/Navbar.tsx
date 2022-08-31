@@ -17,7 +17,7 @@ const TriangleWrapper = styled.div<Props>`
   height: 0;
   border-left: ${(props) =>
     props.isSkew ? '52.5vw solid transparent' : 'none'};
-  border-top: 14vw solid;
+  border-top: 3rem solid;
   border-top-color: ${(props) =>
     props.isDarkMode
       ? `${props.theme.dark.colors.secondaryBlack}`
@@ -42,10 +42,10 @@ const TriangleWrapper = styled.div<Props>`
 
 const Toggle = styled.div<Props>`
   position: fixed;
-  top: 4vw;
-  right: 30px;
-  height: 4.5vw;
-  width: 6.5vw;
+  top: 1.5rem;
+  right: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -124,19 +124,20 @@ const UlWrapper = styled.ul<Props>`
 
         return props.isDarkMode
           ? `
-          box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.green};
-          :hover{
-            background: ${darkTheme.secondaryBlack};
-          }
+            box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.green};
+
+            :hover{
+              background: ${darkTheme.secondaryBlack};
+            }
           `
           : `
-          color: ${lightTheme.white};
-          box-shadow: 0 0 ${lightTheme.white}, 0.1rem 0.1rem 0 0 ${lightTheme.green}, 0.1rem 0.1rem 0 2px ${lightTheme.white};
+            color: ${lightTheme.white};
+            box-shadow: 0 0 ${lightTheme.white}, 0.1rem 0.1rem 0 0 ${lightTheme.green}, 0.1rem 0.1rem 0 2px ${lightTheme.white};
 
-          :hover{
-            background: ${lightTheme.green};
-          }
-        `;
+            :hover{
+              background: ${lightTheme.green};
+            }
+          `;
       }};
     }
 
@@ -158,7 +159,7 @@ const UlWrapper = styled.ul<Props>`
 
       :hover {
         transition: transform 0.4s ease-in-out;
-        transform: skew(180deg);
+        transform: skew(160deg);
         color: ${(props) => props.theme.light.colors.orange};
       }
     }
@@ -169,28 +170,28 @@ const UlWrapper = styled.ul<Props>`
     const lightTheme = props.theme.light.colors;
     return props.isDarkMode
       ? `
-      background: ${darkTheme.secondaryBlack};
-      color: ${darkTheme.green};
+        background: ${darkTheme.secondaryBlack};
+        color: ${darkTheme.green};
 
-      li{
-        border-bottom:1px solid ${darkTheme.green};
+        li{
+          border-bottom:1px solid ${darkTheme.green};
 
-        :first-child {
-          border-top:1px solid ${darkTheme.green};
+          :first-child {
+            border-top:1px solid ${darkTheme.green};
+          }
         }
-      }
       `
       : `
-      background: ${lightTheme.green};
-      color: ${lightTheme.white};
+        background: ${lightTheme.green};
+        color: ${lightTheme.white};
 
-      li{
-        border-bottom:1px solid ${lightTheme.white};
+        li{
+          border-bottom:1px solid ${lightTheme.white};
 
-        :first-child {
-          border-top:1px solid ${lightTheme.white};
+          :first-child {
+            border-top:1px solid ${lightTheme.white};
+          }
         }
-      }
       `;
   }};
 

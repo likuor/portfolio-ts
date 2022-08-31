@@ -17,8 +17,8 @@ const WrapperButton = styled.button<ButtonProps>`
   transition: box-shadow 0.4s ease-in-out;
 
   :hover {
-    transition: transform 0.4s ease-in-out;
-    transform: skew(180deg);
+    transition: transform 0.2s ease-in-out;
+    transition: box-shadow 0.4s ease-in-out;
     box-shadow: 0 0 0;
   }
 
