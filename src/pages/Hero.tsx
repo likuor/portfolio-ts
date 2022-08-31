@@ -12,7 +12,7 @@ type Props = {
 const WrapperSection = styled.section<Props>`
   width: 100%;
   height: 80vh;
-  padding: 2vw 0;
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,12 +22,12 @@ const WrapperSection = styled.section<Props>`
     const lightTheme = props.theme.light.colors;
     return props.isDarkMode
       ? `
-      background: ${darkTheme.black};
-      color: ${darkTheme.green};
+        background: ${darkTheme.black};
+        color: ${darkTheme.green};
       `
       : `
-      background: ${lightTheme.white};
-      color: ${lightTheme.black};
+        background: ${lightTheme.white};
+        color: ${lightTheme.black};
       `;
   }};
 
@@ -38,9 +38,10 @@ const WrapperSection = styled.section<Props>`
     flex-direction: column;
 
     > div {
+      padding: 2rem 0;
       margin: 0 auto;
       width: 80%;
-      height: 100%;
+      height: 50%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -51,12 +52,28 @@ const WrapperSection = styled.section<Props>`
         const lightTheme = props.theme.light.colors;
         return props.isDarkMode
           ? `
-          border-top: 1px solid ${darkTheme.lightGreen};
-          border-bottom: 1px solid ${darkTheme.lightGreen};;
+            border-top: 1px solid ${darkTheme.lightGreen};
+            border-bottom: 1px solid ${darkTheme.lightGreen};
+
+            :first-child{
+              border-bottom: none;
+            }
+
+            :last-child{
+              border-top: none;
+            }
           `
           : `
-          border-top: 1px solid ${lightTheme.orange};
-          border-bottom: 1px solid ${lightTheme.orange};
+            border-top: 1px solid ${lightTheme.orange};
+            border-bottom: 1px solid ${lightTheme.orange};
+
+            :first-child{
+              border-bottom: none;
+            }
+
+            :last-child{
+              border-top: none;
+            }
           `;
       }}
 
@@ -64,10 +81,50 @@ const WrapperSection = styled.section<Props>`
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
         font-size: x-large;
       }
+
+      span {
+        display: inline-block;
+        transition: transform 1s ease-in-out;
+
+        ${(props) => {
+          const darkTheme = props.theme.dark.colors;
+          const lightTheme = props.theme.light.colors;
+          return props.isDarkMode
+            ? `
+              color: ${darkTheme.green};
+              text-shadow: 0.5rem 0.5rem 1rem ${darkTheme.green};
+            `
+            : `
+              color: ${lightTheme.black};
+              text-shadow: 0.5rem 0.5rem 1rem ${lightTheme.orange};
+            `;
+        }}
+
+        :hover {
+          transition: transform 0.1s ease-in-out;
+          transform: rotate(360deg);
+
+          ${(props) => {
+            const darkTheme = props.theme.dark.colors;
+            const lightTheme = props.theme.light.colors;
+            return props.isDarkMode
+              ? `
+                color: ${darkTheme.orange};
+                text-shadow: 0 0 20px ${darkTheme.orange};
+                `
+              : `
+                color: ${lightTheme.green};
+                text-shadow: 0 0 20px ${lightTheme.green};
+              `;
+          }}
+        }
+      }
     }
   }
 
   @media (min-width: 768px) {
+    padding: 2vw 0;
+
     > div {
       display: flex;
       width: 80%;
@@ -75,50 +132,44 @@ const WrapperSection = styled.section<Props>`
       flex-direction: row;
 
       > div {
+        padding: 0;
         width: 50%;
+        height: 100%;
+
+        ${(props) => {
+          const darkTheme = props.theme.dark.colors;
+          const lightTheme = props.theme.light.colors;
+          return props.isDarkMode
+            ? `
+              border-top: 1px solid ${darkTheme.lightGreen};
+              border-bottom: 1px solid ${darkTheme.lightGreen};
+
+              :first-child{
+                border-bottom: 1px solid ${darkTheme.lightGreen};
+              }
+
+              :last-child{
+                border-top: 1px solid ${darkTheme.lightGreen};
+              }
+              `
+            : `
+              border-top: 1px solid ${lightTheme.orange};
+              border-bottom: 1px solid ${lightTheme.orange};
+
+              :first-child{
+                border-bottom: 1px solid ${darkTheme.orange};
+              }
+
+              :last-child{
+                border-top: 1px solid ${darkTheme.orange};
+              }
+            `;
+        }}
 
         h1 {
           font-size: 4vw;
           transition: transform 2s;
           text-indent: 0.3rem;
-
-          span {
-            display: inline-block;
-            transition: transform 1s ease-in-out;
-
-            ${(props) => {
-              const darkTheme = props.theme.dark.colors;
-              const lightTheme = props.theme.light.colors;
-              return props.isDarkMode
-                ? `
-                  color: ${darkTheme.green};
-                  text-shadow: 0.5rem 0.5rem 1rem ${darkTheme.green};
-                  `
-                : `
-                  color: ${lightTheme.black};
-                  text-shadow: 0.5rem 0.5rem 1rem ${lightTheme.orange};
-                  `;
-            }}
-
-            :hover {
-              transition: transform 0.1s ease-in-out;
-              transform: rotate(360deg);
-
-              ${(props) => {
-                const darkTheme = props.theme.dark.colors;
-                const lightTheme = props.theme.light.colors;
-                return props.isDarkMode
-                  ? `
-                  color: ${darkTheme.orange};
-                  text-shadow: 0 0 20px ${darkTheme.orange};
-                  `
-                  : `
-                  color: ${lightTheme.green};
-                  text-shadow: 0 0 20px ${lightTheme.green};
-                  `;
-              }}
-            }
-          }
         }
       }
     }
