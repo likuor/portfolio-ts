@@ -2,7 +2,7 @@ import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import { useRef, FC } from 'react';
 
-const RenderWelcome = () => {
+const RenderHello = () => {
   const { viewport } = useThree();
   const ref = useRef<any>();
   useFrame(({ mouse }) => {
@@ -20,13 +20,13 @@ const RenderWelcome = () => {
         anchorX='center'
         anchorY='middle'
       >
-        Welcome!
+        Konnichiwa
       </Text>
     </mesh>
   );
 };
 
-const RenderHello = () => {
+const RenderWelcome = () => {
   const ref = useRef<any>();
   useFrame(
     (state, delta) => (ref.current.rotation.x = ref.current.rotation.y += 0.01)
@@ -40,7 +40,7 @@ const RenderHello = () => {
         anchorX='center'
         anchorY='middle'
       >
-        Hellooo!
+        Welcome!
       </Text>
     </mesh>
   );
@@ -65,8 +65,8 @@ const Hero3D: FC = () => {
       <Canvas camera={{ position: [0, 0, 5] }}>
         <OrbitControls />
         <RenderDragMe />
-        <RenderWelcome />
         <RenderHello />
+        <RenderWelcome />
       </Canvas>
     </>
   );
