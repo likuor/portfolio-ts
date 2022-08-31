@@ -17,7 +17,7 @@ const TriangleWrapper = styled.div<Props>`
   height: 0;
   border-left: ${(props) =>
     props.isSkew ? '52.5vw solid transparent' : 'none'};
-  border-top: 3rem solid;
+  border-top: ${(props) => (props.isSkew ? '14vw solid' : '3rem solid')};
   border-top-color: ${(props) =>
     props.isDarkMode
       ? `${props.theme.dark.colors.secondaryBlack}`
@@ -42,10 +42,21 @@ const TriangleWrapper = styled.div<Props>`
 
 const Toggle = styled.div<Props>`
   position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
+  ${(props) => {
+    return props.isSkew
+      ? `
+        top: 0.8rem;
+        right: 1.5rem;
+        height: 1rem;
+        width: 1rem;
+      `
+      : `
+        top: 1rem;
+        right: 2rem;
+        height: 1.2rem;
+        width: 1.2rem;
+      `;
+  }};
   z-index: 20;
   display: flex;
   flex-direction: column;

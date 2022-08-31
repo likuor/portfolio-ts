@@ -47,36 +47,6 @@ const WrapperSection = styled.section<Props>`
       justify-content: center;
       align-items: center;
 
-      ${(props) => {
-        const darkTheme = props.theme.dark.colors;
-        const lightTheme = props.theme.light.colors;
-        return props.isDarkMode
-          ? `
-            border-top: 1px solid ${darkTheme.lightGreen};
-            border-bottom: 1px solid ${darkTheme.lightGreen};
-
-            :first-child{
-              border-bottom: none;
-            }
-
-            :last-child{
-              border-top: none;
-            }
-          `
-          : `
-            border-top: 1px solid ${lightTheme.orange};
-            border-bottom: 1px solid ${lightTheme.orange};
-
-            :first-child{
-              border-bottom: none;
-            }
-
-            :last-child{
-              border-top: none;
-            }
-          `;
-      }}
-
       > h1 {
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
         font-size: x-large;
@@ -135,36 +105,6 @@ const WrapperSection = styled.section<Props>`
         padding: 0;
         width: 50%;
         height: 100%;
-
-        ${(props) => {
-          const darkTheme = props.theme.dark.colors;
-          const lightTheme = props.theme.light.colors;
-          return props.isDarkMode
-            ? `
-              border-top: 1px solid ${darkTheme.lightGreen};
-              border-bottom: 1px solid ${darkTheme.lightGreen};
-
-              :first-child{
-                border-bottom: 1px solid ${darkTheme.lightGreen};
-              }
-
-              :last-child{
-                border-top: 1px solid ${darkTheme.lightGreen};
-              }
-              `
-            : `
-              border-top: 1px solid ${lightTheme.orange};
-              border-bottom: 1px solid ${lightTheme.orange};
-
-              :first-child{
-                border-bottom: 1px solid ${darkTheme.orange};
-              }
-
-              :last-child{
-                border-top: 1px solid ${darkTheme.orange};
-              }
-            `;
-        }}
 
         h1 {
           font-size: 4vw;
