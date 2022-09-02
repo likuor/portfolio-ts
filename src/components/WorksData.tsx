@@ -174,7 +174,7 @@ const WorksData: Data[] = [
       'Strongly recommend you browse this website without tilting your head so long time',
     links: [
       {
-        url: 'https://kokisakai-portfolio.netlify.app',
+        url: 'https://kokisakai.netlify.app',
         icon: <FaExternalLinkAlt />,
       },
       { url: 'https://github.com/likuor/portfolio-ts', icon: <FaGithub /> },
