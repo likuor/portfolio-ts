@@ -74,9 +74,27 @@ const FlexWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
+  h2 {
+    font-size: large;
+  }
+
+  > div {
+    > div {
+      margin: 1rem 0;
+    }
+
+    h3 {
+      font-size: medium;
+    }
+  }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
+
+    h2 {
+      font-size: x-large;
+    }
 
     > div {
       width: 100%;
@@ -85,6 +103,10 @@ const FlexWrapper = styled.div<Props>`
       flex-direction: column;
 
       > div {
+        margin: 0;
+        h3 {
+          font-size: large;
+        }
         padding: 2vw 0 0 2vw;
 
         :first-child {
@@ -330,7 +352,7 @@ const About: FC = () => {
               />
             </ImageContainer>
             <div>
-              <h2>I am</h2>
+              <h3>I am</h3>
               <TypeAnimation
                 sequence={[
                   'keen on creating things & art',
@@ -342,7 +364,7 @@ const About: FC = () => {
                   'relaxed with playing ukulele',
                   2000,
                 ]}
-                wrapper='h2'
+                wrapper='h3'
                 cursor={true}
                 repeat={Infinity}
               />
