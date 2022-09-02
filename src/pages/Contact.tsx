@@ -13,7 +13,6 @@ const WrapperSection = styled.section<Props>`
   transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
   width: 100%;
   padding: 4vw 0;
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
