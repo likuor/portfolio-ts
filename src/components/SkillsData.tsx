@@ -62,10 +62,6 @@ const SkillsData: Alldata = {
       icons: <SiTypescript />,
     },
     {
-      name: 'Node.js',
-      icons: <SiNodedotjs />,
-    },
-    {
       name: 'Three.js',
       icons: <SiThreedotjs />,
     },
@@ -108,6 +104,10 @@ const SkillsData: Alldata = {
     {
       name: 'Next.js',
       icons: <SiNextdotjs />,
+    },
+    {
+      name: 'Node.js',
+      icons: <SiNodedotjs />,
     },
     {
       name: 'Express',
