@@ -20,6 +20,7 @@ import {
   SiMaterialui,
   SiAntdesign,
   SiRedux,
+  SiExpress,
 } from 'react-icons/si';
 
 import {
@@ -107,6 +108,10 @@ const SkillsData: Alldata = {
     {
       name: 'Next.js',
       icons: <SiNextdotjs />,
+    },
+    {
+      name: 'Express',
+      icons: <SiExpress />,
     },
     {
       name: 'Redux',
