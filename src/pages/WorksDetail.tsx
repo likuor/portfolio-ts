@@ -151,6 +151,11 @@ const FlexWrapper = styled.div<Props>`
               color: ${lightTheme.black};
               `;
           }};
+
+          > span {
+            padding-left: 0.5rem;
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -261,8 +266,13 @@ const WorksDetail: FC = () => {
             <div>
               <h2>Techs</h2>
               <ul>
-                {selectedWork?.technologiesNames.map((techName, index) => {
-                  return <li key={index}>{techName}</li>;
+                {selectedWork?.technologies?.map((tech, index) => {
+                  return (
+                    <li key={index}>
+                      {tech.name}
+                      {tech.icon ? <span>{tech.icon}</span> : ''}
+                    </li>
+                  );
                 })}
               </ul>
             </div>

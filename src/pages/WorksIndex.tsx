@@ -129,8 +129,8 @@ const DescriptionContainer = styled.div<Props>`
     }
 
     > ul {
-      font-size: xx-small;
-      padding: 0.3vw 0;
+      font-size: 2vw;
+      padding: 0.5rem 0;
       > li {
         list-style: none;
         display: inline;
@@ -156,7 +156,7 @@ const DescriptionContainer = styled.div<Props>`
       }
 
       > ul {
-        font-size: small;
+        font-size: 1.3vw;
       }
     }
   }
@@ -218,8 +218,8 @@ const WorksIndex: FC = () => {
                     <h2>{workData.title}</h2>
                     <p>{workData.caption}</p>
                     <ul>
-                      {workData.technologiesIcons.map((icons, index) => {
-                        return <li key={index}>{icons}</li>;
+                      {workData.technologies?.map((tech, index) => {
+                        return <li key={index}>{tech.icon}</li>;
                       })}
                     </ul>
                   </div>

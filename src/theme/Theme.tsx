@@ -24,12 +24,6 @@ const theme = {
       lightBrown: 'rgba(248, 245, 242, 0.7)',
       green: '#078080',
     },
-    fonts: ['sans-serif', 'Roboto'],
-    fontSizes: {
-      small: '1em',
-      medium: '2em',
-      large: '3em',
-    },
   },
 };
 
