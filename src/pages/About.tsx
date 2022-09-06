@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import SkillsData from '../components/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/Button';
-import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
+import TypingAnimation from '../components/TypingAnimation';
 
 type Props = {
   isDarkMode?: boolean;
@@ -220,6 +220,10 @@ const SkillsWrapper = styled.div<Props>`
       :last-child {
         margin-right: 0px;
       }
+
+      > ul {
+        font-size: x-large;
+      }
     }
   }
 `;
@@ -353,21 +357,7 @@ const About: FC = () => {
             </ImageContainer>
             <div>
               <h3>I am</h3>
-              <TypeAnimation
-                sequence={[
-                  'keen on creating things & art',
-                  2000,
-                  'into playing any sports',
-                  2000,
-                  'huge fun of feeling nature',
-                  2000,
-                  'relaxed with playing ukulele',
-                  2000,
-                ]}
-                wrapper='h3'
-                cursor={true}
-                repeat={Infinity}
-              />
+              <TypingAnimation />
             </div>
           </MotionWrapper>
         </FlexWrapper>

@@ -151,6 +151,11 @@ const FlexWrapper = styled.div<Props>`
               color: ${lightTheme.black};
               `;
           }};
+
+          > span {
+            padding-left: 0.5rem;
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -265,7 +270,7 @@ const WorksDetail: FC = () => {
                   return (
                     <li key={index}>
                       {tech.name}
-                      <span>{tech.icon}</span>
+                      {tech.icon ? <span>{tech.icon}</span> : ''}
                     </li>
                   );
                 })}
