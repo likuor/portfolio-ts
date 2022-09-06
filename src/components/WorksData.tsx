@@ -21,8 +21,7 @@ type Data = {
   links: { url: string; icon: JSX.Element }[];
   imageThumbnail: string;
   images: string[];
-  technologiesIcons: JSX.Element[];
-  technologiesNames: string[];
+  technologies?: { name: string; icon?: JSX.Element }[];
   jenre: string;
 };
 
@@ -50,13 +49,21 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/Vamos/Vamos_detail.png`,
       `${process.env.PUBLIC_URL}/image/works/Vamos/Vamos_hero.png`,
     ],
-    technologiesIcons: [
-      <SiJavascript />,
-      <SiReact />,
-      <SiMaterialui />,
-      <SiFirebase />,
+    technologies: [
+      {
+        name: 'Javascript',
+        icon: <SiJavascript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'MaterialUI',
+        icon: <SiMaterialui />,
+      },
+      { name: 'Firebase', icon: <SiFirebase /> },
     ],
-    technologiesNames: ['Javascript', 'React', 'MaterialUI', 'Firebase'],
     jenre: 'studying',
   },
   {
@@ -85,13 +92,21 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/Katsuraba-kitchen/Katsuraba_items.png`,
       `${process.env.PUBLIC_URL}/image/works/Katsuraba-kitchen/Katsuraba_detail.png`,
     ],
-    technologiesIcons: [
-      <SiJavascript />,
-      <SiReact />,
-      <SiTailwindcss />,
-      <SiFirebase />,
+    technologies: [
+      {
+        name: 'Javascript',
+        icon: <SiJavascript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: <SiTailwindcss />,
+      },
+      { name: 'Firebase', icon: <SiFirebase /> },
     ],
-    technologiesNames: ['Javascript', 'React', 'Tailwind CSS', 'Firebase'],
     jenre: 'Client work',
   },
   {
@@ -123,14 +138,26 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/DoctorAppointment/DoctorAppointment_list.png`,
       `${process.env.PUBLIC_URL}/image/works/DoctorAppointment/DoctorAppointment_detail.png`,
     ],
-    technologiesIcons: [
-      <SiJavascript />,
-      <SiReact />,
-      <SiMongodb />,
-      <SiFirebase />,
-      <SiRedux />,
+
+    technologies: [
+      {
+        name: 'Javascript',
+        icon: <SiJavascript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'MongoDB',
+        icon: <SiMongodb />,
+      },
+      { name: 'Firebase', icon: <SiFirebase /> },
+      {
+        name: 'Redux',
+        icon: <SiRedux />,
+      },
     ],
-    technologiesNames: ['Javascript', 'React', 'MongoDB', 'Firebase', 'Redux'],
     jenre: 'studying',
   },
   {
@@ -158,13 +185,25 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/Ghibli/Ghibli_detail.png`,
       `${process.env.PUBLIC_URL}/image/works/Ghibli/Ghibli_list.png`,
     ],
-    technologiesIcons: [
-      <SiTypescript />,
-      <SiReact />,
-      <SiAntdesign />,
-      <SiRedux />,
+
+    technologies: [
+      {
+        name: 'Typescript',
+        icon: <SiTypescript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'Ant design',
+        icon: <SiAntdesign />,
+      },
+      {
+        name: 'Redux',
+        icon: <SiRedux />,
+      },
     ],
-    technologiesNames: ['Typescript', 'React', 'Ant design', 'Redux'],
     jenre: 'studying',
   },
   {
@@ -193,18 +232,27 @@ const WorksData: Data[] = [
       `${process.env.PUBLIC_URL}/image/works/Portfolio/Portfolio_about.png`,
       `${process.env.PUBLIC_URL}/image/works/Portfolio/Portfolio_work.png`,
     ],
-    technologiesIcons: [
-      <SiTypescript />,
-      <SiReact />,
-      <SiThreedotjs />,
-      <SiStyledcomponents />,
-    ],
-    technologiesNames: [
-      'Typescript',
-      'React',
-      'Three.js',
-      'Styled Components',
-      'Framer Motion',
+
+    technologies: [
+      {
+        name: 'Typescript',
+        icon: <SiTypescript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'Three.js',
+        icon: <SiThreedotjs />,
+      },
+      {
+        name: 'Styled Components',
+        icon: <SiStyledcomponents />,
+      },
+      {
+        name: 'Framer Motion',
+      },
     ],
     jenre: 'studying',
   },

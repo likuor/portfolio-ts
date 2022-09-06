@@ -261,8 +261,13 @@ const WorksDetail: FC = () => {
             <div>
               <h2>Techs</h2>
               <ul>
-                {selectedWork?.technologiesNames.map((techName, index) => {
-                  return <li key={index}>{techName}</li>;
+                {selectedWork?.technologies?.map((tech, index) => {
+                  return (
+                    <li key={index}>
+                      {tech.name}
+                      <span>{tech.icon}</span>
+                    </li>
+                  );
                 })}
               </ul>
             </div>
