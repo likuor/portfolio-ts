@@ -313,7 +313,7 @@ const About: FC = () => {
                 <span>2020 - 2021, Tokyo, Japan</span>
               </p>
               <a
-                href='https://drive.google.com/file/d/1xoy35zCP6fVfVwsUAzQrL3SGAiXtQ2LS/view'
+                href='https://drive.google.com/file/d/1t4rHe0ORrIwyJURvCdflU4b1r2hnpC0h/view?usp=sharing'
                 target='_blank'
                 rel='noopener noreferrer'
               >
