@@ -154,7 +154,7 @@ const UlWrapper = styled.ul<Props>`
 
     a {
       display: block;
-      padding: 15px 5px;
+      padding: 15px 0.8rem;
     }
 
     svg {
@@ -170,7 +170,7 @@ const UlWrapper = styled.ul<Props>`
 
       :hover {
         transition: transform 0.4s ease-in-out;
-        transform: skew(160deg);
+        transform: skew(-40deg);
         color: ${(props) => props.theme.light.colors.orange};
       }
     }
