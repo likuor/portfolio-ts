@@ -7,6 +7,7 @@ import WorksDetail from '../pages/WorksDetail';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import styled from 'styled-components';
+import FloatIcons from '../components/FloatIcons';
 
 const Wrapper = styled.div`
   padding: 2rem 0 0;
@@ -28,6 +29,7 @@ const Router: FC = () => {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>
+      <FloatIcons />
     </Wrapper>
   );
 };

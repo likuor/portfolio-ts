@@ -2,8 +2,6 @@ import { useState, useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
-import { BsListNested, BsList } from 'react-icons/bs';
-import { WiMoonAltThirdQuarter } from 'react-icons/wi';
 
 type Props = {
   isHeaderShown: boolean;
@@ -122,49 +120,9 @@ const UlWrapper = styled.ul<Props>`
         ? props.theme.dark.colors.green
         : props.theme.dark.colors.white};
 
-    :nth-child(2) {
-      transition: box-shadow 0.4s ease-in-out;
-      :hover {
-        transition: box-shadow 0.4s ease-in-out;
-        box-shadow: 0 0 0;
-      }
-
-      ${(props) => {
-        const darkTheme = props.theme.dark.colors;
-        const lightTheme = props.theme.light.colors;
-
-        return props.isDarkMode
-          ? `
-            box-shadow: 0 0 ${darkTheme.orange}, 0.1rem 0.1rem 0 0 ${darkTheme.secondaryBlack}, 0.1rem 0.1rem 0 2px ${darkTheme.green};
-
-            :hover{
-              background: ${darkTheme.secondaryBlack};
-            }
-          `
-          : `
-            color: ${lightTheme.white};
-            box-shadow: 0 0 ${lightTheme.white}, 0.1rem 0.1rem 0 0 ${lightTheme.green}, 0.1rem 0.1rem 0 2px ${lightTheme.white};
-
-            :hover{
-              background: ${lightTheme.green};
-            }
-          `;
-      }};
-    }
-
     a {
       display: block;
       padding: 15px 0.8rem;
-    }
-
-    svg {
-      font-size: x-large;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    a,
-    svg {
       transition: transform 0.4s ease-in-out;
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
 
@@ -229,12 +187,10 @@ const Navbar = () => {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const [lastPosition, setLastPosition] = useState(0);
   const headerHeight = 40;
-  const { isDarkMode, setIsDarkMode, isSkew, setIsSkew } =
-    useContext(GlobalContext);
+  const { isDarkMode, isSkew } = useContext(GlobalContext);
 
   const scrollEvent = useCallback(() => {
     const offset = window.pageYOffset;
-
     if (offset > headerHeight) {
       setIsHeaderShown(false);
     } else {
@@ -261,10 +217,6 @@ const Navbar = () => {
       return setIsHumbergerMenuShown(!isHumbergerMenuShown);
     }
     return setIsHumbergerMenuShown(false);
-  };
-
-  const handleState = (stateVal: boolean, setState: Function) => {
-    return setState(!stateVal);
   };
 
   return (
@@ -298,28 +250,6 @@ const Navbar = () => {
             <Link to='/' onClick={() => handleHumbergerMenu(false)}>
               Koki Sakai
             </Link>
-          </li>
-          <li>
-            {isSkew ? (
-              <BsList
-                onClick={() => {
-                  handleState(isSkew, setIsSkew);
-                }}
-              />
-            ) : (
-              <BsListNested
-                onClick={() => {
-                  handleState(isSkew, setIsSkew);
-                }}
-              />
-            )}
-          </li>
-          <li>
-            <WiMoonAltThirdQuarter
-              onClick={() => {
-                handleState(isDarkMode, setIsDarkMode);
-              }}
-            />
           </li>
           <li>
             <Link to='/about' onClick={() => handleHumbergerMenu(false)}>
