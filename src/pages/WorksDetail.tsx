@@ -106,6 +106,9 @@ const FlexWrapper = styled.div<Props>`
 
           > a {
             font-size: large;
+            display: block;
+            padding: 15px 0.8rem;
+            transition: transform 0.4s ease-in-out;
 
             ${(props) => {
               const darkTheme = props.theme.dark.colors;
@@ -120,11 +123,10 @@ const FlexWrapper = styled.div<Props>`
               color: ${lightTheme.black};
               `;
             }};
-            transition: transform 0.4s ease-in-out;
 
             :hover {
               transition: transform 0.4s ease-in-out;
-              transform: skew(180deg);
+              transform: skew(-20deg);
               color: ${(props) => props.theme.light.colors.orange};
             }
           }
