@@ -265,7 +265,7 @@ const About: FC = () => {
             whileInView='onscreen'
             viewport={{ once: true, amount: 0 }}
           >
-            <h2>Story</h2>
+            <h2>Why to be a developer?</h2>
             <p>
               When I was a university student , I backpacked to cross the States
               from NewYork to Seattle by hitchhiking and using sharerides by my

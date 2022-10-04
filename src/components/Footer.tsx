@@ -44,11 +44,16 @@ const WrapperFooter = styled.div<Props>`
         padding: 0 1rem;
         font-size: medium;
 
-        :hover {
+        a {
+          display: block;
+          padding: 15px 0.8rem;
           transition: transform 0.4s ease-in-out;
-          transform: skew(190deg);
-          color: ${(props) => props.theme.light.colors.orange};
-          transition: 0.4s ease-in-out;
+
+          :hover {
+            transition: transform 0.4s ease-in-out;
+            transform: skew(-20deg);
+            color: ${(props) => props.theme.light.colors.orange};
+          }
         }
       }
     }
