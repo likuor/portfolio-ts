@@ -47,20 +47,6 @@ const WrapperSection = styled.section<Props>`
       transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
       text-align: center;
     }
-
-    ${(props) => {
-      const darkTheme = props.theme.dark.colors;
-      const lightTheme = props.theme.light.colors;
-      return props.isDarkMode
-        ? `
-      border-top: 1px solid ${darkTheme.lightGreen};
-      border-bottom: 1px solid ${darkTheme.lightGreen};;
-      `
-        : `
-      border-top: 1px solid ${lightTheme.orange};
-      border-bottom: 1px solid ${lightTheme.orange};
-      `;
-    }}
   }
 
   @media (min-width: 768px) {
