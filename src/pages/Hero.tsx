@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalContext';
-import { motion } from 'framer-motion';
 import Hero3D from '../components/Hero3D';
+import MotionDiv from '../layout/MotionDiv';
 
 type Props = {
   isDarkMode: boolean;
@@ -116,31 +116,12 @@ const WrapperSection = styled.section<Props>`
   }
 `;
 
-const MotionWrapper = styled(motion.div)``;
-
 const Hero: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
 
   return (
     <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
-      <MotionWrapper
-        variants={{
-          offscreen: {
-            y: 100,
-            opacity: 0,
-          },
-          onscreen: {
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-            },
-          },
-        }}
-        initial='offscreen'
-        whileInView='onscreen'
-        viewport={{ once: true, amount: 0 }}
-      >
+      <MotionDiv>
         <div>
           <h1>
             <span>H</span>
@@ -182,7 +163,7 @@ const Hero: FC = () => {
         <div>
           <Hero3D />
         </div>
-      </MotionWrapper>
+      </MotionDiv>
     </WrapperSection>
   );
 };

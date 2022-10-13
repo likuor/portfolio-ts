@@ -3,56 +3,16 @@ import styled from 'styled-components';
 import SkillsData from '../components/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/Button';
-import { motion } from 'framer-motion';
 import TypingAnimation from '../components/TypingAnimation';
+import SectionLayout from '../layout/SectionLayout';
+import DivLayout from '../layout/DivLayout';
+import H1Title from '../layout/H1Title';
+import MotionDiv from '../layout/MotionDiv';
 
 type Props = {
   isDarkMode?: boolean;
   isSkew: boolean;
 };
-
-const WrapperSection = styled.section<Props>`
-  width: 100%;
-  display: flex;
-  min-height: 80vh;
-  justify-content: center;
-  align-items: center;
-  padding: 4vw 0;
-  transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
-  ${(props) => {
-    const darkTheme = props.theme.dark.colors;
-    const lightTheme = props.theme.light.colors;
-    return props.isDarkMode
-      ? `
-      background: ${darkTheme.black};
-      color: ${darkTheme.green};
-      `
-      : `
-      background: ${lightTheme.white};
-      color: ${lightTheme.black};
-      `;
-  }};
-
-  > div {
-    margin: 0 auto;
-    padding: 2vw 0;
-    width: 80%;
-
-    > h1 {
-      transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
-      font-size: large;
-      padding: 1vw 0;
-    }
-  }
-
-  @media (min-width: 768px) {
-    height: auto;
-
-    > div > h1 {
-      font-size: x-large;
-    }
-  }
-`;
 
 const FlexWrapper = styled.div<Props>`
   margin: 0 auto;
@@ -112,8 +72,6 @@ const FlexWrapper = styled.div<Props>`
   }
 `;
 
-const MotionWrapper = styled(motion.div)``;
-
 const ImageContainer = styled.div<Props>`
   display: flex;
   justify-content: center;
@@ -141,7 +99,7 @@ const SkillsWrapper = styled.div<Props>`
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  margin-top: 2vw;
+  padding: 2vw 0;
 
   > div {
     padding: 1.5vh;
@@ -229,28 +187,11 @@ const About: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
 
   return (
-    <WrapperSection isDarkMode={isDarkMode} isSkew={isSkew}>
-      <div>
-        <h1>About</h1>
+    <SectionLayout>
+      <DivLayout>
+        <H1Title>About</H1Title>
         <FlexWrapper isSkew={isSkew}>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          <MotionDiv>
             <h2>Why to be a developer?</h2>
             <p>
               When I was a university student , I backpacked to cross the States
@@ -263,25 +204,8 @@ const About: FC = () => {
               efficiently learn technologies to help people in the world with my
               huge passion!
             </p>
-          </MotionWrapper>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          </MotionDiv>
+          <MotionDiv>
             <div>
               <h2>Work Experience</h2>
               <p>
@@ -316,25 +240,8 @@ const About: FC = () => {
                 <span>2022 - Present, Vancouver, Canada</span>
               </p>
             </div>
-          </MotionWrapper>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          </MotionDiv>
+          <MotionDiv>
             <ImageContainer isSkew={isSkew} isDarkMode={isDarkMode}>
               <img
                 src={`${process.env.PUBLIC_URL}/image/ProfileImage.jpg`}
@@ -345,96 +252,28 @@ const About: FC = () => {
               <h3>I am</h3>
               <TypingAnimation />
             </div>
-          </MotionWrapper>
+          </MotionDiv>
         </FlexWrapper>
         <SkillsWrapper isSkew={isSkew} isDarkMode={isDarkMode}>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          <MotionDiv>
             <h3>Languages</h3>
             <ul>{renderSkillsData(SkillsData.languages)}</ul>
-          </MotionWrapper>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          </MotionDiv>
+          <MotionDiv>
             <h3>Frameworks & Libraries</h3>
             <ul>{renderSkillsData(SkillsData.frameworks)}</ul>
-          </MotionWrapper>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          </MotionDiv>
+          <MotionDiv>
             <h3>Database</h3>
             <ul>{renderSkillsData(SkillsData.db)}</ul>
-          </MotionWrapper>
-          <MotionWrapper
-            variants={{
-              offscreen: {
-                y: 100,
-                opacity: 0,
-              },
-              onscreen: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.5,
-                },
-              },
-            }}
-            initial='offscreen'
-            whileInView='onscreen'
-            viewport={{ once: true, amount: 0 }}
-          >
+          </MotionDiv>
+          <MotionDiv>
             <h3>Things I like</h3>
             <ul>{renderSkillsData(SkillsData.hobby)}</ul>
-          </MotionWrapper>
+          </MotionDiv>
         </SkillsWrapper>
-      </div>
-    </WrapperSection>
+      </DivLayout>
+    </SectionLayout>
   );
 };
 
