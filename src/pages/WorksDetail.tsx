@@ -42,20 +42,6 @@ const WrapperSection = styled.section<Props>`
       font-size: large;
       padding: 1vw 0;
     }
-
-    ${(props) => {
-      const darkTheme = props.theme.dark.colors;
-      const lightTheme = props.theme.light.colors;
-      return props.isDarkMode
-        ? `
-      border-top: 1px solid ${darkTheme.lightGreen};
-      border-bottom: 1px solid ${darkTheme.lightGreen};;
-      `
-        : `
-      border-top: 1px solid ${lightTheme.orange};
-      border-bottom: 1px solid ${lightTheme.orange};
-      `;
-    }}
   }
 
   @media (min-width: 768px) {
@@ -70,20 +56,6 @@ const WrapperSection = styled.section<Props>`
 const FlexWrapper = styled.div<Props>`
   > div {
     margin: 0 3vw;
-    ${(props) => {
-      const darkTheme = props.theme.dark.colors;
-      const lightTheme = props.theme.light.colors;
-      return props.isDarkMode
-        ? `
-      border-top: 0.3px solid ${darkTheme.lightGreen};
-      border-bottom: 0.3px solid ${darkTheme.lightGreen};;
-
-      `
-        : `
-      border-top: 0.3px solid ${lightTheme.orange};
-      border-bottom: 0.3px solid ${lightTheme.orange};
-      `;
-    }}
 
     > div {
       padding: 3vw 0;
