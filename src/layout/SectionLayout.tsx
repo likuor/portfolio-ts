@@ -14,10 +14,10 @@ type Props = {
 const WrapperSection = styled.section<Props>`
   width: 100%;
   display: flex;
-  min-height: 60vh;
+  min-height: 70vh;
   justify-content: center;
   align-items: center;
-  padding: 3vw 0;
+  padding: 4vw 0;
   transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
   ${(props) => {
     const darkTheme = props.theme.dark.colors;

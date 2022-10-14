@@ -20,6 +20,7 @@ const WrapperDiv = styled.div<Props>`
     transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
     font-size: large;
     padding: 1vw 0;
+    font-family: 'Orbitron', sans-serif;
 
     @media (min-width: 768px) {
       font-size: x-large;

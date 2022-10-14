@@ -55,6 +55,7 @@ const WrapperSection = styled.section<Props>`
       span {
         display: inline-block;
         transition: transform 1s ease-in-out;
+        font-family: 'Russo One', sans-serif;
 
         ${(props) => {
           const darkTheme = props.theme.dark.colors;

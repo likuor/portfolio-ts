@@ -13,6 +13,7 @@ type Props = {
 const WrapperH1 = styled.h1<Props>`
   transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
   font-size: large;
+  font-family: 'Orbitron', sans-serif;
   padding: 1vw 0;
 
   @media (min-width: 768px) {
