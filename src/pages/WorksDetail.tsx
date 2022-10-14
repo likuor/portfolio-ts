@@ -47,13 +47,15 @@ const FlexWrapper = styled.div<Props>`
               const lightTheme = props.theme.light.colors;
               return props.isDarkMode
                 ? `
-              background: ${darkTheme.black};
-              color: ${darkTheme.green};
-              `
+                  transition: background 3s ease-in;
+                  background: ${darkTheme.black};
+                  color: ${darkTheme.green};
+                `
                 : `
-              background: ${lightTheme.white};
-              color: ${lightTheme.black};
-              `;
+                  transition: background 3s ease-in;
+                  background: ${lightTheme.white};
+                  color: ${lightTheme.black};
+                `;
             }};
 
             :hover {
@@ -77,12 +79,14 @@ const FlexWrapper = styled.div<Props>`
             const lightTheme = props.theme.light.colors;
             return props.isDarkMode
               ? `
-              background: ${darkTheme.secondaryBlack};
-              color: ${darkTheme.green};
+                transition: background 3s ease-in;
+                background: ${darkTheme.secondaryBlack};
+                color: ${darkTheme.green};
               `
               : `
-              background: ${lightTheme.brown};
-              color: ${lightTheme.black};
+                transition: background 3s ease-in;
+                background: ${lightTheme.brown};
+                color: ${lightTheme.black};
               `;
           }};
 
