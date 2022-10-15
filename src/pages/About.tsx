@@ -141,14 +141,6 @@ const SkillsWrapper = styled.div<Props>`
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
         list-style: none;
         padding: 0 0.5rem;
-
-        :first-child {
-          padding-left: 0px;
-        }
-
-        :last-child {
-          padding-right: 0px;
-        }
       }
     }
   }
