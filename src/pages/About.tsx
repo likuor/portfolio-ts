@@ -81,6 +81,7 @@ const ImageContainer = styled.div<Props>`
     width: 80%;
     object-fit: cover;
     transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
+    transition: box-shadow 3s ease-in;
 
     box-shadow: ${(props) =>
       props.isDarkMode
@@ -113,13 +114,15 @@ const SkillsWrapper = styled.div<Props>`
       const lightTheme = props.theme.light.colors;
       return props.isDarkMode
         ? `
-      background: ${darkTheme.secondaryBlack};
-      color: ${darkTheme.green};
-      `
+          transition: background 3s ease-in;
+          background: ${darkTheme.secondaryBlack};
+          color: ${darkTheme.green};
+        `
         : `
-      background: ${lightTheme.brown};
-      color: ${lightTheme.black};
-      `;
+          transition: background 3s ease-in;
+          background: ${lightTheme.brown};
+          color: ${lightTheme.black};
+        `;
     }};
 
     > h3 {
@@ -138,14 +141,6 @@ const SkillsWrapper = styled.div<Props>`
         transform: ${(props) => (props.isSkew ? 'skew(-15deg)' : 'none')};
         list-style: none;
         padding: 0 0.5rem;
-
-        :first-child {
-          padding-left: 0px;
-        }
-
-        :last-child {
-          padding-right: 0px;
-        }
       }
     }
   }

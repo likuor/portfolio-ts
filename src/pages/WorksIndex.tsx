@@ -10,7 +10,7 @@ import H1Title from '../layout/H1Title';
 
 type Props = {
   isDarkMode: boolean;
-  isSkew: boolean;
+  isSkew?: boolean;
 };
 
 const FlexWrapper = styled.div`
@@ -115,12 +115,23 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<Props>`
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   overflow: hidden;
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+      border: 3px ${darkTheme.secondaryBlack} solid;
+      `
+      : `
+      border: 3px ${lightTheme.black} solid;
+      `;
+  }};
 
   :hover > ${DescriptionHover} {
     opacity: 1;
@@ -156,7 +167,7 @@ const WorksIndex: FC = () => {
           whileInView='onscreen'
           viewport={{ once: true, amount: 0 }}
         >
-          <ImageContainer>
+          <ImageContainer isDarkMode={isDarkMode}>
             <Image src={workData.imageThumbnail} alt='ProfileImage' />
             <DescriptionHover isDarkMode={isDarkMode} isSkew={isSkew}>
               <Link to={`/work/${workData.id}`}>

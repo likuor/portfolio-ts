@@ -24,10 +24,12 @@ const WrapperSection = styled.section<Props>`
     const lightTheme = props.theme.light.colors;
     return props.isDarkMode
       ? `
+      transition: background 3s ease-in;
       background: ${darkTheme.black};
       color: ${darkTheme.green};
       `
       : `
+      transition: background 3s ease-in;
       background: ${lightTheme.white};
       color: ${lightTheme.black};
       `;

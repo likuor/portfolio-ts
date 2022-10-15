@@ -21,6 +21,10 @@ import {
   SiAntdesign,
   SiRedux,
   SiExpress,
+  SiPostgresql,
+  SiJava,
+  SiPython,
+  SiBootstrap,
 } from 'react-icons/si';
 
 import {
@@ -81,6 +85,14 @@ const SkillsData: Alldata = {
       name: 'SCSS',
       icons: <SiSass />,
     },
+    {
+      name: 'Java',
+      icons: <SiJava />,
+    },
+    {
+      name: 'Python',
+      icons: <SiPython />,
+    },
   ],
   db: [
     {
@@ -90,6 +102,10 @@ const SkillsData: Alldata = {
     {
       name: 'MongoDB',
       icons: <SiMongodb />,
+    },
+    {
+      name: 'Postgresql',
+      icons: <SiPostgresql />,
     },
     {
       name: 'MySQL',
@@ -144,6 +160,10 @@ const SkillsData: Alldata = {
     {
       name: 'jQuery',
       icons: <SiJquery />,
+    },
+    {
+      name: 'Bootstrap',
+      icons: <SiBootstrap />,
     },
   ],
   hobby: [

@@ -11,6 +11,18 @@ type Props = {
 };
 
 const TriangleWrapper = styled.div<Props>`
+  animation-name: fade;
+  animation-duration: 0.3s;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   width: ${(props) => (props.isSkew ? 0 : '100%')};
   height: 0;
   border-left: ${(props) =>
@@ -61,9 +73,6 @@ const Toggle = styled.div<Props>`
   justify-content: space-between;
   transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
 
-  display: ${(props) =>
-    props.isHeaderShown || props.isHumbergerMenuShown ? 'flex' : 'none'};
-
   span {
     display: block;
     height: 2px;
@@ -100,6 +109,48 @@ const Toggle = styled.div<Props>`
 `;
 
 const UlWrapper = styled.ul<Props>`
+  animation-name: fade;
+  animation-duration: 0.3s;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  ${(props) => {
+    const darkTheme = props.theme.dark.colors;
+    const lightTheme = props.theme.light.colors;
+    return props.isDarkMode
+      ? `
+        background: ${darkTheme.secondaryBlack};
+        color: ${darkTheme.green};
+
+        li{
+          border-bottom:1px solid ${darkTheme.green};
+
+          :first-child {
+            border-top:1px solid ${darkTheme.green};
+          }
+        }
+      `
+      : `
+        background: ${lightTheme.green};
+        color: ${lightTheme.white};
+
+        li{
+          border-bottom:1px solid ${lightTheme.white};
+
+          :first-child {
+            border-top:1px solid ${lightTheme.white};
+          }
+        }
+      `;
+  }};
+
   display: ${(props) => (props.isHumbergerMenuShown ? 'flex' : 'none')};
   transform: ${(props) => (props.isSkew ? 'skewY(15deg)' : 'none')};
   flex-direction: column;
