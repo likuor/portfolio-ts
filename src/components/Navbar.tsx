@@ -299,7 +299,12 @@ const Navbar = () => {
         >
           <li>
             <Link to='/' onClick={() => handleHumbergerMenu(false)}>
-              Koki Sakai
+              <img
+                src={process.env.PUBLIC_URL + '/logoNav.png'}
+                alt='koki logo'
+                width={'40px'}
+                height={'40px'}
+              />
             </Link>
           </li>
           <li>
