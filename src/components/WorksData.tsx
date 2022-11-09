@@ -10,6 +10,9 @@ import {
   SiRedux,
   SiMongodb,
   SiStyledcomponents,
+  SiBootstrap,
+  SiExpress,
+  SiNodedotjs,
 } from 'react-icons/si';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -148,6 +151,8 @@ const WorksData: Data[] = [
         name: 'React',
         icon: <SiReact />,
       },
+      { name: 'Node.js', icon: <SiNodedotjs /> },
+      { name: 'Express.js', icon: <SiExpress /> },
       {
         name: 'MongoDB',
         icon: <SiMongodb />,
@@ -253,6 +258,50 @@ const WorksData: Data[] = [
       {
         name: 'Framer Motion',
       },
+    ],
+    jenre: 'studying',
+  },
+  {
+    id: 6,
+    title: 'Blog app',
+    caption: "A platform of sharing everybody's blog",
+    description: {
+      story:
+        'After learning Express.js and MongoDB, I wanted to understand well how to use them and connecting React so I decided to make simple a CRUD blog app. I believe I have confidence that I could make Backend to Frontend by myself!',
+      features: [
+        "We can see all posts other users did in home page, it's categorized by 'All', 'English', 'Programming' to specify dependign on articles. Moreover, we can add articles with title, description. And editing deleting are included in it. Upcoming function would be adding a picture. ",
+        'Authorization function was always driving me crazy because I had to care about personal user information. However, bcrypt got rid of the anxiety. I have huge confidence of using any information.',
+      ],
+    },
+    links: [
+      {
+        url: 'https://blogapp-bykoki.onrender.com',
+        icon: <FaExternalLinkAlt />,
+      },
+      { url: 'https://github.com/likuor/blogapp', icon: <FaGithub /> },
+    ],
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/BlogApp/BlogApp.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/BlogApp/BlogApp.png`,
+      `${process.env.PUBLIC_URL}/image/works/BlogApp/BlogApp_post.png`,
+      `${process.env.PUBLIC_URL}/image/works/BlogApp/BlogApp_auth.png`,
+    ],
+    technologies: [
+      {
+        name: 'Typescript',
+        icon: <SiTypescript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'React-Bootstrap',
+        icon: <SiBootstrap />,
+      },
+      { name: 'Node.js', icon: <SiNodedotjs /> },
+      { name: 'Express.js', icon: <SiExpress /> },
+      { name: 'MongoDB', icon: <SiMongodb /> },
     ],
     jenre: 'studying',
   },
