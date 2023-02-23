@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { GlobalContext } from '../context/GlobalContext';
+import { GlobalContext } from '../../context/GlobalContext';
 
 type Props = {
   isHeaderShown: boolean;

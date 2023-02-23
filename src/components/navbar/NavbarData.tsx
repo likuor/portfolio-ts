@@ -1,4 +1,4 @@
-import { BsListNested, BsList } from 'react-icons/bs';
+import { BsListNested } from 'react-icons/bs';
 import { WiMoonAltThirdQuarter } from 'react-icons/wi';
 
 type Data = {

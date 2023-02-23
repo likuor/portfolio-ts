@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
+import { GlobalContext } from '../../context/GlobalContext';
 import { BsListNested, BsList } from 'react-icons/bs';
 import { WiMoonAltThirdQuarter } from 'react-icons/wi';
 import styled from 'styled-components';

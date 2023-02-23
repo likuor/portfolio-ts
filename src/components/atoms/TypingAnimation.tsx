@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 const TypingAnimation: FC = () => {

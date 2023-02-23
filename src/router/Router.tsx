@@ -7,7 +7,7 @@ import WorksDetail from '../pages/WorksDetail';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import styled from 'styled-components';
-import FloatIcons from '../components/FloatIcons';
+import FloatIcons from '../components/molecules/FloatIcons';
 
 const Wrapper = styled.div`
   padding: 2rem 0 0;

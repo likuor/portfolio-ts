@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import WorksData from '../components/WorksData';
+import WorksData from '../components/pages/works/WorksData';
 import { GlobalContext } from '../context/GlobalContext';
 import SectionLayout from '../layout/SectionLayout';
 import DivLayout from '../layout/DivLayout';

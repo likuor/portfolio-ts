@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import './App.css';
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 import Router from './router/Router';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import { GlobalContext } from './context/GlobalContext';
 import { ThemesProvider } from './theme/Theme';
 import { createGlobalStyle } from 'styled-components';

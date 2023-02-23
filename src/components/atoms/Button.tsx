@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
-import { GlobalContext } from '../context/GlobalContext';
+import { GlobalContext } from '../../context/GlobalContext';
 
 type ButtonProps = {
   isDarkMode: boolean;
