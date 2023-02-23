@@ -8,6 +8,7 @@ import SectionLayout from '../layout/SectionLayout';
 import DivLayout from '../layout/DivLayout';
 import H1Title from '../layout/H1Title';
 import MotionDiv from '../layout/MotionDiv';
+import WorkExperiencesData from '../components/pages/about/WorkExperienceData';
 
 type Props = {
   isDarkMode?: boolean;
@@ -178,6 +179,19 @@ const renderSkillsData = (skillTitle: SkillsDataType[]) => {
   });
 };
 
+const renderExperiencesData = () => {
+  return WorkExperiencesData.map((experience) => (
+    <div key={experience.id}>
+      <h3>
+        - {experience.role} / {experience.dateStart} - {experience.dateEnd}
+      </h3>
+      <p>
+        {experience.company} / {experience.location}
+      </p>
+    </div>
+  )).reverse();
+};
+
 const About: FC = () => {
   const { isDarkMode, isSkew } = useContext(GlobalContext);
 
@@ -203,28 +217,10 @@ const About: FC = () => {
           <MotionDiv>
             <div>
               <h2>Work Experience</h2>
-              <p>
-                - Web Application Developer & Customer Solution Leader
-                <br />
-                anyCarry Inc.
-                <br />
-                <span>2019 - 2021, Tokyo, Japan</span>
-              </p>
-              <p>
-                - Programming Teaching Assistant
-                <br />
-                TECH I.S.
-                <br />
-                <span>2020 - 2021, Tokyo, Japan</span>
-              </p>
-              <a
-                href='https://drive.google.com/file/d/1s9eg9lmZtpHqhbghRjSRmnoUbjcf1vfU/view?usp=sharing'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <Button text='Resume' width='100' />
-              </a>
+              {renderExperiencesData()}
             </div>
+          </MotionDiv>
+          <MotionDiv>
             <div>
               <h2>Education</h2>
               <p>
@@ -233,6 +229,13 @@ const About: FC = () => {
                 Cornerstone International Community College of Canada
                 <br />
                 <span>2022 - Present, Vancouver, Canada</span>
+              </p>
+              <p>
+                - Bachelor of Law
+                <br />
+                Nihon University
+                <br />
+                <span>2013 - 2018, Tokyo, Japan</span>
               </p>
             </div>
           </MotionDiv>
@@ -246,6 +249,13 @@ const About: FC = () => {
             <div>
               <h3>I am</h3>
               <TypingAnimation />
+              <a
+                href='https://drive.google.com/file/d/1a7pgwcadtxDxPwKfialUOJb0qs0rwdIk/view?usp=sharing'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <Button text='Resume' width='100' />
+              </a>
             </div>
           </MotionDiv>
         </FlexWrapper>
