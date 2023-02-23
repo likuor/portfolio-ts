@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
-import SkillsData from '../components/pages/about/SkillsData';
+import SkillsData from '../components/pages/about/data/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/atoms/Button';
 import TypingAnimation from '../components/atoms/TypingAnimation';
@@ -8,7 +8,9 @@ import SectionLayout from '../layout/SectionLayout';
 import DivLayout from '../layout/DivLayout';
 import H1Title from '../layout/H1Title';
 import MotionDiv from '../layout/MotionDiv';
-import WorkExperiencesData from '../components/pages/about/WorkExperienceData';
+import WorkExperiencesData from '../components/pages/about/data/WorkExperienceData';
+import EducationsData from '../components/pages/about/data/EducationData';
+import HackathonsData from '../components/pages/about/data/HackathonData';
 
 type Props = {
   isDarkMode?: boolean;
@@ -188,6 +190,39 @@ const renderExperiencesData = () => {
       <p>
         {experience.company} / {experience.location}
       </p>
+      <br />
+    </div>
+  )).reverse();
+};
+
+const renderEducationsData = () => {
+  return EducationsData.map((education) => (
+    <div key={education.id}>
+      <h3>
+        - {education.major} / {education.dateStart} - {education.dateEnd}
+      </h3>
+      <p>
+        {education.school} / {education.location}
+      </p>
+      <br />
+    </div>
+  )).reverse();
+};
+
+const renderHackathonsData = () => {
+  return HackathonsData.map((hackathon) => (
+    <div key={hackathon.id}>
+      <h3>
+        - {hackathon.title} / {hackathon.date}
+      </h3>
+      <p>
+        {hackathon.organization} / {hackathon.location}
+      </p>
+      <br />
+      <h4>The app name is 'Restarea'</h4>
+      <a href={hackathon.url} target='_blank' rel='noopener noreferrer'>
+        <Button text='Article' width='100' />
+      </a>
     </div>
   )).reverse();
 };
@@ -222,21 +257,12 @@ const About: FC = () => {
           </MotionDiv>
           <MotionDiv>
             <div>
+              <h2>Hackathon</h2>
+              {renderHackathonsData()}
+            </div>
+            <div>
               <h2>Education</h2>
-              <p>
-                - Web & Mobile Application Development Diploma
-                <br />
-                Cornerstone International Community College of Canada
-                <br />
-                <span>2022 - Present, Vancouver, Canada</span>
-              </p>
-              <p>
-                - Bachelor of Law
-                <br />
-                Nihon University
-                <br />
-                <span>2013 - 2018, Tokyo, Japan</span>
-              </p>
+              {renderEducationsData()}
             </div>
           </MotionDiv>
           <MotionDiv>

@@ -25,6 +25,8 @@ import {
   SiJava,
   SiPython,
   SiBootstrap,
+  SiAmazonaws,
+  SiSocketdotio,
 } from 'react-icons/si';
 
 import {
@@ -94,24 +96,6 @@ const SkillsData: Alldata = {
       icons: <SiPython />,
     },
   ],
-  db: [
-    {
-      name: 'Firebase',
-      icons: <SiFirebase />,
-    },
-    {
-      name: 'MongoDB',
-      icons: <SiMongodb />,
-    },
-    {
-      name: 'Postgresql',
-      icons: <SiPostgresql />,
-    },
-    {
-      name: 'MySQL',
-      icons: <SiMysql />,
-    },
-  ],
   frameworks: [
     {
       name: 'React',
@@ -133,6 +117,7 @@ const SkillsData: Alldata = {
       name: 'Redux',
       icons: <SiRedux />,
     },
+    { name: 'Socketdotio', icons: <SiSocketdotio /> },
     {
       name: 'Laravel',
       icons: <SiLaravel />,
@@ -165,6 +150,25 @@ const SkillsData: Alldata = {
       name: 'Bootstrap',
       icons: <SiBootstrap />,
     },
+  ],
+  db: [
+    {
+      name: 'Firebase',
+      icons: <SiFirebase />,
+    },
+    {
+      name: 'MongoDB',
+      icons: <SiMongodb />,
+    },
+    {
+      name: 'Postgresql',
+      icons: <SiPostgresql />,
+    },
+    {
+      name: 'MySQL',
+      icons: <SiMysql />,
+    },
+    { name: 'AWS S3', icons: <SiAmazonaws /> },
   ],
   hobby: [
     {

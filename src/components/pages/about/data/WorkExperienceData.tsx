@@ -21,7 +21,7 @@ const WorkExperiencesData: Experiencetype = [
     role: 'Web Developer & Customer Solution Leader',
     company: 'AnyCarry Inc.',
     location: 'Tokyo, Japan',
-    dateStart: '2019',
+    dateStart: '2020',
     dateEnd: '2021',
   },
   {
@@ -34,7 +34,7 @@ const WorkExperiencesData: Experiencetype = [
   },
   {
     id: 4,
-    role: 'Frontend Developer',
+    role: 'Frontend Developer (Remote)',
     company: 'Future Standard Co., Ltd.',
     location: 'Tokyo, Japan',
     dateStart: '2022',
@@ -42,7 +42,7 @@ const WorkExperiencesData: Experiencetype = [
   },
   {
     id: 5,
-    role: 'Frontend Developer',
+    role: 'Frontend Developer (Remote)',
     company: '80&Company Inc.',
     location: 'Kyoto, Japan',
     dateStart: '2023',
