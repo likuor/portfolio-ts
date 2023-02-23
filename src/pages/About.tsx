@@ -11,6 +11,7 @@ import MotionDiv from '../layout/MotionDiv';
 import WorkExperiencesData from '../components/pages/about/data/WorkExperienceData';
 import EducationsData from '../components/pages/about/data/EducationData';
 import HackathonsData from '../components/pages/about/data/HackathonData';
+import AboutData from '../components/pages/about/data/About.json';
 
 type Props = {
   isDarkMode?: boolean;
@@ -237,17 +238,7 @@ const About: FC = () => {
         <FlexWrapper isSkew={isSkew}>
           <MotionDiv>
             <h2>Why to be a developer?</h2>
-            <p>
-              When I was a university student , I backpacked to cross the States
-              from NewYork to Seattle by hitchhiking and using sharerides by my
-              self for 3 months. At the time, I experienced that apps have an
-              incredibly helpful power and made us connect with each other
-              easily to make us happy, make our dreams come true. That was the
-              first step to make me big fun of the amazing IT world. After the
-              survival traveling, I am always pleased that I would like to
-              efficiently learn technologies to help people in the world with my
-              huge passion!
-            </p>
+            <p>{AboutData.introduce}</p>
           </MotionDiv>
           <MotionDiv>
             <div>
@@ -276,7 +267,7 @@ const About: FC = () => {
               <h3>I am</h3>
               <TypingAnimation />
               <a
-                href='https://drive.google.com/file/d/1a7pgwcadtxDxPwKfialUOJb0qs0rwdIk/view?usp=sharing'
+                href={AboutData.resumeURL}
                 target='_blank'
                 rel='noopener noreferrer'
               >
