@@ -13,6 +13,9 @@ import {
   SiBootstrap,
   SiExpress,
   SiNodedotjs,
+  SiAmazonaws,
+  SiAwsamplify,
+  SiSocketdotio,
 } from 'react-icons/si';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -302,6 +305,64 @@ const WorksData: Data[] = [
       { name: 'Node.js', icon: <SiNodedotjs /> },
       { name: 'Express.js', icon: <SiExpress /> },
       { name: 'MongoDB', icon: <SiMongodb /> },
+    ],
+    jenre: 'studying',
+  },
+  {
+    id: 7,
+    title: 'Chillip',
+    caption:
+      'We can connect new friends from different courses in our school and enjoy chatting.',
+    description: {
+      story:
+        'Our school provides several courses such as web development, UI/UX design, Degital Marketing but we feel these courses are little closed communities. If we collaborate with students in the other courses, we can try to make businesses, get more practical workshops, cultivate experiences. We hope this app helps students carrier and expand their commnunity.',
+      features: [
+        "It was tough to apply a public library having a strict rule to make a swiping function to this app while I had to care about avoiding unnecessary rendering. It made me understand well mounting and rendering and also avoid too many renders if it's not needed.",
+        "Setting cookie at backend and checking the cookie from frontend to make sure it's robust and stable security.",
+      ],
+    },
+    links: [
+      {
+        url: 'https://main.d1q845p9ygn1yh.amplifyapp.com/',
+        icon: <FaExternalLinkAlt />,
+      },
+      {
+        url: 'https://github.com/tenmusu007/matchingapp-frontend',
+        icon: <FaGithub />,
+      },
+    ],
+    imageThumbnail: `${process.env.PUBLIC_URL}/image/works/Chillip/Chillip_hero.png`,
+    images: [
+      `${process.env.PUBLIC_URL}/image/works/Chillip/Chillip_hero.png`,
+      `${process.env.PUBLIC_URL}/image/works/Chillip/Chillip_chat.png`,
+      `${process.env.PUBLIC_URL}/image/works/Chillip/Chillip_profile.png`,
+    ],
+    technologies: [
+      {
+        name: 'Javascript',
+        icon: <SiJavascript />,
+      },
+      {
+        name: 'React',
+        icon: <SiReact />,
+      },
+      {
+        name: 'Styled Components',
+        icon: <SiStyledcomponents />,
+      },
+      {
+        name: 'MaterialUI',
+        icon: <SiMaterialui />,
+      },
+      { name: 'Node.js', icon: <SiNodedotjs /> },
+      { name: 'Express.js', icon: <SiExpress /> },
+      {
+        name: 'MongoDB',
+        icon: <SiMongodb />,
+      },
+      { name: 'AWS S3', icon: <SiAmazonaws /> },
+      { name: 'Amplify', icon: <SiAwsamplify /> },
+      { name: 'Socketdotio', icon: <SiSocketdotio /> },
     ],
     jenre: 'studying',
   },

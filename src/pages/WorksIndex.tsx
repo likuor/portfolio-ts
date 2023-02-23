@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import WorksData from '../components/WorksData';
+import WorksData from '../components/pages/works/WorksData';
 import { GlobalContext } from '../context/GlobalContext';
 import { motion } from 'framer-motion';
 import SectionLayout from '../layout/SectionLayout';
@@ -187,7 +187,7 @@ const WorksIndex: FC = () => {
           </ImageContainer>
         </FlexMotionChildren>
       );
-    });
+    }).reverse();
   };
 
   return (

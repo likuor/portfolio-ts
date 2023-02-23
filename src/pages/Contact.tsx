@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Button from '../components/Button';
+import Button from '../components/atoms/Button';
 import SectionLayout from '../layout/SectionLayout';
 import DivCenterLayout from '../layout/DivCenterLayout';
 import MotionDiv from '../layout/MotionDiv';

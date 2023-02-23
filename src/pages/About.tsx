@@ -1,9 +1,9 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
-import SkillsData from '../components/SkillsData';
+import SkillsData from '../components/pages/about/SkillsData';
 import { GlobalContext } from '../context/GlobalContext';
-import Button from '../components/Button';
-import TypingAnimation from '../components/TypingAnimation';
+import Button from '../components/atoms/Button';
+import TypingAnimation from '../components/atoms/TypingAnimation';
 import SectionLayout from '../layout/SectionLayout';
 import DivLayout from '../layout/DivLayout';
 import H1Title from '../layout/H1Title';

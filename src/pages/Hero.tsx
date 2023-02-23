@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalContext';
-import Hero3D from '../components/Hero3D';
+import Hero3D from '../components/pages/hero/Hero3D';
 import MotionDiv from '../layout/MotionDiv';
 
 type Props = {
