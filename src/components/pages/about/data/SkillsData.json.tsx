@@ -27,6 +27,7 @@ import {
   SiBootstrap,
   SiAmazonaws,
   SiSocketdotio,
+  SiAwsamplify,
 } from 'react-icons/si';
 
 import {
@@ -169,6 +170,10 @@ const SkillsData: Alldata = {
       icons: <SiMysql />,
     },
     { name: 'AWS S3', icons: <SiAmazonaws /> },
+    {
+      name: 'Awsamplify',
+      icons: <SiAwsamplify />,
+    },
   ],
   hobby: [
     {

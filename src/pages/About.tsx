@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 import styled from 'styled-components';
-import SkillsData from '../components/pages/about/data/SkillsData';
+import SkillsData from '../components/pages/about/data/SkillsData.json';
 import { GlobalContext } from '../context/GlobalContext';
 import Button from '../components/atoms/Button';
 import TypingAnimation from '../components/atoms/TypingAnimation';
@@ -8,9 +8,9 @@ import SectionLayout from '../layout/SectionLayout';
 import DivLayout from '../layout/DivLayout';
 import H1Title from '../layout/H1Title';
 import MotionDiv from '../layout/MotionDiv';
-import WorkExperiencesData from '../components/pages/about/data/WorkExperienceData';
-import EducationsData from '../components/pages/about/data/EducationData';
-import HackathonsData from '../components/pages/about/data/HackathonData';
+import WorkExperiencesData from '../components/pages/about/data/WorkExperienceData.json';
+import EducationsData from '../components/pages/about/data/EducationData.json';
+import HackathonsData from '../components/pages/about/data/HackathonData.json';
 import AboutData from '../components/pages/about/data/About.json';
 
 type Props = {
@@ -185,11 +185,14 @@ const renderSkillsData = (skillTitle: SkillsDataType[]) => {
 const renderExperiencesData = () => {
   return WorkExperiencesData.map((experience) => (
     <div key={experience.id}>
-      <h3>
-        - {experience.role} / {experience.dateStart} - {experience.dateEnd}
-      </h3>
+      <h3>- {experience.role}</h3>
       <p>
-        {experience.company} / {experience.location}
+        {experience.dateStart} - {experience.dateEnd}
+      </p>
+      <p>
+        <a href={experience.url} target='_blank' rel='noopener noreferrer'>
+          {experience.company} / {experience.location}
+        </a>
       </p>
       <br />
     </div>
@@ -199,9 +202,10 @@ const renderExperiencesData = () => {
 const renderEducationsData = () => {
   return EducationsData.map((education) => (
     <div key={education.id}>
-      <h3>
-        - {education.major} / {education.dateStart} - {education.dateEnd}
-      </h3>
+      <h3>- {education.major}</h3>
+      <p>
+        {education.dateStart} - {education.dateEnd}
+      </p>
       <p>
         {education.school} / {education.location}
       </p>
@@ -286,7 +290,7 @@ const About: FC = () => {
             <ul>{renderSkillsData(SkillsData.frameworks)}</ul>
           </MotionDiv>
           <MotionDiv>
-            <h3>Database</h3>
+            <h3>DB & Infrastructure</h3>
             <ul>{renderSkillsData(SkillsData.db)}</ul>
           </MotionDiv>
           <MotionDiv>
